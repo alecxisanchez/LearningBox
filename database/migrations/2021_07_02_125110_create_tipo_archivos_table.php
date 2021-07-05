@@ -20,7 +20,7 @@ class CreateTipoArchivosTable extends Migration
             $table->bigInteger('tr_tiparc_usuario_creacion')->nullable();
             $table->bigInteger('tr_tiparc_usuario_modificacion')->nullable();
             $table->timestamp('tr_tiparc_fecha_creacion')->nullable();
-            $table->timestamp('tr_tiparc_fecha_modificaion')->nullable();
+            $table->timestamp('tr_tiparc_fecha_modificacion')->nullable();
             $table->bigInteger('tr_tiparc_estado');
             $table->boolean('tr_tiparc_vigencia');
         });
