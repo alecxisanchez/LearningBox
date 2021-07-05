@@ -1,0 +1,39 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateCompraCursoTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('compra_curso', function (Blueprint $table) {
+            $table->bigIncrements('tr_com_cur_id');
+            $table->bigInteger('tr_com_cur_id_com_fk')->unsigned();
+            $table->bigInteger('tr_com_cur_id_cur_fk')->unsigned();
+            $table->bigInteger('tr_com_cur_usuario_creacion')->nullable();
+            $table->bigInteger('tr_com_cur_usuario_modificacion')->nullable();
+            $table->timestamp('tr_com_cur_fecha_creacion')->nullable();
+            $table->timestamp('tr_com_cur_fecha_modificaion')->nullable();
+            $table->boolean('tr_com_cur_vigencia');
+            $table->foreign('tr_com_cur_id_com_fk')->references('tr_com_id')->on('compra');
+            $table->foreign('tr_com_cur_id_cur_fk')->references('tr_cur_id')->on('cursos');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('compra_curso');
+    }
+}
