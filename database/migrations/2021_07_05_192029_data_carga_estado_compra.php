@@ -3,6 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
+use 
 
 class DataCargaEstadoCompra extends Migration
 {
@@ -32,6 +34,19 @@ class DataCargaEstadoCompra extends Migration
                 'tr_est_com_id' => 2,
                 'tr_est_com_nombre' => 'Rechazada',
                 'tr_est_com_descripcion' => 'Estado de la compra Rechazada',
+                'tr_est_com_usuario_creacion' => null,
+                'tr_est_com_usuario_modificacion' => null,
+                'tr_est_com_fecha_creacion' => null,
+                'tr_est_com_fecha_modificaion' => null,
+                'tr_est_com_vigencia' => 1
+            )
+        );
+        //
+         DB::table('estado_compra')->insert(
+            array(
+                'tr_est_com_id' => 3,
+                'tr_est_com_nombre' => 'Fallida',
+                'tr_est_com_descripcion' => 'Estado de la compra Fallida',
                 'tr_est_com_usuario_creacion' => null,
                 'tr_est_com_usuario_modificacion' => null,
                 'tr_est_com_fecha_creacion' => null,
