@@ -18,7 +18,7 @@ class CreateUsuariosTable extends Migration
             $table->string('tr_usu_nombre');
             $table->string('tr_usu_mail')->unique();
             $table->string('tr_usu_password');
-            $table->string('tr_usu_token');
+            $table->string('tr_usu_token')->nullable();
             $table->bigInteger('tr_usu_usuario_creacion')->nullable();
             $table->bigInteger('tr_usu_usuario_modificacion')->nullable();
             $table->timestamp('tr_usu_fecha_creacion')->nullable();
