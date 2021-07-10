@@ -15,6 +15,7 @@ class CreateEstadoCompraTable extends Migration
     {
         Schema::create('estado_compra', function (Blueprint $table) {
             $table->bigIncrements('tr_est_com_id');
+            $table->Char('tr_uuid');
             $table->string('tr_est_com_nombre');
             $table->string('tr_est_com_descripcion');
             $table->bigInteger('tr_est_com_usuario_creacion')->nullable();

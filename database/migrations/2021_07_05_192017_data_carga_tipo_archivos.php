@@ -4,6 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
+use Ramsey\Uuid\Uuid;
 
 class DataCargaTipoArchivos extends Migration
 {
@@ -18,6 +19,7 @@ class DataCargaTipoArchivos extends Migration
         DB::table('tipo_archivos')->insert(
             array(
                 'tr_tiparc_id' => 1,
+                'tr_uuid' => Uuid::uuid4(),
                 'tr_tiparc_nombre' => 'Pdf',
                 'tr_tiparc_descripcion' => 'Archivo tipo Pdf',
                 'tr_tiparc_usuario_creacion' => null,
@@ -32,6 +34,7 @@ class DataCargaTipoArchivos extends Migration
         DB::table('tipo_archivos')->insert(
             array(
                 'tr_tiparc_id' => 2,
+                'tr_uuid' => Uuid::uuid4(),
                 'tr_tiparc_nombre' => 'Video',
                 'tr_tiparc_descripcion' => 'Archivo tipo Video',
                 'tr_tiparc_usuario_creacion' => null,
@@ -46,6 +49,7 @@ class DataCargaTipoArchivos extends Migration
         DB::table('tipo_archivos')->insert(
             array(
                 'tr_tiparc_id' => 3,
+                'tr_uuid' => Uuid::uuid4(),
                 'tr_tiparc_nombre' => 'Audio',
                 'tr_tiparc_descripcion' => 'Archivo tipo Audio',
                 'tr_tiparc_usuario_creacion' => null,

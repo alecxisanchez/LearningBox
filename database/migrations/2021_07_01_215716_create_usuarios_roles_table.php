@@ -15,6 +15,7 @@ class CreateUsuariosRolesTable extends Migration
     {
         Schema::create('usuarios_roles', function (Blueprint $table) {
             $table->bigIncrements('ti_usu_rol_id');
+            $table->Char('tr_uuid');
             $table->bigInteger('usu_fk')->unsigned()->index()->nullable();
             $table->bigInteger('rol_fk')->unsigned()->index()->nullable();
             $table->bigInteger('ti_usu_rol_usuario_creacion')->nullable();

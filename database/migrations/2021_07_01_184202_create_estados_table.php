@@ -15,6 +15,7 @@ class CreateEstadosTable extends Migration
     {
         Schema::create('estados', function (Blueprint $table) {
             $table->bigIncrements('tr_est_id');
+            $table->Char('tr_uuid');
             $table->string('tr_est_nombre');
             $table->string('tr_est_descripcion');
             $table->bigInteger('tr_est_usuario_creacion')->nullable();

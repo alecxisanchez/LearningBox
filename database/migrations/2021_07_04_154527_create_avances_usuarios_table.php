@@ -15,6 +15,7 @@ class CreateAvancesUsuariosTable extends Migration
     {
         Schema::create('avances_usuarios', function (Blueprint $table) {
             $table->bigIncrements('ti_ava_usu_id');
+            $table->Char('tr_uuid');
             $table->bigInteger('ti_ava_usu_cur_fk')->unsigned();
             $table->bigInteger('ti_ava_usu_usu_fk')->unsigned();
             $table->bigInteger('ti_ava_usu_usuario_creacion')->nullable();

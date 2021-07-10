@@ -15,6 +15,7 @@ class CreateContenidosUnidadTable extends Migration
     {
         Schema::create('contenidos_unidad', function (Blueprint $table) {
             $table->bigIncrements('ti_cont_uni_id');
+            $table->Char('tr_uuid');
             $table->bigInteger('cont_arc_fk')->unsigned();
             $table->bigInteger('uni_fk')->unsigned();
             $table->bigInteger('ti_cont_uni_usuario_creacion')->nullable();

@@ -4,6 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
+use Ramsey\Uuid\Uuid;
+
 
 class DataCargaRoles extends Migration
 {
@@ -18,6 +20,7 @@ class DataCargaRoles extends Migration
         DB::table('roles')->insert(
           array(
             'tr_rol_id' => 1,
+            'tr_uuid' => Uuid::uuid4(),
             'tr_rol_nombre' => 'Administrador',
             'tr_rol_descripcion' => 'Administrador de la Aplicacion, mayor privilegios',
             'tr_rol_usuario_creacion' => null,
@@ -32,6 +35,7 @@ class DataCargaRoles extends Migration
         DB::table('roles')->insert(
             array(
                 'tr_rol_id' => 2,
+                'tr_uuid' => Uuid::uuid4(),
                 'tr_rol_nombre' => 'Profesor',
                 'tr_rol_descripcion' => 'Profesor de la Aplicacion, privilegios restringidos',
                 'tr_rol_usuario_creacion' => null,
@@ -46,6 +50,7 @@ class DataCargaRoles extends Migration
         DB::table('roles')->insert(
             array(
                 'tr_rol_id' => 3,
+                'tr_uuid' => Uuid::uuid4(),
                 'tr_rol_nombre' => 'Alumno',
                 'tr_rol_descripcion' => 'Alumno en la Aplicacion, con pocos privilegios',
                 'tr_rol_usuario_creacion' => null,

@@ -15,6 +15,7 @@ class CreateUsuariosCursosTable extends Migration
     {
         Schema::create('usuarios_cursos', function (Blueprint $table) {
             $table->bigIncrements('ti_usu_cur_id');
+            $table->Char('tr_uuid');
             $table->bigInteger('usu_fk')->unsigned();
             $table->bigInteger('cur_fk')->unsigned();
             $table->bigInteger('ti_usu_cur_usuario_creacion')->nullable();

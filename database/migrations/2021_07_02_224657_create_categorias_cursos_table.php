@@ -15,6 +15,7 @@ class CreateCategoriasCursosTable extends Migration
     {
         Schema::create('categorias_cursos', function (Blueprint $table) {
             $table->bigIncrements('ti_cat_cur_id');
+            $table->Char('tr_uuid');
             $table->bigInteger('cat_fk')->unsigned();
             $table->bigInteger('cur_fk')->unsigned();
             $table->bigInteger('ti_cat_cur_usuario_creacion')->nullable();

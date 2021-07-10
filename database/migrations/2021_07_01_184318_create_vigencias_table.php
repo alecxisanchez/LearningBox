@@ -15,6 +15,7 @@ class CreateVigenciasTable extends Migration
     {
         Schema::create('vigencias', function (Blueprint $table) {
             $table->bigIncrements('tr_vig_id');
+            $table->Char('tr_uuid');
             $table->string('tr_vig_nombre');
             $table->string('tr_vig_descripcion');
             $table->bigInteger('tr_vig_usuario_creacion')->nullable();

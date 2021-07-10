@@ -15,6 +15,7 @@ class CreateTransbankSetTable extends Migration
     {
         Schema::create('transbank_set', function (Blueprint $table) {
             $table->bigIncrements('tr_trsbak_set_id');
+            $table->Char('tr_uuid');
             $table->float('tr_trsbak_set_amount');
             $table->integer('tr_trsbak_set_status');
             $table->string('tr_trsbak_set_message');

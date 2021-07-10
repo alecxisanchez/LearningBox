@@ -15,6 +15,7 @@ class CreateTransbankGetTable extends Migration
     {
         Schema::create('transbank_get', function (Blueprint $table) {
             $table->bigIncrements('tr_trsbak_get_id');
+            $table->Char('tr_uuid');
             $table->string('tr_trsbak_get_token');
             $table->timestamp('tr_trsbak_get_accounting_date');
             $table->string('tr_trsbak_get_authorization_code');

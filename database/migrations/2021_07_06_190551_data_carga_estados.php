@@ -4,6 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
+use Ramsey\Uuid\Uuid;
 
 class DataCargaEstados extends Migration
 {
@@ -18,6 +19,7 @@ class DataCargaEstados extends Migration
        DB::table('estados')->insert(
         array(
             'tr_est_id' => 1,
+            'tr_uuid' => Uuid::uuid4(),
             'tr_est_nombre' => 'Activo',
             'tr_est_descripcion' => 'Activo',
             'tr_est_usuario_creacion' => null,
@@ -30,6 +32,7 @@ class DataCargaEstados extends Migration
        DB::table('estados')->insert(
         array(
             'tr_est_id' => 2,
+            'tr_uuid' => Uuid::uuid4(),
             'tr_est_nombre' => 'Inactivo',
             'tr_est_descripcion' => 'Inactivo',
             'tr_est_usuario_creacion' => null,

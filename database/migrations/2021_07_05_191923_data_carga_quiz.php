@@ -4,6 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
+use Ramsey\Uuid\Uuid;
 
 class DataCargaQuiz extends Migration
 {
@@ -18,6 +19,7 @@ class DataCargaQuiz extends Migration
         DB::table('quiz')->insert(
             array(
                 'tr_quiz_id' => 1,
+                'tr_uuid' => Uuid::uuid4(),
                 'tr_quiz_nombre' => 'Quiz Modulo I',
                 'tr_quiz_descripcion' => 'Quiz de aprobacion del Modulo I',
                 'tr_quiz_porcentaje_avance' => 100,

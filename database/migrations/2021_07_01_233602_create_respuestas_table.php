@@ -15,6 +15,7 @@ class CreateRespuestasTable extends Migration
     {
         Schema::create('respuestas', function (Blueprint $table) {
             $table->bigIncrements('tr_res_id');
+            $table->Char('tr_uuid');
             $table->string('tr_res_nombre');
             $table->string('tr_res_descripcion');
             $table->integer('tr_res_orden');

@@ -15,6 +15,7 @@ class CreateUsuariosPermisosTable extends Migration
     {
         Schema::create('usuarios_permisos', function (Blueprint $table) {
             $table->bigIncrements('ti_usu_per_id');
+            $table->Char('tr_uuid');
             $table->bigInteger('usu_fk')->unsigned();
             $table->bigInteger('per_fk')->unsigned();
             $table->bigInteger('ti_usu_per_usuario_creacion')->nullable();

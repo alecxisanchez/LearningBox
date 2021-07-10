@@ -15,6 +15,7 @@ class CreateCompraCursoTable extends Migration
     {
         Schema::create('compra_curso', function (Blueprint $table) {
             $table->bigIncrements('tr_com_cur_id');
+            $table->Char('tr_uuid');
             $table->bigInteger('tr_com_cur_id_com_fk')->unsigned();
             $table->bigInteger('tr_com_cur_id_cur_fk')->unsigned();
             $table->bigInteger('tr_com_cur_usuario_creacion')->nullable();

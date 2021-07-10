@@ -15,6 +15,7 @@ class CreateRolesPermisosTable extends Migration
     {
         Schema::create('roles_permisos', function (Blueprint $table) {
             $table->bigIncrements('ti_rol_per_id');
+            $table->Char('tr_uuid');
             $table->bigInteger('rol_fk')->unsigned();
             $table->bigInteger('per_fk')->unsigned();
             $table->bigInteger('ti_rol_per_usuario_creacion')->nullable();

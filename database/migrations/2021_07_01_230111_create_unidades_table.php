@@ -15,6 +15,7 @@ class CreateUnidadesTable extends Migration
     {
         Schema::create('unidades', function (Blueprint $table) {
             $table->bigIncrements('tr_uni_id');
+            $table->Char('tr_uuid');
             $table->string('tr_uni_nombre');
             $table->string('tr_uni_descripcion');
             $table->bigInteger('tr_uni_usuario_creacion')->nullable();

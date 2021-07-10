@@ -15,6 +15,7 @@ class CreateUnidadesQuizTable extends Migration
     {
         Schema::create('unidades_quiz', function (Blueprint $table) {
             $table->bigIncrements('ti_uni_quiz_id');
+            $table->Char('tr_uuid');
             $table->bigInteger('ti_uni_quiz_uni_fk')->unsigned();
             $table->bigInteger('ti_uni_quiz_quiz_fk')->unsigned();
             $table->bigInteger('ti_uni_quiz_usuario_creacion')->nullable();

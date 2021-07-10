@@ -15,6 +15,7 @@ class CreateQuizTable extends Migration
     {
         Schema::create('quiz', function (Blueprint $table) {
             $table->bigIncrements('tr_quiz_id');
+            $table->Char('tr_uuid');
             $table->string('tr_quiz_nombre');
             $table->string('tr_quiz_descripcion');
             $table->integer('tr_quiz_porcentaje_avance');

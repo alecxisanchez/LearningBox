@@ -15,6 +15,7 @@ class CreateConfiguracionTable extends Migration
     {
         Schema::create('configuracion', function (Blueprint $table) {
             $table->bigIncrements('tr_conf_id');
+            $table->Char('tr_uuid');
         });
     }
 

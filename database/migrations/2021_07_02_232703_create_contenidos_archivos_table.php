@@ -15,6 +15,7 @@ class CreateContenidosArchivosTable extends Migration
     {
         Schema::create('contenidos_archivos', function (Blueprint $table) {
             $table->bigIncrements('tr_cont_arc_id');
+            $table->Char('tr_uuid');
             $table->string('tr_cont_nombre');
             $table->string('tr_cont_descripcion');
             $table->bigInteger('tr_cont_usuario_creacion')->nullable();

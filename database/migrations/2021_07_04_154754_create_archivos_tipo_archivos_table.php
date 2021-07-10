@@ -15,6 +15,7 @@ class CreateArchivosTipoArchivosTable extends Migration
     {
         Schema::create('archivos_tipo_archivos', function (Blueprint $table) {
             $table->bigIncrements('ti_arc_tiparc_id');
+            $table->Char('tr_uuid');
             $table->bigInteger('ti_arc_tiparch_arc_fk')->unsigned();
             $table->bigInteger('ti_arc_tiparch_tiparc_fk')->unsigned();
             $table->bigInteger('ti_arc_tiparc_usuario_creacion')->nullable();

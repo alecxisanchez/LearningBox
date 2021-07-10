@@ -15,6 +15,7 @@ class CreatePreguntasTable extends Migration
     {
         Schema::create('preguntas', function (Blueprint $table) {
             $table->bigIncrements('tr_preg_id');
+            $table->Char('tr_uuid');
             $table->string('tr_preg_nombre');
             $table->string('tr_preg_descripcion');
             $table->integer('tr_preg_tipo_pregunta');

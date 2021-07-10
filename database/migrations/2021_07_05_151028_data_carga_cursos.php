@@ -4,6 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
+use Ramsey\Uuid\Uuid;
 
 class DataCargaCursos extends Migration
 {
@@ -18,6 +19,7 @@ class DataCargaCursos extends Migration
         DB::table('cursos')->insert(
             array(
                 'tr_cur_id' => 1,
+                'tr_uuid' => Uuid::uuid4(),
                 'tr_cur_nombre' => 'Programacion Orientada a Objetos',
                 'tr_cur_descripcion' => 'Programacion Orientada a Objetos',
                 'tr_cur_usuario_creacion' => null,

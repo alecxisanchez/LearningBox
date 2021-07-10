@@ -15,6 +15,7 @@ class CreateModulosTable extends Migration
     {
         Schema::create('modulos', function (Blueprint $table) {
             $table->bigInteger('tr_mod_id');
+            $table->Char('tr_uuid');
             $table->string('tr_mod_nombre');
             $table->string('tr_mod_descripcion');
             $table->bigInteger('tr_mod_usuario_creacion')->nullable();

@@ -16,6 +16,7 @@ class CreateConfiguracionQuizTable extends Migration
         Schema::create('configuracion_quiz', function (Blueprint $table) {
 
             $table->bigIncrements('tr_confquiz_id');
+            $table->Char('tr_uuid');
             $table->string('tr_confquiz_tiempo');
             $table->string('tr_confquiz_nro_preguntas');
             $table->string('tr_confquiz_nro_preguntas_aprobacion');
