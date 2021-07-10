@@ -3,7 +3,7 @@
 @section('content')
 <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Inicio</a></li>
-    <li class="breadcrumb-item active">Dashboard</li>
+    <li class="breadcrumb-item active">Dashboard2</li>
 </ol>
 <h1 class="h2">Dashboard</h1>
 
