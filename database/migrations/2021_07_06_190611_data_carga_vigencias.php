@@ -33,8 +33,8 @@ class DataCargaVigencias extends Migration
             array(
                 'tr_vig_id' => 2,
                 'tr_uuid' => Uuid::uuid4(),
-                'tr_vig_nombre' => 'Bloqueado',
-                'tr_vig_descripcion' => 'Bloqueado',
+                'tr_vig_nombre' => 'No Vigente',
+                'tr_vig_descripcion' => 'No Vigente',
                 'tr_vig_usuario_creacion' => null,
                 'tr_vig_usuario_modificacion' => null,
                 'tr_vig_fecha_creacion' => null,

@@ -15,6 +15,11 @@
                             <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">school</i> Instructor
                         </a>
                     </li>
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button" href="{{ route('cat_index') }}">
+                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">school</i> Configuracion
+                        </a>
+                    </li>
                 </ul>
                 <!-- Account menu -->
                 <div class="sidebar-heading">Cuenta</div>
@@ -393,3 +398,4 @@
     </div>
 </div>
 <!-- end: Sidebar -->
+

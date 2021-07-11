@@ -50,7 +50,9 @@
                     @yield('content')
                 </div>
             </div>
-            @include('admin.layout.sidebar')
+            {{--LLamar al menu si es Administrador o Estudiante--}}
+            @include('admin.layout.sidebar_Admin')
+            {{--@include('admin.layout.sidebar_Estud')--}}
         </div>
         <!-- App Settings FAB -->
         <div id="app-settings">
@@ -61,6 +63,8 @@
         </div>
     </div>
 </div>
+<!-- Footer Layout -->
+    @include('admin.layout.footer')
 
 <!-- jQuery -->
 <script src="{{ asset('admin/assets/vendor/jquery.min.js') }}"></script>

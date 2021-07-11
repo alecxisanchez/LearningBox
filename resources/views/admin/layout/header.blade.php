@@ -29,16 +29,6 @@
                 <div class="flex"></div>
 
                 <!-- Menu -->
-                <ul class="nav navbar-nav flex-nowrap d-none d-lg-flex">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Foro</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Obten Ayuda</a>
-                    </li>
-                </ul>
-
-                <!-- Menu -->
                 <ul class="nav navbar-nav flex-nowrap">
 
                     <li class="nav-item d-none d-md-flex">
@@ -127,7 +117,7 @@
                                 <i class="material-icons">edit</i> Editar datos
                             </a>
                             <a class="dropdown-item" href="#">
-                                <i class="material-icons">person</i> Perfil público
+                                <i class="material-icons">person</i> Perfil
                             </a>
                             <a class="dropdown-item" href="#">
                                 <i class="material-icons">lock</i> Cerrar sesión

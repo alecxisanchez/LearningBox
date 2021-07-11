@@ -32,3 +32,7 @@ Route::get('usuario', function () {
 Route::get('tablas', function () {
     return view('admin/user/tables');
 })->name('tables');
+
+Route::get('/add', 'App\Http\Controllers\Mantenedor\MantenedorCategoriasController@index')->name('cat_index');
+Route::post('categoria/save', 'App\Http\Controllers\Mantenedor\MantenedorCategoriasController@save');
+Route::get('categoria/mostrar', 'App\Http\Controllers\Mantenedor\MantenedorCategoriasController@mostrar');
