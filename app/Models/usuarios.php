@@ -2,15 +2,15 @@
 
 namespace App\Models;
 
-//use App\Security\Entities\Permission;
-//use App\Security\Entities\Role;
+use App\Models\permisos;
+use App\Models\roles;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
- * Class User
- * @package App\Users\Entities
+ * Class usuarios
+ * @package App\Models
  */
 class usuarios extends Authenticatable
 {
@@ -35,8 +35,20 @@ class usuarios extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = ['tr_usu_id', 'tr_uuid', 'tr_usu_nombre', 'tr_usu_mail', 'tr_usu_password', 'tr_usu_token', 'tr_usu_usuario_creacion',
-        'tr_usu_usuario_modificacion', 'tr_usu_fecha_creacion', 'tr_usu_fecha_modificaion', 'tr_usu_estado', 'tr_usu_vigencia'];
+    protected $fillable = [
+        'tr_usu_id',
+        'tr_uuid',
+        'tr_usu_nombre',
+        'tr_usu_mail',
+        'tr_usu_password',
+        'tr_usu_token',
+        'tr_usu_usuario_creacion',
+        'tr_usu_usuario_modificacion',
+        'tr_usu_fecha_creacion',
+        'tr_usu_fecha_modificaion',
+        'tr_usu_estado',
+        'tr_usu_vigencia'
+    ];
 
     /**
      * @var bool
@@ -46,7 +58,7 @@ class usuarios extends Authenticatable
     /**
      * @var bool
      */
-    public $timestamps = true;
+    public $timestamps = false;
 
     /**
      * The attributes that should be hidden for arrays.
@@ -59,20 +71,20 @@ class usuarios extends Authenticatable
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-
-    public function permissions()
+     */
+    public function permisos()
     {
-        return $this->belongsToMany(Permission::class, 'users_permissions', 'id_user', 'id_permission');
+        return $this->belongsToMany(permisos::class, 'usuarios_permisos', 'usu_fk', 'per_fk');
     }
 
-
+    /**
      * Relationship with the Role entity
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-
+     */
     public function roles()
     {
-        return $this->belongsToMany(Role::class, 'users_roles', 'id_user', 'id_role');
+        return $this->belongsToMany(roles::class, 'usuarios_roles', 'usu_fk', 'rol_fk');
     }
-     */
+
 }

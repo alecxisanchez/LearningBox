@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UsuariosController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,12 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/**
+ * Ejemplos de vistas
+ */
 Route::get('/', function () {
-    return view('admin/login');
+    return view('admin/sesion');
 })->name('login');
 
 Route::get('registrarme', function () {
-    return view('admin/register');
+    return view('admin/registro');
 })->name('register');
 
 Route::get('dashboard', function () {
@@ -33,6 +37,18 @@ Route::get('tablas', function () {
     return view('admin/user/tables');
 })->name('tables');
 
+/**
+ * Categorias
+ */
 Route::get('/add', 'App\Http\Controllers\Mantenedor\MantenedorCategoriasController@index')->name('cat_index');
 Route::post('categoria/save', 'App\Http\Controllers\Mantenedor\MantenedorCategoriasController@save');
 Route::get('categoria/mostrar', 'App\Http\Controllers\Mantenedor\MantenedorCategoriasController@mostrar');
+
+/**
+ * Usuarios
+ */
+Route::resource('usuarios', UsuariosController::class);
+
+/**
+ * Sesión
+ */

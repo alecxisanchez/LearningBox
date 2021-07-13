@@ -54,16 +54,12 @@
                     <div class="page-separator__text">o</div>
                 </div>
 
-                <form action="#" novalidate method="get">
+                <form action="{{ route('usuarios.store') }}" novalidate method="post">
+                    @csrf
                     <div class="form-group">
-                        <label class="form-label"
-                               for="name">Nombre:</label>
+                        <label class="form-label" for="name">Nombre:</label>
                         <div class="input-group input-group-merge">
-                            <input id="name"
-                                   type="text"
-                                   required=""
-                                   class="form-control form-control-prepended"
-                                   placeholder="Nombre Completo">
+                            <input id="name" name="name" type="text" required="" class="form-control form-control-prepended" placeholder="Nombre Completo">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
                                     <span class="far fa-user"></span>
@@ -72,14 +68,9 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="form-label"
-                               for="email">Tu correo electrónico:</label>
+                        <label class="form-label" for="email">Tu correo electrónico:</label>
                         <div class="input-group input-group-merge">
-                            <input id="email"
-                                   type="email"
-                                   required=""
-                                   class="form-control form-control-prepended"
-                                   placeholder="Tu correo electrónico">
+                            <input id="email" name="email" type="email" required="" class="form-control form-control-prepended" placeholder="Tu correo electrónico">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
                                     <span class="far fa-envelope"></span>
@@ -88,14 +79,9 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="form-label"
-                               for="password">Contraseña:</label>
+                        <label class="form-label" for="password">Contraseña:</label>
                         <div class="input-group input-group-merge">
-                            <input id="password"
-                                   type="password"
-                                   required=""
-                                   class="form-control form-control-prepended"
-                                   placeholder="Tu contraseña">
+                            <input id="password" name="password" type="password" required="" class="form-control form-control-prepended" placeholder="Tu contraseña">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
                                     <span class="far fa-key"></span>
@@ -104,14 +90,9 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="form-label"
-                               for="password2">Confirma contraseña:</label>
+                        <label class="form-label" for="password_confirmation">Confirma contraseña:</label>
                         <div class="input-group input-group-merge">
-                            <input id="password2"
-                                   type="password"
-                                   required=""
-                                   class="form-control form-control-prepended"
-                                   placeholder="Confirma tu contraseña">
+                            <input id="password_confirmation" name="password_confirmation" type="password" required="" class="form-control form-control-prepended" placeholder="Confirma tu contraseña">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
                                     <span class="far fa-key"></span>
