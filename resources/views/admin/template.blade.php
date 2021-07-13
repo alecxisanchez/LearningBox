@@ -83,6 +83,7 @@
 <!-- App Settings (safe to remove) -->
 <script src="{{ asset('admin/assets/js/app-settings.js') }}"></script>
 <!-- Page Specials Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 @stack('scripts')
 
 </body>
