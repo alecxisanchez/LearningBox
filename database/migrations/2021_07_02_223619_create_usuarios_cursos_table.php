@@ -16,15 +16,15 @@ class CreateUsuariosCursosTable extends Migration
         Schema::create('usuarios_cursos', function (Blueprint $table) {
             $table->bigIncrements('ti_usu_cur_id');
             $table->Char('tr_uuid');
-            $table->bigInteger('usu_fk')->unsigned();
-            $table->bigInteger('cur_fk')->unsigned();
+            $table->bigInteger('ti_usu_cur_usu_fk')->unsigned();
+            $table->bigInteger('ti_usu_cur_cur_fk')->unsigned();
             $table->bigInteger('ti_usu_cur_usuario_creacion')->nullable();
             $table->bigInteger('ti_usu_cur_usuario_modificacion')->nullable();
             $table->timestamp('ti_usu_cur_fecha_creacion')->nullable();
             $table->timestamp('ti_usu_cur_fecha_modificaion')->nullable();
             $table->boolean('ti_usu_cur_vigencia');
-            $table->foreign('usu_fk')->references('tr_usu_id')->on('usuarios');
-            $table->foreign('cur_fk')->references('tr_cur_id')->on('cursos');
+            $table->foreign('ti_usu_cur_usu_fk')->references('tr_usu_id')->on('usuarios');
+            $table->foreign('ti_usu_cur_cur_fk')->references('tr_cur_id')->on('cursos');
         });
     }
 

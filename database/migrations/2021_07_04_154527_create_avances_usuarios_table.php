@@ -17,14 +17,12 @@ class CreateAvancesUsuariosTable extends Migration
             $table->bigIncrements('ti_ava_usu_id');
             $table->Char('tr_uuid');
             $table->bigInteger('ti_ava_usu_cur_fk')->unsigned();
-            $table->bigInteger('ti_ava_usu_usu_fk')->unsigned();
             $table->bigInteger('ti_ava_usu_usuario_creacion')->nullable();
             $table->bigInteger('ti_ava_usu_usuario_modificacion')->nullable();
             $table->timestamp('ti_ava_usu_fecha_creacion')->nullable();
             $table->timestamp('ti_ava_usu_fecha_modificaion')->nullable();
             $table->integer('ti_ava_usu_vigencia');
-            $table->foreign('ti_ava_usu_cur_fk')->references('tr_cur_id')->on('cursos');
-            $table->foreign('ti_ava_usu_usu_fk')->references('tr_usu_id')->on('usuarios');
+            $table->foreign('ti_ava_usu_cur_fk')->references('ti_usu_cur_id')->on('usuarios_cursos');
         });
     }
 

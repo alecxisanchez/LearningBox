@@ -28,7 +28,8 @@ class DataCargaConfiguracionQuiz extends Migration
                 'tr_confquiz_fecha_creacion' => null,
                 'tr_confquiz_fecha_modificaion' => null,
                 'tr_confquiz_estado' => 1,
-                'tr_confquiz_vigencia' => 1
+                'tr_confquiz_vigencia' => 1,
+                'tr_confquiz_quiz_fk'   =>1
             )
         );
     }

@@ -14,8 +14,9 @@ class CreateModulosTable extends Migration
     public function up()
     {
         Schema::create('modulos', function (Blueprint $table) {
-            $table->bigInteger('tr_mod_id');
+            $table->bigIncrements('tr_mod_id');
             $table->Char('tr_uuid');
+            $table->bigInteger('tr_mod_cur_fk')->unsigned();
             $table->string('tr_mod_nombre');
             $table->string('tr_mod_descripcion');
             $table->bigInteger('tr_mod_usuario_creacion')->nullable();
@@ -24,6 +25,7 @@ class CreateModulosTable extends Migration
             $table->timestamp('tr_mod_fecha_modificaion')->nullable();
             $table->bigInteger('tr_mod_estado');
             $table->boolean('tr_mod_vigencia');
+            $table->foreign('tr_mod_cur_fk')->references('tr_cur_id')->on('cursos');
         });
     }
 

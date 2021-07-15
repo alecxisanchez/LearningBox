@@ -27,7 +27,8 @@ class DataCargaModulos extends Migration
                 'tr_mod_fecha_creacion' => null,
                 'tr_mod_fecha_modificaion' => null,
                 'tr_mod_estado' => 1,
-                'tr_mod_vigencia' => 1
+                'tr_mod_vigencia' => 1,
+                'tr_mod_cur_fk' => 1
             )
         );
         //
@@ -42,7 +43,8 @@ class DataCargaModulos extends Migration
                 'tr_mod_fecha_creacion' => null,
                 'tr_mod_fecha_modificaion' => null,
                 'tr_mod_estado' => 1,
-                'tr_mod_vigencia' => 1
+                'tr_mod_vigencia' => 1,
+                'tr_mod_cur_fk' => 1
             )
         );
     }

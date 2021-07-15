@@ -16,6 +16,7 @@ class CreateUnidadesTable extends Migration
         Schema::create('unidades', function (Blueprint $table) {
             $table->bigIncrements('tr_uni_id');
             $table->Char('tr_uuid');
+            $table->bigInteger('tr_uni_mod_fk')->unsigned();
             $table->string('tr_uni_nombre');
             $table->string('tr_uni_descripcion');
             $table->bigInteger('tr_uni_usuario_creacion')->nullable();
@@ -24,6 +25,7 @@ class CreateUnidadesTable extends Migration
             $table->timestamp('tr_uni_fecha_modificaion')->nullable();
             $table->bigInteger('tr_uni_estado');
             $table->boolean('tr_uni_vigencia');
+            $table->foreign('tr_uni_mod_fk')->references('tr_mod_id')->on('modulos');
         });
     }
 
