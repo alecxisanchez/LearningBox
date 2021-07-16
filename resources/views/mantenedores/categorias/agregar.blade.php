@@ -16,7 +16,7 @@
             <div class="row">
                 <div class="col-lg-3">
                     <h4 class="card-title">Agregar Categorias</h4>
-                    <p>Al hacer Click en el boton "Agregar", Se deplegara una modal en el cual podras adicionar una categoria.</p>
+                    <p>Al hacer Click en el boton "<strong>Agregar</strong>", Se deplegara una modal en el cual podras adicionar una categoria.</p>
                     <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#Modal_Categoria">
                     Agregar
                     </button>
@@ -38,7 +38,6 @@
                                 <th>Id</th>
                                 <th>Nombre</th>
                                 <th>Descripcion</th>
-                           {{--     <th>Estado</th>--}}
                                 <th>Vigencia</th>
                                 <th></th>
                             </tr>
@@ -49,9 +48,11 @@
                                 <td>{{ $item->tr_cat_id }}</td>
                                 <td><span class="js-lists-values-employee-name">{{ $item->tr_cat_nombre }}</span></td>
                                 <td>{{ $item->tr_cat_descripcion }}</td>
-                               {{-- <td>{{ $lstEstados[$item->tr_cat_estado]->tr_est_nombre }}</td>--}}
-                                <td>{{ $lstVigencias[$item->tr_cat_vigencia]->tr_vig_nombre }}</td>
-                                <td><a href="#" class="btn btn-primary btn-sm"><i class="material-icons btn__icon--left">edit</i>Editar</a></td>
+                                <td>{{ $lstVigencias[($item->tr_cat_est_fk)-1]->tr_vig_nombre }}</td>
+                                <td>
+                                    <a name="elemBorrar_{{$item->tr_uuid}}" id="btn_{{$item->tr_uuid}}" class="btn btn-secondary btn-sm" data-id="{{$item->tr_uuid}}" data-vig="{{$item->tr_cat_vig_fk}}" onclick="vigenciaItem(this)" href="#"><i class="material-icons btn__icon--left">{{ ( $item->tr_cat_vig_fk == App\Constantes\Constante::VIGENTE) ? 'lock' : 'no_encryption'}}</i>{{ ( $item->tr_cat_vig_fk == App\Constantes\Constante::VIGENTE)? 'Desactivar' : (( $item->tr_cat_vig_fk == App\Constantes\Constante::NO_VIGENTE)? 'Activar': '')}}</a>
+                                    <a name="elemBorrar_{{$item->tr_uuid}}" id="btn_{{$item->tr_uuid}}" class="btn btn-primary btn-sm" data-id="{{$item->tr_uuid}}" onclick="editarItem(this)" href="#"><i class="material-icons btn__icon--left">edit</i>Editar</a>
+                                </td>
                             </tr>
                             @endforeach
                             </tbody>
@@ -85,6 +86,26 @@
                         <label for="descripcion_categoria" class="col-sm-3 col-form-label form-label">* Descripción :</label>
                         <div class="col-sm-6 col-md-6">
                             <textarea id="desc_cat" name="desc_cat" rows="3" cols="50" class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="estado_categoria" class="col-sm-3 col-form-label form-label">* Estado :</label>
+                        <div class="col-sm-6 col-md-4">
+                            <select id="edo_cat" class="custom-control custom-select form-control">
+                                @foreach($lstEstados as $item)
+                                    <option value="{{$item->tr_est_uuid}}">{{$item->tr_est_nombre}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="vigencia_categoria" class="col-sm-3 col-form-label form-label">* Vigencia :</label>
+                        <div class="col-sm-6 col-md-4">
+                            <select id="vig_cat" class="custom-control custom-select form-control">
+                                @foreach($lstVigencias as $item)
+                                    <option value="{{$item->tr_vig_uuid}}">{{$item->tr_vig_nombre}}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                     <div class="form-group row" style="padding-left: 20px;">

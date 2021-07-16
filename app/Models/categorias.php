@@ -31,8 +31,8 @@ class categorias extends Model
         'tr_cat_usuario_modificacion',
         'tr_cat_fecha_creacion',
         'tr_cat_fecha_modificaion',
-        'tr_cat_estado',
-        'tr_cat_vigencia',
+        'tr_cat_est_fk',
+        'tr_cat_vig_fk',
         ];
     public $timestamps = false;
 }

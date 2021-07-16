@@ -12,18 +12,18 @@ use App\Models\estados;
 use App\Models\vigencias;
 use Illuminate\Support\Facades\Response;
 use Ramsey\Uuid\Uuid;
-use SebastianBergmann\Environment\Console;
+use App\Constantes\Constante;
+
 
 class MantenedorCategoriasController extends Controller
 {
     //
     public function index(){
-
+        Log::info('LLego');
         $lstCategorias = categorias::all();
         $lstEstados = estados::all();
         $lstVigencias = vigencias::all();
-
-        return View::make('mantenedores/categorias/agregar')
+        return View::make('mantenedores.categorias.agregar')
                 ->with('lstCategorias',$lstCategorias)
                 ->with('lstEstados',$lstEstados)
                 ->with('lstVigencias',$lstVigencias);
