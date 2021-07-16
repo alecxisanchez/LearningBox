@@ -26,7 +26,10 @@ class CreateTransbankSetTable extends Migration
             $table->bigInteger('tr_trsbak_set_usuario_modificacion')->nullable();
             $table->timestamp('tr_trsbak_set_fecha_creacion')->nullable();
             $table->timestamp('tr_trsbak_set_fecha_modificaion')->nullable();
-            $table->boolean('tr_trsbak_set_vigencia');
+            $table->bigInteger('tr_trsbak_set_est_fk')->unsigned();
+            $table->bigInteger('tr_trsbak_set_vig_fk')->unsigned();
+            $table->foreign('tr_trsbak_set_est_fk')->references('tr_est_id')->on('estados');
+            $table->foreign('tr_trsbak_set_vig_fk')->references('tr_vig_id')->on('vigencias');
         });
     }
 

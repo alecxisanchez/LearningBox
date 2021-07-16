@@ -26,8 +26,8 @@ class DataCargaCategorias extends Migration
                 'tr_cat_usuario_modificacion' => null,
                 'tr_cat_fecha_creacion' => null,
                 'tr_cat_fecha_modificacion' => null,
-                'tr_cat_estado' => 1,
-                'tr_cat_vigencia' => 1
+                'tr_cat_est_fk' => 1,
+                'tr_cat_vig_fk' => 1
             )
         );
         //
@@ -41,8 +41,8 @@ class DataCargaCategorias extends Migration
                 'tr_cat_usuario_modificacion' => null,
                 'tr_cat_fecha_creacion' => null,
                 'tr_cat_fecha_modificacion' => null,
-                'tr_cat_estado' => 1,
-                'tr_cat_vigencia' => 1
+                'tr_cat_est_fk' => 1,
+                'tr_cat_vig_fk' => 1
             )
         );
         //
@@ -56,8 +56,8 @@ class DataCargaCategorias extends Migration
                 'tr_cat_usuario_modificacion' => null,
                 'tr_cat_fecha_creacion' => null,
                 'tr_cat_fecha_modificacion' => null,
-                'tr_cat_estado' => 1,
-                'tr_cat_vigencia' => 1
+                'tr_cat_est_fk' => 1,
+                'tr_cat_vig_fk' => 1
             )
         );
     }

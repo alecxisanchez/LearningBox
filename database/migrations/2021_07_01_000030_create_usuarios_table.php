@@ -16,6 +16,8 @@ class CreateUsuariosTable extends Migration
         Schema::create('usuarios', function (Blueprint $table) {
             $table->bigIncrements('tr_usu_id');
             $table->Char('tr_uuid');
+            $table->bigInteger('tr_usu_est_fk')->unsigned();
+            $table->bigInteger('tr_usu_vig_fk')->unsigned();
             $table->string('tr_usu_nombre');
             $table->string('tr_usu_mail')->unique();
             $table->string('tr_usu_password');
@@ -24,8 +26,8 @@ class CreateUsuariosTable extends Migration
             $table->bigInteger('tr_usu_usuario_modificacion')->nullable();
             $table->timestamp('tr_usu_fecha_creacion')->nullable();
             $table->timestamp('tr_usu_fecha_modificaion')->nullable();
-            $table->bigInteger('tr_usu_estado');
-            $table->boolean('tr_usu_vigencia');
+            $table->foreign('tr_usu_est_fk')->references('tr_est_id')->on('estados');
+            $table->foreign('tr_usu_vig_fk')->references('tr_vig_id')->on('vigencias');
         });
     }
 

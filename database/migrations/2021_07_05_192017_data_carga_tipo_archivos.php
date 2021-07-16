@@ -26,8 +26,8 @@ class DataCargaTipoArchivos extends Migration
                 'tr_tiparc_usuario_modificacion' => null,
                 'tr_tiparc_fecha_creacion' => null,
                 'tr_tiparc_fecha_modificacion' => null,
-                'tr_tiparc_estado' => 1,
-                'tr_tiparc_vigencia' => 1
+                'tr_tiparc_est_fk' => 1,
+                'tr_tiparc_vig_fk' => 1
             )
         );
         //
@@ -41,8 +41,8 @@ class DataCargaTipoArchivos extends Migration
                 'tr_tiparc_usuario_modificacion' => null,
                 'tr_tiparc_fecha_creacion' => null,
                 'tr_tiparc_fecha_modificacion' => null,
-                'tr_tiparc_estado' => 1,
-                'tr_tiparc_vigencia' => 1
+                'tr_tiparc_est_fk' => 1,
+                'tr_tiparc_vig_fk' => 1
             )
         );
         //
@@ -56,8 +56,8 @@ class DataCargaTipoArchivos extends Migration
                 'tr_tiparc_usuario_modificacion' => null,
                 'tr_tiparc_fecha_creacion' => null,
                 'tr_tiparc_fecha_modificacion' => null,
-                'tr_tiparc_estado' => 1,
-                'tr_tiparc_vigencia' => 1
+                'tr_tiparc_est_fk' => 1,
+                'tr_tiparc_vig_fk' => 1
             )
         );
     }

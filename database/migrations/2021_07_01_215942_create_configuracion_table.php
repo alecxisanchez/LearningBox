@@ -16,6 +16,10 @@ class CreateConfiguracionTable extends Migration
         Schema::create('configuracion', function (Blueprint $table) {
             $table->bigIncrements('tr_conf_id');
             $table->Char('tr_uuid');
+            $table->bigInteger('tr_conf_est_fk')->unsigned();
+            $table->bigInteger('tr_conf_vig_fk')->unsigned();
+            $table->foreign('tr_conf_est_fk')->references('tr_est_id')->on('estados');
+            $table->foreign('tr_conf_vig_fk')->references('tr_vig_id')->on('vigencias');
         });
     }
 

@@ -28,8 +28,8 @@ class DataCargaUsuarios extends Migration
                 'tr_usu_usuario_modificacion' => null,
                 'tr_usu_fecha_creacion' => null,
                 'tr_usu_fecha_modificaion' => null,
-                'tr_usu_estado' => 1,
-                'tr_usu_vigencia' => 1
+                'tr_usu_est_fk' => 1,
+                'tr_usu_vig_fk' => 1
             )
         );
         //
@@ -45,8 +45,8 @@ class DataCargaUsuarios extends Migration
                 'tr_usu_usuario_modificacion' => null,
                 'tr_usu_fecha_creacion' => null,
                 'tr_usu_fecha_modificaion' => null,
-                'tr_usu_estado' => 1,
-                'tr_usu_vigencia' => 1
+                'tr_usu_est_fk' => 1,
+                'tr_usu_vig_fk' => 1
             )
         );
         //
@@ -62,8 +62,8 @@ class DataCargaUsuarios extends Migration
                 'tr_usu_usuario_modificacion' => null,
                 'tr_usu_fecha_creacion' => null,
                 'tr_usu_fecha_modificaion' => null,
-                'tr_usu_estado' => 1,
-                'tr_usu_vigencia' => 1
+                'tr_usu_est_fk' => 1,
+                'tr_usu_vig_fk' => 1
             )
         );
     }

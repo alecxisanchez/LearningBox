@@ -16,6 +16,8 @@ class CreateQuizTable extends Migration
         Schema::create('quiz', function (Blueprint $table) {
             $table->bigIncrements('tr_quiz_id');
             $table->Char('tr_uuid');
+            $table->bigInteger('tr_quiz_est_fk')->unsigned();
+            $table->bigInteger('tr_quiz_vig_fk')->unsigned();
             $table->string('tr_quiz_nombre');
             $table->string('tr_quiz_descripcion');
             $table->integer('tr_quiz_porcentaje_avance');
@@ -23,8 +25,8 @@ class CreateQuizTable extends Migration
             $table->bigInteger('tr_quiz_usuario_modificacion')->nullable();
             $table->timestamp('tr_quiz_fecha_creacion')->nullable();
             $table->timestamp('tr_quiz_fecha_modificaion')->nullable();
-            $table->bigInteger('tr_quiz_estado');
-            $table->boolean('tr_quiz_vigencia');
+            $table->foreign('tr_quiz_est_fk')->references('tr_est_id')->on('estados');
+            $table->foreign('tr_quiz_vig_fk')->references('tr_vig_id')->on('vigencias');
         });
     }
 

@@ -25,6 +25,10 @@ class CreateRolesPermisosTable extends Migration
             $table->bigInteger('ti_rol_per_vigencia');
             $table->foreign('ti_rol_per_rol_fk')->references('tr_rol_id')->on('roles');
             $table->foreign('ti_rol_per_per_fk')->references('tr_per_id')->on('permisos');
+            $table->bigInteger('ti_rol_per_est_fk')->unsigned();
+            $table->bigInteger('ti_rol_per_vig_fk')->unsigned();
+            $table->foreign('ti_rol_per_est_fk')->references('tr_est_id')->on('estados');
+            $table->foreign('ti_rol_per_vig_fk')->references('tr_vig_id')->on('vigencias');
         });
     }
 
