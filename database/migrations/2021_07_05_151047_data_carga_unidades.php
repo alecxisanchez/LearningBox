@@ -26,8 +26,8 @@ class DataCargaUnidades extends Migration
                 'tr_uni_usuario_modificacion' => null,
                 'tr_uni_fecha_creacion' => null,
                 'tr_uni_fecha_modificaion' => null,
-                'tr_uni_estado' => 1,
-                'tr_uni_vigencia' => 1,
+                'tr_uni_est_fk' => 1,
+                'tr_uni_vig_fk' => 1,
                 'tr_uni_mod_fk' => 1
             )
         );
@@ -42,8 +42,8 @@ class DataCargaUnidades extends Migration
                 'tr_uni_usuario_modificacion' => null,
                 'tr_uni_fecha_creacion' => null,
                 'tr_uni_fecha_modificaion' => null,
-                'tr_uni_estado' => 1,
-                'tr_uni_vigencia' => 1,
+                'tr_uni_est_fk' => 1,
+                'tr_uni_vig_fk' => 1,
                 'tr_uni_mod_fk' => 1
             )
         );

@@ -16,6 +16,8 @@ class CreateTransbankGetTable extends Migration
         Schema::create('transbank_get', function (Blueprint $table) {
             $table->bigIncrements('tr_trsbak_get_id');
             $table->Char('tr_uuid');
+            $table->bigInteger('tr_trsbak_get_est_fk')->unsigned();
+            $table->bigInteger('tr_trsbak_get_vig_fk')->unsigned();
             $table->string('tr_trsbak_get_token');
             $table->timestamp('tr_trsbak_get_accounting_date');
             $table->string('tr_trsbak_get_authorization_code');
@@ -31,7 +33,8 @@ class CreateTransbankGetTable extends Migration
             $table->bigInteger('tr_trsbak_get_usuario_modificacion')->nullable();
             $table->timestamp('tr_trsbak_get_fecha_creacion')->nullable();
             $table->timestamp('tr_trsbak_get_fecha_modificaion')->nullable();
-            $table->boolean('tr_trsbak_get_vigencia');
+            $table->foreign('tr_trsbak_get_est_fk')->references('tr_est_id')->on('estados');
+            $table->foreign('tr_trsbak_get_vig_fk')->references('tr_vig_id')->on('vigencias');
         });
     }
 

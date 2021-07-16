@@ -27,8 +27,8 @@ class DataCargaRoles extends Migration
             'tr_rol_usuario_modificacion' => null,
             'tr_rol_fecha_creacion' => null,
             'tr_rol_fecha_modificaion' => null,
-            'tr_rol_estado' => 1,
-            'tr_rol_vigencia' => 1
+            'tr_rol_est_fk' => 1,
+            'tr_rol_vig_fk' => 1
           )
         );
         //
@@ -42,8 +42,8 @@ class DataCargaRoles extends Migration
                 'tr_rol_usuario_modificacion' => null,
                 'tr_rol_fecha_creacion' => null,
                 'tr_rol_fecha_modificaion' => null,
-                'tr_rol_estado' => 1,
-                'tr_rol_vigencia' => 1
+                'tr_rol_est_fk' => 1,
+                'tr_rol_vig_fk' => 1
             )
         );
         //
@@ -57,8 +57,8 @@ class DataCargaRoles extends Migration
                 'tr_rol_usuario_modificacion' => null,
                 'tr_rol_fecha_creacion' => null,
                 'tr_rol_fecha_modificaion' => null,
-                'tr_rol_estado' => 1,
-                'tr_rol_vigencia' => 1
+                'tr_rol_est_fk' => 1,
+                'tr_rol_vig_fk' => 1
             )
         );
     }

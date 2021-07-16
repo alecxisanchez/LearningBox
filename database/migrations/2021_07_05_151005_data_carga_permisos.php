@@ -26,8 +26,8 @@ class DataCargaPermisos extends Migration
                 'tr_per_usuario_modificacion' => null,
                 'tr_per_fecha_creacion' => null,
                 'tr_per_fecha_modificaion' => null,
-                'tr_per_estado' => 1,
-                'tr_per_vigencia' => 1
+                'tr_per_est_fk' => 1,
+                'tr_per_vig_fk' => 1
             )
         );
         //
@@ -41,8 +41,8 @@ class DataCargaPermisos extends Migration
                 'tr_per_usuario_modificacion' => null,
                 'tr_per_fecha_creacion' => null,
                 'tr_per_fecha_modificaion' => null,
-                'tr_per_estado' => 1,
-                'tr_per_vigencia' => 1
+                'tr_per_est_fk' => 1,
+                'tr_per_vig_fk' => 1
             )
         );
         //
@@ -56,8 +56,8 @@ class DataCargaPermisos extends Migration
                 'tr_per_usuario_modificacion' => null,
                 'tr_per_fecha_creacion' => null,
                 'tr_per_fecha_modificaion' => null,
-                'tr_per_estado' => 1,
-                'tr_per_vigencia' => 1
+                'tr_per_est_fk' => 1,
+                'tr_per_vig_fk' => 1
             )
         );
         //
@@ -71,8 +71,8 @@ class DataCargaPermisos extends Migration
                 'tr_per_usuario_modificacion' => null,
                 'tr_per_fecha_creacion' => null,
                 'tr_per_fecha_modificaion' => null,
-                'tr_per_estado' => 1,
-                'tr_per_vigencia' => 1
+                'tr_per_est_fk' => 1,
+                'tr_per_vig_fk' => 1
             )
         );
         //
@@ -86,8 +86,8 @@ class DataCargaPermisos extends Migration
                 'tr_per_usuario_modificacion' => null,
                 'tr_per_fecha_creacion' => null,
                 'tr_per_fecha_modificaion' => null,
-                'tr_per_estado' => 1,
-                'tr_per_vigencia' => 1
+                'tr_per_est_fk' => 1,
+                'tr_per_vig_fk' => 1
             )
         );
         //
@@ -101,8 +101,8 @@ class DataCargaPermisos extends Migration
                 'tr_per_usuario_modificacion' => null,
                 'tr_per_fecha_creacion' => null,
                 'tr_per_fecha_modificaion' => null,
-                'tr_per_estado' => 1,
-                'tr_per_vigencia' => 1
+                'tr_per_est_fk' => 1,
+                'tr_per_vig_fk' => 1
             )
         );
         //
@@ -116,8 +116,8 @@ class DataCargaPermisos extends Migration
                 'tr_per_usuario_modificacion' => null,
                 'tr_per_fecha_creacion' => null,
                 'tr_per_fecha_modificaion' => null,
-                'tr_per_estado' => 1,
-                'tr_per_vigencia' => 1
+                'tr_per_est_fk' => 1,
+                'tr_per_vig_fk' => 1
             )
         );
     }

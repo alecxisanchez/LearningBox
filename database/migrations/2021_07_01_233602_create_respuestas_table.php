@@ -17,6 +17,8 @@ class CreateRespuestasTable extends Migration
             $table->bigIncrements('tr_res_id');
             $table->Char('tr_uuid');
             $table->bigInteger('tr_res_preg_fk')->unsigned();
+            $table->bigInteger('tr_res_est_fk')->unsigned();
+            $table->bigInteger('tr_res_vig_fk')->unsigned();
             $table->string('tr_res_nombre');
             $table->string('tr_res_descripcion');
             $table->integer('tr_res_orden');
@@ -25,9 +27,9 @@ class CreateRespuestasTable extends Migration
             $table->bigInteger('tr_res_usuario_modificacion')->nullable();
             $table->timestamp('tr_res_fecha_creacion')->nullable();
             $table->timestamp('tr_res_fecha_modificaion')->nullable();
-            $table->integer('tr_res_estado');
-            $table->bigInteger('tr_res_vigencia');
             $table->foreign('tr_res_preg_fk')->references('tr_preg_id')->on('preguntas');
+            $table->foreign('tr_res_est_fk')->references('tr_est_id')->on('estados');
+            $table->foreign('tr_res_vig_fk')->references('tr_vig_id')->on('vigencias');
         });
     }
 

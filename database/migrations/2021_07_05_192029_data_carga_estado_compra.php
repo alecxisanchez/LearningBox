@@ -26,7 +26,8 @@ class DataCargaEstadoCompra extends Migration
                 'tr_est_com_usuario_modificacion' => null,
                 'tr_est_com_fecha_creacion' => null,
                 'tr_est_com_fecha_modificaion' => null,
-                'tr_est_com_vigencia' => 1
+                'tr_est_com_est_fk' => 1,
+                'tr_est_com_vig_fk' => 1
             )
         );
         //
@@ -40,7 +41,8 @@ class DataCargaEstadoCompra extends Migration
                 'tr_est_com_usuario_modificacion' => null,
                 'tr_est_com_fecha_creacion' => null,
                 'tr_est_com_fecha_modificaion' => null,
-                'tr_est_com_vigencia' => 1
+                'tr_est_com_est_fk' => 1,
+                'tr_est_com_vig_fk' => 1
             )
         );
         //
@@ -54,7 +56,8 @@ class DataCargaEstadoCompra extends Migration
                 'tr_est_com_usuario_modificacion' => null,
                 'tr_est_com_fecha_creacion' => null,
                 'tr_est_com_fecha_modificaion' => null,
-                'tr_est_com_vigencia' => 1
+                'tr_est_com_est_fk' => 1,
+                'tr_est_com_vig_fk' => 1
             )
         );
     }

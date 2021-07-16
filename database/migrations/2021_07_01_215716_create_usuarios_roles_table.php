@@ -18,6 +18,8 @@ class CreateUsuariosRolesTable extends Migration
             $table->Char('tr_uuid');
             $table->bigInteger('ti_usu_rol_usu_fk')->unsigned();
             $table->bigInteger('ti_usu_rol_rol_fk')->unsigned();
+            $table->bigInteger('ti_usu_rol_est_fk')->unsigned();
+            $table->bigInteger('ti_usu_rol_vig_fk')->unsigned();
             $table->bigInteger('ti_usu_rol_usuario_creacion')->nullable();
             $table->bigInteger('ti_usu_rol_usuario_modificacion')->nullable();
             $table->timestamp('ti_usu_rol_fecha_creacion')->nullable();
@@ -25,6 +27,8 @@ class CreateUsuariosRolesTable extends Migration
             $table->bigInteger('ti_usu_rol_vigencia');
             $table->foreign('ti_usu_rol_usu_fk')->references('tr_usu_id')->on('usuarios');
             $table->foreign('ti_usu_rol_rol_fk')->references('tr_rol_id')->on('roles');
+            $table->foreign('ti_usu_rol_est_fk')->references('tr_est_id')->on('estados');
+            $table->foreign('ti_usu_rol_vig_fk')->references('tr_vig_id')->on('vigencias');
         });
     }
 
