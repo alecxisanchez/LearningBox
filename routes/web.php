@@ -18,23 +18,23 @@ use Illuminate\Support\Facades\Route;
  * Ejemplos de vistas
  */
 Route::get('/', function () {
-    return view('admin/sesion');
+    return view('sitio/sesion');
 })->name('login');
 
 Route::get('registrarme', function () {
-    return view('admin/registro');
+    return view('sitio/registro');
 })->name('register');
 
 Route::get('dashboard', function () {
-    return view('admin/dashboard/dashboard');
+    return view('sitio/dashboard/dashboard');
 })->name('dashboard');
 
 Route::get('usuario', function () {
-    return view('admin/user/profile');
+    return view('sitio/user/profile');
 })->name('user');
 
 Route::get('tablas', function () {
-    return view('admin/user/tables');
+    return view('sitio/user/tables');
 })->name('tables');
 
 /**

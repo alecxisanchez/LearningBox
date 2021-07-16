@@ -1,4 +1,4 @@
-@extends('admin.template')
+@extends('template.template')
 
 @section('content')
     <ol class="breadcrumb">
@@ -51,7 +51,7 @@
                                 <td>
                                     <div class="media align-items-center">
                                         <div class="avatar avatar-sm mr-3">
-                                            <img src="{{ asset('admin/assets/images/256_rsz_nicolas-horn-689011-unsplash.jpg') }}" alt="Avatar" class="avatar-img rounded-circle">
+                                            <img src="{{ asset('sitio/assets/images/256_rsz_nicolas-horn-689011-unsplash.jpg') }}" alt="Avatar" class="avatar-img rounded-circle">
                                         </div>
                                         <div class="media-body">
                                             <span class="js-lists-values-employee-name">Kalum Atherton</span>
@@ -75,7 +75,7 @@
 
                                     <div class="media align-items-center">
                                         <div class="avatar avatar-sm mr-3">
-                                            <img src="{{ asset('admin/assets/images/256_rsz_sharina-mae-agellon-377466-unsplash.jpg') }}" alt="Avatar" class="avatar-img rounded-circle">
+                                            <img src="{{ asset('sitio/assets/images/256_rsz_sharina-mae-agellon-377466-unsplash.jpg') }}" alt="Avatar" class="avatar-img rounded-circle">
                                         </div>
                                         <div class="media-body">
                                             <span class="js-lists-values-employee-name">Helen Mcdaniel</span>
@@ -99,7 +99,7 @@
                                 <td>
                                     <div class="media align-items-center">
                                         <div class="avatar avatar-sm mr-3">
-                                            <img src="{{ asset('admin/assets/images/256_rsz_karl-s-973833-unsplash.jpg') }}" alt="Avatar" class="avatar-img rounded-circle">
+                                            <img src="{{ asset('sitio/assets/images/256_rsz_karl-s-973833-unsplash.jpg') }}" alt="Avatar" class="avatar-img rounded-circle">
                                         </div>
                                         <div class="media-body">
                                             <span class="js-lists-values-employee-name">Karim Hicks</span>
@@ -126,7 +126,7 @@
 
                                     <div class="media align-items-center">
                                         <div class="avatar avatar-sm mr-3">
-                                            <img src="{{ asset('admin/assets/images/256_rsz_90-jiang-640827-unsplash.jpg') }}" alt="Avatar" class="avatar-img rounded-circle">
+                                            <img src="{{ asset('sitio/assets/images/256_rsz_90-jiang-640827-unsplash.jpg') }}" alt="Avatar" class="avatar-img rounded-circle">
                                         </div>
                                         <div class="media-body">
                                             <span class="js-lists-values-employee-name">Clifford Burgess</span>
@@ -244,7 +244,7 @@
                                 <td>
                                     <div class="media align-items-center">
                                         <div class="avatar avatar-sm mr-3">
-                                            <img src="{{ asset('admin/assets/images/256_rsz_nicolas-horn-689011-unsplash.jpg') }}" alt="Avatar" class="avatar-img rounded-circle">
+                                            <img src="{{ asset('sitio/assets/images/256_rsz_nicolas-horn-689011-unsplash.jpg') }}" alt="Avatar" class="avatar-img rounded-circle">
                                         </div>
                                         <div class="media-body">
                                             <strong class="js-lists-values-employee-name">Jenell D. Matney</strong><br>
@@ -259,7 +259,7 @@
                                 <td>
                                     <div class="media align-items-center">
                                         <div class="avatar avatar-sm mr-3">
-                                            <img src="{{ asset('admin/assets/images/256_rsz_sharina-mae-agellon-377466-unsplash.jpg') }}" alt="Avatar" class="avatar-img rounded-circle">
+                                            <img src="{{ asset('sitio/assets/images/256_rsz_sharina-mae-agellon-377466-unsplash.jpg') }}" alt="Avatar" class="avatar-img rounded-circle">
                                         </div>
                                         <div class="media-body">
                                             <strong class="js-lists-values-employee-name">Sherri J. Cardenas</strong><br>
@@ -274,7 +274,7 @@
                                 <td>
                                     <div class="media align-items-center">
                                         <div class="avatar avatar-sm mr-3">
-                                            <img src="{{ asset('admin/assets/images/256_rsz_90-jiang-640827-unsplash.jpg') }}" alt="Avatar" class="avatar-img rounded-circle">
+                                            <img src="{{ asset('sitio/assets/images/256_rsz_90-jiang-640827-unsplash.jpg') }}" alt="Avatar" class="avatar-img rounded-circle">
                                         </div>
                                         <div class="media-body">
                                             <strong class="js-lists-values-employee-name">Joseph S. Ferland</strong><br>
@@ -289,7 +289,7 @@
                                 <td>
                                     <div class="media align-items-center">
                                         <div class="avatar avatar-sm mr-3">
-                                            <img src="{{ asset('admin/assets/images/256_rsz_karl-s-973833-unsplash.jpg') }}" alt="Avatar" class="avatar-img rounded-circle">
+                                            <img src="{{ asset('sitio/assets/images/256_rsz_karl-s-973833-unsplash.jpg') }}" alt="Avatar" class="avatar-img rounded-circle">
                                         </div>
                                         <div class="media-body">
                                             <strong class="js-lists-values-employee-name">Bryan K. Davis</strong><br>
@@ -312,10 +312,10 @@
 
 @push('scripts')
     <!-- List.js -->
-    <script src="{{ asset('admin/assets/vendor/list.min.js') }}"></script>
-    <script src="{{ asset('admin/assets/js/list.js') }}"></script>
+    <script src="{{ asset('sitio/assets/vendor/list.min.js') }}"></script>
+    <script src="{{ asset('sitio/assets/js/list.js') }}"></script>
 
     <!-- Tables -->
-    <script src="{{ asset('admin/assets/js/toggle-check-all.js') }}"></script>
-    <script src="{{ asset('admin/assets/js/check-selected-row.js') }}"></script>
+    <script src="{{ asset('sitio/assets/js/toggle-check-all.js') }}"></script>
+    <script src="{{ asset('sitio/assets/js/check-selected-row.js') }}"></script>
 @endpush

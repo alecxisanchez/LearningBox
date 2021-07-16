@@ -15,7 +15,7 @@
 
                 <!-- Brand -->
                 <a href="#" class="navbar-brand">
-                    <img src="{{ asset('admin/assets/images/logo/white.svg') }}" class="mr-2" alt="LearningBox" />
+                    <img src="{{ asset('sitio/assets/images/logo/white.svg') }}" class="mr-2" alt="LearningBox" />
                     <span class="d-none d-xs-md-block">LearningBox</span>
                 </a>
 
@@ -59,7 +59,7 @@
                                         </span>
                                         <span class="d-flex">
                                             <span class="avatar avatar-xs mr-2">
-                                                <img src="{{ asset('admin/assets/images/people/110/woman-5.jpg') }}" alt="people" class="avatar-img rounded-circle">
+                                                <img src="{{ asset('sitio/assets/images/people/110/woman-5.jpg') }}" alt="people" class="avatar-img rounded-circle">
                                             </span>
                                             <span class="flex d-flex flex-column">
                                                 <strong>Michelle</strong>
@@ -111,7 +111,7 @@
                     <!-- User dropdown -->
                     <li class="nav-item dropdown ml-1 ml-md-3">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
-                            <img src="{{ asset('admin/assets/images/people/50/guy-6.jpg') }}" alt="Avatar" class="rounded-circle" width="40"></a>
+                            <img src="{{ asset('sitio/assets/images/people/50/guy-6.jpg') }}" alt="Avatar" class="rounded-circle" width="40"></a>
                         <div class="dropdown-menu dropdown-menu-right">
                             <a class="dropdown-item" href="#">
                                 <i class="material-icons">edit</i> Editar datos

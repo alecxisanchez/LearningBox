@@ -12,15 +12,15 @@
     <!-- Custom Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Oswald:400,500,700%7CRoboto:400,500%7CRoboto:400,500&display=swap" rel="stylesheet">
     <!-- Perfect Scrollbar -->
-    <link type="text/css" href="{{ asset('admin/assets/vendor/perfect-scrollbar.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('sitio/assets/vendor/perfect-scrollbar.css') }}" rel="stylesheet">
     <!-- Material Design Icons -->
-    <link type="text/css" href="{{ asset('admin/assets/css/material-icons.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('sitio/assets/css/material-icons.css') }}" rel="stylesheet">
     <!-- Font Awesome Icons -->
-    <link type="text/css" href="{{ asset('admin/assets/css/fontawesome.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('sitio/assets/css/fontawesome.css') }}" rel="stylesheet">
     <!-- Preloader -->
-    <link type="text/css" href="{{ asset('admin/assets/vendor/spinkit.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('sitio/assets/vendor/spinkit.css') }}" rel="stylesheet">
     <!-- App CSS -->
-    <link type="text/css" href="{{ asset('admin/assets/css/app.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('sitio/assets/css/app.css') }}" rel="stylesheet">
 
 </head>
 
@@ -32,7 +32,7 @@
          style="min-width: 300px;">
         <div class="text-center mt-5 mb-1">
             <div class="avatar avatar-lg">
-                <img src="{{ asset('admin/assets/images/logo/primary.svg') }}" class="avatar-img rounded-circle" alt="LearnPlus" />
+                <img src="{{ asset('sitio/assets/images/logo/primary.svg') }}" class="avatar-img rounded-circle" alt="LearnPlus" />
             </div>
         </div>
         <div class="d-flex justify-content-center mb-5 navbar-light">
@@ -106,21 +106,21 @@
 </div>
 
 <!-- jQuery -->
-<script src="{{ asset('admin/assets/vendor/jquery.min.js') }}"></script>
+<script src="{{ asset('sitio/assets/vendor/jquery.min.js') }}"></script>
 <!-- Bootstrap -->
-<script src="{{ asset('admin/assets/vendor/popper.min.js') }}"></script>
-<script src="{{ asset('admin/assets/vendor/bootstrap.min.js') }}"></script>
+<script src="{{ asset('sitio/assets/vendor/popper.min.js') }}"></script>
+<script src="{{ asset('sitio/assets/vendor/bootstrap.min.js') }}"></script>
 <!-- Perfect Scrollbar -->
-<script src="{{ asset('admin/assets/vendor/perfect-scrollbar.min.js') }}"></script>
+<script src="{{ asset('sitio/assets/vendor/perfect-scrollbar.min.js') }}"></script>
 <!-- MDK -->
-<script src="{{ asset('admin/assets/vendor/dom-factory.js') }}"></script>
-<script src="{{ asset('admin/assets/vendor/material-design-kit.js') }}"></script>
+<script src="{{ asset('sitio/assets/vendor/dom-factory.js') }}"></script>
+<script src="{{ asset('sitio/assets/vendor/material-design-kit.js') }}"></script>
 <!-- App JS -->
-<script src="{{ asset('admin/assets/js/app.js') }}"></script>
+<script src="{{ asset('sitio/assets/js/app.js') }}"></script>
 <!-- Highlight.js -->
-<script src="{{ asset('admin/assets/js/hljs.js') }}"></script>
+<script src="{{ asset('sitio/assets/js/hljs.js') }}"></script>
 <!-- App Settings (safe to remove) -->
-<script src="{{ asset('admin/assets/js/app-settings.js') }}"></script>
+<script src="{{ asset('sitio/assets/js/app-settings.js') }}"></script>
 
 </body>
 

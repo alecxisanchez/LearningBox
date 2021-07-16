@@ -67,7 +67,7 @@
                 <li class="list-group-item" style="z-index: initial;">
                     <div class="d-flex align-items-center">
                         <a href="student-take-course.html" class="avatar avatar-4by3 avatar-sm mr-3">
-                            <img src="{{ asset('admin/assets/images/gulp.png') }}" alt="course" class="avatar-img rounded">
+                            <img src="{{ asset('sitio/assets/images/gulp.png') }}" alt="course" class="avatar-img rounded">
                         </a>
                         <div class="flex">
                             <a href="student-take-course.html"
@@ -105,7 +105,7 @@
                     <div class="d-flex align-items-center">
                         <a href="student-take-course.html"
                            class="avatar avatar-4by3 avatar-sm mr-3">
-                            <img src="{{ asset('admin/assets/images/vuejs.png') }}"
+                            <img src="{{ asset('sitio/assets/images/vuejs.png') }}"
                                  alt="course"
                                  class="avatar-img rounded">
                         </a>
@@ -145,7 +145,7 @@
                     <div class="d-flex align-items-center">
                         <a href="student-take-course.html"
                            class="avatar avatar-4by3 avatar-sm mr-3">
-                            <img src="{{ asset('admin/assets/images/nodejs.png') }}"
+                            <img src="{{ asset('sitio/assets/images/nodejs.png') }}"
                                  alt="course"
                                  class="avatar-img rounded">
                         </a>
@@ -313,7 +313,7 @@
                                     <i class="material-icons">description</i>
                                 </a>
                                 <a href="student-profile.html" class="forum-thread-user">
-                                    <img src="{{ asset('admin/assets/images/people/50/guy-1.jpg') }}" alt="" width="20" class="rounded-circle">
+                                    <img src="{{ asset('sitio/assets/images/people/50/guy-1.jpg') }}" alt="" width="20" class="rounded-circle">
                                 </a>
                             </div>
                         </div>
@@ -335,7 +335,7 @@
                                     <i class="material-icons">description</i>
                                 </a>
                                 <a href="student-profile.html" class="forum-thread-user">
-                                    <img src="{{ asset('admin/assets/images/people/50/guy-2.jpg') }}" alt="" width="20" class="rounded-circle">
+                                    <img src="{{ asset('sitio/assets/images/people/50/guy-2.jpg') }}" alt="" width="20" class="rounded-circle">
                                 </a>
                             </div>
                         </div>
@@ -357,7 +357,7 @@
                                     <i class="material-icons">description</i>
                                 </a>
                                 <a href="student-profile.html" class="forum-thread-user">
-                                    <img src="{{ asset('admin/assets/images/people/50/woman-1.jpg') }}" alt="" width="20" class="rounded-circle">
+                                    <img src="{{ asset('sitio/assets/images/people/50/woman-1.jpg') }}" alt="" width="20" class="rounded-circle">
                                 </a>
                             </div>
                         </div>

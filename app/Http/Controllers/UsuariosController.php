@@ -31,7 +31,7 @@ class UsuariosController extends Controller
      */
     public function create()
     {
-        return View::make('admin.registro');
+        return View::make('sitio.registro');
     }
 
     /**
