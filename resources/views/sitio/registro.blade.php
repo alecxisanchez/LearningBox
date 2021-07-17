@@ -84,7 +84,7 @@
                             <input id="password" name="password" type="password" required="" class="form-control form-control-prepended" placeholder="Tu contraseña">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
-                                    <span class="far fa-key"></span>
+                                    <span class="fas fa-key"></span>
                                 </div>
                             </div>
                         </div>
@@ -95,7 +95,7 @@
                             <input id="password_confirmation" name="password_confirmation" type="password" required="" class="form-control form-control-prepended" placeholder="Confirma tu contraseña">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
-                                    <span class="far fa-key"></span>
+                                    <span class="fas fa-key"></span>
                                 </div>
                             </div>
                         </div>

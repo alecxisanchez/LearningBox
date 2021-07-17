@@ -56,14 +56,9 @@
 
                 <form action="#" novalidate method="get">
                     <div class="form-group">
-                        <label class="form-label"
-                               for="email">Tu correo electrónico:</label>
+                        <label class="form-label" for="email">Tu correo electrónico:</label>
                         <div class="input-group input-group-merge">
-                            <input id="email"
-                                   type="email"
-                                   required=""
-                                   class="form-control form-control-prepended"
-                                   placeholder="Tu correo electrónico">
+                            <input id="email" type="email" required="" class="form-control form-control-prepended" placeholder="Tu correo electrónico">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
                                     <span class="far fa-envelope"></span>
@@ -72,17 +67,12 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="form-label"
-                               for="password">Tu contraseña:</label>
+                        <label class="form-label" for="password">Tu contraseña:</label>
                         <div class="input-group input-group-merge">
-                            <input id="password"
-                                   type="password"
-                                   required=""
-                                   class="form-control form-control-prepended"
-                                   placeholder="Tu contraseña">
+                            <input id="password" type="password" required="" class="form-control form-control-prepended" placeholder="Tu contraseña">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
-                                    <span class="far fa-keyboard"></span>
+                                    <span class="fas fa-key"></span>
                                 </div>
                             </div>
                         </div>
@@ -92,9 +82,7 @@
                         <a href="{{ route('dashboard') }}" class="btn btn-warning btn-block">Tablero</a>
                     </div>
                     <div class="text-center">
-                        <a href="#"
-                           class="text-black-70"
-                           style="text-decoration: underline;">¿Olvidaste tu contraseña?</a>
+                        <a href="#" class="text-black-70" style="text-decoration: underline;">¿Olvidaste tu contraseña?</a>
                     </div>
                 </form>
             </div>
