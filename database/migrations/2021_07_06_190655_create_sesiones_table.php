@@ -15,14 +15,13 @@ class CreateSesionesTable extends Migration
     public function up()
     {
         Schema::create('sesiones', function (Blueprint $table) {
-            $table->bigIncrements('tr_ses_id');
-            $table->Char('tr_uuid');
-            $table->bigInteger('usu_fk')->unsigned();
-            $table->string('direccion_ip')->nullable();
-            $table->string('usuario_agente')->nullable();
-            $table->string('carga_util')->nullable();
-            $table->string('ultima_actividad')->nullable();
-            $table->foreign('usu_fk')->references('tr_usu_id')->on('usuarios');
+            $table->string('id')->primary();
+            $table->foreignId('user_id')->nullable()->index();
+            $table->string('ip_address', 45)->nullable();
+            $table->text('user_agent')->nullable();
+            $table->text('payload');
+            $table->integer('last_activity')->index();
+            $table->foreign('user_id')->references('tr_usu_id')->on('usuarios');
         });
     }
 
