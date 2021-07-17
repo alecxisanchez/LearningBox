@@ -32,14 +32,14 @@ class permisos extends Model
     protected $fillable = [
         'tr_per_id',
         'tr_uuid',
+        'tr_per_est_fk',
+        'tr_per_vig_fk',
         'tr_per_nombre',
         'tr_per_descripcion',
         'tr_per_usuario_creacion',
         'tr_per_usuario_modificacion',
         'tr_per_fecha_creacion',
-        'tr_per_fecha_modificaion',
-        'tr_per_estado',
-        'tr_per_vigencia'
+        'tr_per_fecha_modificaion'
     ];
 
     /**
@@ -61,7 +61,7 @@ class permisos extends Model
      */
     public function usuarios()
     {
-        return $this->belongsToMany(usuarios::class, 'usuarios_permisos', 'per_fk', 'usu_fk');
+        return $this->belongsToMany(usuarios::class, 'usuarios_permisos', 'ti_usu_per_per_fk', 'ti_usu_per_usu_fk');
     }
 
 }

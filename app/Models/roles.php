@@ -32,14 +32,14 @@ class roles extends Model
     protected $fillable = [
         'tr_rol_id',
         'tr_uuid',
+        'tr_rol_est_fk',
         'tr_rol_nombre',
+        'tr_rol_vig_fk',
         'tr_rol_descripcion',
         'tr_rol_usuario_creacion',
         'tr_rol_usuario_modificacion',
         'tr_rol_fecha_creacion',
-        'tr_rol_fecha_modificaion',
-        'tr_rol_estado',
-        'tr_rol_vigencia'
+        'tr_rol_fecha_modificaion'
     ];
 
     /**
@@ -61,7 +61,7 @@ class roles extends Model
      */
     public function permisos()
     {
-        return $this->belongsToMany(permisos::class, 'roles_permisos', 'rol_fk', 'per_fk');
+        return $this->belongsToMany(permisos::class, 'roles_permisos', 'ti_rol_per_rol_fk', 'ti_rol_per_per_fk');
     }
 
     /**
@@ -69,7 +69,7 @@ class roles extends Model
      */
     public function usuarios()
     {
-        return $this->belongsToMany(usuarios::class, 'usuarios_roles', 'rol_fk', 'usu_fk');
+        return $this->belongsToMany(usuarios::class, 'usuarios_roles', 'ti_usu_rol_rol_fk', 'ti_usu_rol_usu_fk');
     }
 
 }

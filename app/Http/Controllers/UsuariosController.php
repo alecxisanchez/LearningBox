@@ -64,8 +64,8 @@ class UsuariosController extends Controller
                 $newUser->tr_usu_nombre = $name;
                 $newUser->tr_usu_mail = $email;
                 $newUser->tr_usu_password = bcrypt($password);
-                $newUser->tr_usu_estado = 1;
-                $newUser->tr_usu_vigencia = 1;
+                $newUser->tr_usu_est_fk = 1;
+                $newUser->tr_usu_vig_fk = 1;
                 $user = $newUser->save();
 
                 //\Auth::loginUsingId($user->id);

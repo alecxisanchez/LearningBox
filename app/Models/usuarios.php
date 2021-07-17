@@ -38,6 +38,8 @@ class usuarios extends Authenticatable
     protected $fillable = [
         'tr_usu_id',
         'tr_uuid',
+        'tr_usu_est_fk',
+        'tr_usu_vig_fk',
         'tr_usu_nombre',
         'tr_usu_mail',
         'tr_usu_password',
@@ -45,9 +47,7 @@ class usuarios extends Authenticatable
         'tr_usu_usuario_creacion',
         'tr_usu_usuario_modificacion',
         'tr_usu_fecha_creacion',
-        'tr_usu_fecha_modificaion',
-        'tr_usu_estado',
-        'tr_usu_vigencia'
+        'tr_usu_fecha_modificaion'
     ];
 
     /**
@@ -74,7 +74,7 @@ class usuarios extends Authenticatable
      */
     public function permisos()
     {
-        return $this->belongsToMany(permisos::class, 'usuarios_permisos', 'usu_fk', 'per_fk');
+        return $this->belongsToMany(permisos::class, 'usuarios_permisos', 'ti_usu_per_usu_fk', 'ti_usu_per_per_fk');
     }
 
     /**
@@ -84,7 +84,7 @@ class usuarios extends Authenticatable
      */
     public function roles()
     {
-        return $this->belongsToMany(roles::class, 'usuarios_roles', 'usu_fk', 'rol_fk');
+        return $this->belongsToMany(roles::class, 'usuarios_roles', 'ti_usu_rol_usu_fk', 'ti_usu_rol_rol_fk');
     }
 
 }
