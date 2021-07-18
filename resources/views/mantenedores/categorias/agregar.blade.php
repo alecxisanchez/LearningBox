@@ -4,7 +4,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Inicio</a></li>
-        <li class="breadcrumb-item">Administracion</li>
+        <li class="breadcrumb-item">GRUD Componentes</li>
         <li class="breadcrumb-item">Mantenedor</li>
         <li class="breadcrumb-item active">Categorias</li>
     </ol>
@@ -17,7 +17,7 @@
                 <div class="col-lg-3">
                     <h4 class="card-title">Agregar Categorias</h4>
                     <p>Al hacer Click en el boton "<strong>Agregar</strong>", Se deplegara una modal en el cual podras adicionar una categoria.</p>
-                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#Modal_Categoria">
+                    <button type="button" class="btn btn-warning" id="btn_agregar_cat">
                     Agregar
                     </button>
                 </div>
@@ -31,34 +31,32 @@
                             <input type="text" class="form-control search" placeholder="Search">
                             <button class="btn" type="button" role="button"><i class="material-icons">search</i></button>
                         </div>
-
-                        <table class="table mb-0" id="tbl_cat">
+                        <table class="table mb-0">
                             <thead>
-                            <tr>
-                                <th>Id</th>
-                                <th>Nombre</th>
-                                <th>Descripcion</th>
-                                <th>Vigencia</th>
-                                <th></th>
-                            </tr>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Nombre</th>
+                                    <th>Descripciòn</th>
+                                    <th>Vigencia</th>
+                                    <th></th>
+                                </tr>
                             </thead>
                             <tbody class="list" id="search">
-                            @foreach($lstCategorias as $item)
-                            <tr>
-                                <td>{{ $item->tr_cat_id }}</td>
-                                <td><span class="js-lists-values-employee-name">{{ $item->tr_cat_nombre }}</span></td>
-                                <td>{{ $item->tr_cat_descripcion }}</td>
-                                <td>{{ $lstVigencias[($item->tr_cat_est_fk)-1]->tr_vig_nombre }}</td>
-                                <td>
-                                    <a name="elemBorrar_{{$item->tr_uuid}}" id="btn_{{$item->tr_uuid}}" class="btn btn-secondary btn-sm" data-id="{{$item->tr_uuid}}" data-vig="{{$item->tr_cat_vig_fk}}" onclick="vigenciaItem(this)" href="#"><i class="material-icons btn__icon--left">{{ ( $item->tr_cat_vig_fk == App\Constantes\Constante::VIGENTE) ? 'lock' : 'no_encryption'}}</i>{{ ( $item->tr_cat_vig_fk == App\Constantes\Constante::VIGENTE)? 'Desactivar' : (( $item->tr_cat_vig_fk == App\Constantes\Constante::NO_VIGENTE)? 'Activar': '')}}</a>
-                                    <a name="elemBorrar_{{$item->tr_uuid}}" id="btn_{{$item->tr_uuid}}" class="btn btn-primary btn-sm" data-id="{{$item->tr_uuid}}" onclick="editarItem(this)" href="#"><i class="material-icons btn__icon--left">edit</i>Editar</a>
-                                </td>
-                            </tr>
-                            @endforeach
+                                @foreach($lstCategorias as $item)
+                                    <tr id="tr_{{ $item->tr_uuid }}">
+                                        <td>{{ $item->tr_cat_id }}</td>
+                                        <td><span class="js-lists-values-employee-name">{{ $item->tr_cat_nombre }}</span></td>
+                                        <td>{{ $item->tr_cat_descripcion }}</td>
+                                        <td>{{ $lstVigencias[($item->tr_cat_vig_fk)-1]->tr_vig_nombre }}</td>
+                                        <td>
+                                            <a class="btn btn-secondary btn-sm" data-uuid="{{$item->tr_uuid}}" id="btn_changer_cat" href="#"><i class="material-icons btn__icon--left">{{ ( $item->tr_cat_vig_fk == App\Constantes\Constante::VIGENTE) ? 'lock' : 'no_encryption'}}</i>{{ ( $item->tr_cat_vig_fk == App\Constantes\Constante::VIGENTE)? 'Desactivar' : (( $item->tr_cat_vig_fk == App\Constantes\Constante::NO_VIGENTE)? 'Activar': '')}}</a>
+                                            <a class="btn btn-primary btn-sm" data-uuid="{{$item->tr_uuid}}" id="btn_edit_cat" href="#"><i class="material-icons btn__icon--left">edit</i>Editar</a>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -70,12 +68,14 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="ModalLabel">Agregar Categorias</h5>
+                    <h5 class="modal-title" id="ModalLabel">Categorias</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
+                    <input id="banderaAccion" type="hidden" value="">
+                    <input id="uuid" type="hidden" value="">
                     <div class="form-group row">
                         <label for="nombre_categoria" class="col-sm-3 col-form-label form-label">* Nombre : </label>
                         <div class="col-sm-6 col-md-6">
@@ -93,7 +93,7 @@
                         <div class="col-sm-6 col-md-4">
                             <select id="edo_cat" class="custom-control custom-select form-control">
                                 @foreach($lstEstados as $item)
-                                    <option value="{{$item->tr_est_uuid}}">{{$item->tr_est_nombre}}</option>
+                                    <option value="{{ $item->tr_est_id }}">{{ $item->tr_est_id }}-{{ $item->tr_est_nombre }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -103,18 +103,19 @@
                         <div class="col-sm-6 col-md-4">
                             <select id="vig_cat" class="custom-control custom-select form-control">
                                 @foreach($lstVigencias as $item)
-                                    <option value="{{$item->tr_vig_uuid}}">{{$item->tr_vig_nombre}}</option>
+                                    <option value="{{ $item->tr_vig_id }}">{{ $item->tr_vig_id }}-{{ $item->tr_vig_nombre }}</option>
                                 @endforeach
                             </select>
                         </div>
                     </div>
                     <div class="form-group row" style="padding-left: 20px;">
-                        <p><span style="color:blue;font-weight:bold">Nota: </span><br><span style="color:darkolivegreen;font-weight:bold"> * </span> Indica, que estos campos son obligatorios a la opción <span style="color:darkolivegreen;font-weight:bold">guardar</span>.</p>
+                        <p>Nota:</p>
+                        <p><br>* Representa los campos que son obligatorios &nbsp; </p>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary" id="btn_save_cat">Guardar</button>
+                    <button type="button" class="btn btn-primary" id="btn_save_cat" value=""></button>
                 </div>
             </div>
         </div>
