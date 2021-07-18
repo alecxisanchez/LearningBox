@@ -71,31 +71,31 @@
                             </li>
                             <li class="sidebar-menu-item">
                                 <a class="sidebar-menu-button"
-                                   href="ui-cards.html">
+                                   href="{{ route('cur_index') }}">
                                     <span class="sidebar-menu-text">Cursos</span>
                                 </a>
                             </li>
                             <li class="sidebar-menu-item">
                                 <a class="sidebar-menu-button"
-                                   href="ui-tabs.html">
+                                   href="{{ route('mod_index') }}">
                                     <span class="sidebar-menu-text">Modulos</span>
                                 </a>
                             </li>
                             <li class="sidebar-menu-item">
                                 <a class="sidebar-menu-button"
-                                   href="ui-icons.html">
+                                   href="{{ route('und_index') }}">
                                     <span class="sidebar-menu-text">Unidades</span>
                                 </a>
                             </li>
                             <li class="sidebar-menu-item">
                                 <a class="sidebar-menu-button"
-                                   href="ui-buttons.html">
+                                   href="{{ route('qui_index') }}">
                                     <span class="sidebar-menu-text">Quiz</span>
                                 </a>
                             </li>
                             <li class="sidebar-menu-item">
                                 <a class="sidebar-menu-button"
-                                   href="ui-alerts.html">
+                                   href="{{ route('pre_index') }}">
                                     <span class="sidebar-menu-text">Preguntas</span>
                                 </a>
                             </li>

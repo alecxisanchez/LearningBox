@@ -56,6 +56,26 @@ Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
 });
 
 /**
+ * Cursos
+ */
+Route::get('/cursos', 'App\Http\Controllers\Mantenedor\MantenedorCursosController@index')->name('cur_index');
+/**
+ * Modulos
+ */
+Route::get('/modulos', 'App\Http\Controllers\Mantenedor\MantenedorModulosController@index')->name('mod_index');
+/**
+ * Unidades
+ */
+Route::get('/unidades', 'App\Http\Controllers\Mantenedor\MantenedorUnidadesController@index')->name('und_index');
+/**
+ * Quiz
+ */
+Route::get('/quizes', 'App\Http\Controllers\Mantenedor\MantenedorQuizesController@index')->name('qui_index');
+/**
+ * Preguntas
+ */
+Route::get('/preguntas', 'App\Http\Controllers\Mantenedor\MantenedorPreguntasController@index')->name('pre_index');
+/**
  * Usuarios
  */
 Route::resource('usuarios', UsuariosController::class);
