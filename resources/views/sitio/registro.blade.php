@@ -45,6 +45,24 @@
             </div>
             <div class="card-body">
 
+                @if(Session::has('message_success'))
+                    <div class="alert alert-dismissible bg-success text-white border-0 fade show" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        {{ Session::get('message_success') }}
+                    </div>
+                @endif
+
+                @if(Session::has('message_error'))
+                    <div class="alert alert-dismissible bg-danger text-white border-0 fade show" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        {{ Session::get('message_error') }}
+                    </div>
+                @endif
+
                 <a href="#" class="btn btn-light btn-block">
                     <span class="fab fa-google mr-2"></span>
                     Continuar con Google
@@ -109,7 +127,7 @@
                     </div>
                 </form>
             </div>
-            <div class="card-footer text-center text-black-50">¿Ya estás registrado? <a href="{{ route('login') }}">Inicia Sesión</a></div>
+            <div class="card-footer text-center text-black-50">¿Ya estás registrado? <a href="{{ route('login-view') }}">Inicia Sesión</a></div>
         </div>
     </div>
 </div>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UsuariosController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,7 +20,7 @@ use Illuminate\Support\Facades\Route;
  */
 Route::get('/', function () {
     return view('sitio/sesion');
-})->name('login');
+})->name('login-view');
 
 Route::get('registrarme', function () {
     return view('sitio/registro');
@@ -45,10 +46,15 @@ Route::post('categoria/save', 'App\Http\Controllers\Mantenedor\MantenedorCategor
 Route::get('categoria/mostrar', 'App\Http\Controllers\Mantenedor\MantenedorCategoriasController@mostrar');
 
 /**
+ * Sesión
+ */
+Route::post('login', [AuthController::class, 'login'])->name('login');
+
+Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
+    Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+});
+
+/**
  * Usuarios
  */
 Route::resource('usuarios', UsuariosController::class);
-
-/**
- * Sesión
- */

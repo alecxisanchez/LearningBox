@@ -45,6 +45,24 @@
             </div>
             <div class="card-body">
 
+                @if(Session::has('message_success'))
+                    <div class="alert alert-dismissible bg-success text-white border-0 fade show" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        {{ Session::get('message_success') }}
+                    </div>
+                @endif
+
+                @if(Session::has('message_error'))
+                    <div class="alert alert-dismissible bg-danger text-white border-0 fade show" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        {{ Session::get('message_error') }}
+                    </div>
+                @endif
+
                 <a href="#" class="btn btn-light btn-block">
                     <span class="fab fa-google mr-2"></span>
                     Continua con Google
@@ -54,11 +72,12 @@
                     <div class="page-separator__text">o</div>
                 </div>
 
-                <form action="#" novalidate method="get">
+                <form action="{{ route('login') }}" novalidate method="post">
+                    @csrf
                     <div class="form-group">
                         <label class="form-label" for="email">Tu correo electrónico:</label>
                         <div class="input-group input-group-merge">
-                            <input id="email" type="email" required="" class="form-control form-control-prepended" placeholder="Tu correo electrónico">
+                            <input id="email" type="email" name="email" required="" class="form-control form-control-prepended" placeholder="Tu correo electrónico">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
                                     <span class="far fa-envelope"></span>
@@ -69,7 +88,7 @@
                     <div class="form-group">
                         <label class="form-label" for="password">Tu contraseña:</label>
                         <div class="input-group input-group-merge">
-                            <input id="password" type="password" required="" class="form-control form-control-prepended" placeholder="Tu contraseña">
+                            <input id="password" type="password" name="password" required="" class="form-control form-control-prepended" placeholder="Tu contraseña">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
                                     <span class="fas fa-key"></span>

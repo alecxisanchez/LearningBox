@@ -113,19 +113,21 @@
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
                             <img src="{{ asset('sitio/assets/images/people/50/guy-6.jpg') }}" alt="Avatar" class="rounded-circle" width="40"></a>
                         <div class="dropdown-menu dropdown-menu-right">
+                            @auth
+                                <p>Bienvenido, {{ \Auth::user()->tr_usu_mail }}</p>
+                            @endauth
                             <a class="dropdown-item" href="#">
                                 <i class="material-icons">edit</i> Editar datos
                             </a>
                             <a class="dropdown-item" href="#">
                                 <i class="material-icons">person</i> Perfil
                             </a>
-                            <a class="dropdown-item" href="#">
+                            <a class="dropdown-item" href="{{ route('logout') }}">
                                 <i class="material-icons">lock</i> Cerrar sesión
                             </a>
                         </div>
                     </li>
                     <!-- // END User dropdown -->
-
                 </ul>
                 <!-- // END Menu -->
             </div>

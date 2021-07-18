@@ -5,7 +5,6 @@ namespace App\Models;
 use App\Models\permisos;
 use App\Models\roles;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
@@ -14,7 +13,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  */
 class usuarios extends Authenticatable
 {
-    use Notifiable, SoftDeletes;
+    use Notifiable;
 
     /**
      * Tables
@@ -70,6 +69,18 @@ class usuarios extends Authenticatable
     ];
 
     /**
+     * Se reescribe la variable password
+     *
+     * @return mixed|string
+     */
+    public function getAuthPassword()
+    {
+        return $this->tr_usu_password;
+    }
+
+    /**
+     * Relación con el modelo Permisos
+     *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function permisos()
@@ -78,7 +89,7 @@ class usuarios extends Authenticatable
     }
 
     /**
-     * Relationship with the Role entity
+     * Relación con el modelo Roles
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
