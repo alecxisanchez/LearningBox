@@ -1,10 +1,20 @@
-$( "#btn_save_cat" ).click(function() {
+//**************************//
+//**** boton de agregar ****//
+//**************************//
+$('body').on('click', '#btn_save_cat', function() {
 
     let camp_nomb;
     let camp_desc;
+    let camp_est;
+    let camp_vig;
+    let camp_bandera;
+    let camp_uuid;
     camp_nomb = $('#nomb_cat').val();
     camp_desc = $('#desc_cat').val();
-
+    camp_est = $('#edo_cat').val();
+    camp_vig = $('#vig_cat').val();
+    camp_bandera = $('#banderaAccion').val();
+    camp_uuid = $('#uuid').val();
     //validamos solo campos obligatorios
     if( camp_nomb == '' && camp_desc == ''){
         Swal.fire({
@@ -39,11 +49,15 @@ $( "#btn_save_cat" ).click(function() {
         formData.append("_token", _token );
         formData.append("nombre", camp_nomb );
         formData.append("descripcion", camp_desc );
+        formData.append("estado", camp_est );
+        formData.append("vigencia", camp_vig );
+        formData.append("banderaAccion", camp_bandera );
+        formData.append("uuid", camp_uuid );
 
         $.ajax({
             url: "http://127.0.0.1:8000/categoria/save",
-            type: "post",
-            dataType: "html",
+            type: "POST",
+            dataType: "HTML",
             data: formData,
             cache: false,
             contentType: false,
@@ -62,9 +76,6 @@ $( "#btn_save_cat" ).click(function() {
 
             success: function (response) {
                 let resp = JSON.parse(response);
-                console.log('Valores que llegan repuesta : '+ resp.respuesta );
-                console.log('Valores que llegan msg: '+ resp.msg );
-                console.log('Valores que llegan : '+ resp.id );
                 loading.close();
                 if( resp.respuesta ) {
                     Swal.fire({
@@ -73,7 +84,9 @@ $( "#btn_save_cat" ).click(function() {
                         showConfirmButton: false,
                         timer: 1500
                     })
-                    actualizar_cat(resp.id);
+                    $('#Modal_Categoria').modal('hide');
+                    //** llama a refresh de la grilla **//
+                        refresh_grilla(resp.id,camp_bandera);
                 }else{
                     Swal.fire({
                         icon: 'error',
@@ -94,48 +107,168 @@ $( "#btn_save_cat" ).click(function() {
 
     }
 });
+//*******************************//
+//**** Agregar una Categoria ****//
+//*******************************//
+$('body').on('click', '#btn_agregar_cat', function() {
 
-function actualizar_cat(id) {
+    //Limpio los campos del modal
+        $('#nomb_cat').val('');
+        $('#desc_cat').val('');
+        //$('#vig_cat').val();
+        //$('#est_cat').val();
+        $('#banderaAccion').val('Save');
+        $('#btn_save_cat').text('Guardar');
+        $('#uuid').val('');
+        $('#Modal_Categoria').modal('show');
+});
+//****************************************//
+//**** Cambiar Vigencias de Categoria ****//
+//****************************************//
+$('body').on('click', '#btn_changer_cat', function() {
+
+    let campoUUID = $(this).attr("data-uuid");
+    let _token   = $('meta[name="csrf-token"]').attr('content');
+
+    var formData = new FormData();
+    formData.append("_token", _token );
+    formData.append("uuid", campoUUID );
 
     $.ajax({
-        url: "http://127.0.0.1:8000/categoria/mostrar",
-        type: "get",
-        data: {'id' : id},
+        url: "http://127.0.0.1:8000/categoria/changer",
+        type: "POST",
+        dataType: "html",
+        data: formData,
         cache: false,
+        contentType: false,
+        processData: false,
+
+        beforeSend: function () {
+            loading = Swal.fire({
+                title: "Espere por favor...",
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+                onOpen: () => {
+                    Swal.showLoading();
+                }
+            });
+        },
 
         success: function (response) {
             let resp = JSON.parse(response);
-         //   loading.close();
+            loading.close();
             if( resp.respuesta ) {
-
                 Swal.fire({
                     icon: 'success',
                     title: resp.msg,
                     showConfirmButton: false,
                     timer: 1500
                 })
-
-                $("#tbl_cat").append('<tr>' +
-                    '<td>'+ resp.id +'</td>' +
+                let campo = resp.uuid;
+                let imgView = (resp.vigenciaId == 1)? 'lock':'no_encryption';
+                let txtView = (resp.vigenciaId == 1)? 'Desactivar': ( (resp.vigenciaId == 2)? 'Activar':'' );
+                $("#tr_"+campo).html('<td>'+ resp.id +'</td>' +
                     '<td>'+ resp.nombre +'</td>' +
                     '<td>'+ resp.descripcion +'</td>' +
-                    '<td>'+ resp.estado +'</td>' +
                     '<td>'+ resp.vigencia +'</td>' +
-                    '<td><a href="#" class="btn btn-primary btn-sm"><i class="material-icons btn__icon--left">edit</i>Editar</a></td>' +
-                    '</tr>');
-
-                $("#Modal_Categoria .close").click();
-
+                    '<td>' +
+                    '<a id="btn_changer_cat" class="btn btn-secondary btn-sm" data-uuid="' + resp.uuid + '" href="#"><i class="material-icons btn__icon--left">'+ imgView +'</i>' + txtView + '</a> ' +
+                    '<a id="btn_edit_cat" class="btn btn-primary btn-sm" data-uuid="' + resp.uuid + '"  href="#"><i class="material-icons btn__icon--left">edit</i>Editar</a> ' +
+                    '</td>');
             }else{
-
                 Swal.fire({
                     icon: 'error',
                     text: resp.error,
                 })
-
             }
         },
 
+        error: function (error) {
+            let resp = JSON.parse(error.responseText);
+            loading.close();
+            loading = Swal.fire({
+                icon: 'error',
+                text: resp.error,
+            });
+        }
+    });
+});
+//**************************//
+//**** Editar Categoria ****//
+//**************************//
+$('body').on('click', '#btn_edit_cat', function() {
+
+    let campoUUID = $(this).attr("data-uuid");
+    $('#banderaAccion').val('Edit');
+    $('#uuid').val(campoUUID);
+    $.ajax({
+        url: "http://127.0.0.1:8000/categoria/search",
+        type: "GET",
+        data: { "uuid":campoUUID },
+        cache: false,
+
+        success: function (response) {
+            if( response.respuesta ) {
+                $('#btn_save_cat').text('Editar');
+                $('#nomb_cat').val(response.nombre);
+                $('#desc_cat').val(response.descripcion);
+                $('#vig_cat').val(response.vigenciaId);
+                $('#est_cat').val(response.estadoId);
+                $('#Modal_Categoria').modal('show');
+            }
+        },
+        error: function (error) {
+            let resp = JSON.parse(error.responseText);
+            loading.close();
+            loading = Swal.fire({
+                icon: 'error',
+                text: resp.error,
+            });
+        }
+    });
+
+});
+//************************************//
+//*** Refesh grilla, luego Guardar ***//
+//************************************//
+function refresh_grilla(id,bandera) {
+
+    $.ajax({
+        url: "http://127.0.0.1:8000/categoria/refesh",
+        type: "GET",
+        data: {"id":id},
+        cache: false,
+
+        success: function (response) {
+
+            if( response.respuesta ) {
+                let imgView = (response.vigenciaId == 1)? 'lock':'no_encryption';
+                let txtView = (response.vigenciaId == 1)? 'Desactivar': ( (response.vigenciaId == 2)? 'Activar':'' );
+                //Guardado
+                if( bandera == 'Save' ){
+                    $("#search").append('<tr id="tr_' + response.uuid + '">' +
+                        '<td>'+ response.id +'</td>' +
+                        '<td>'+ response.nombre +'</td>' +
+                        '<td>'+ response.descripcion +'</td>' +
+                        '<td>'+ response.vigencia +'</td>' +
+                        '<td>' +
+                        '<a id="btn_changer_cat" class="btn btn-secondary btn-sm" data-uuid="' + response.uuid + '" href="#"><i class="material-icons btn__icon--left">'+ imgView +'</i>' + txtView + '</a> ' +
+                        '<a id="btn_edit_cat" class="btn btn-primary btn-sm" data-uuid="' + response.uuid + '" href="#"><i class="material-icons btn__icon--left">edit</i>Editar</a> ' +
+                        '</td></tr>');
+                }
+                //Editar
+                else{
+                    $("#tr_"+response.uuid).html('<td>'+ response.id +'</td>' +
+                        '<td>'+ response.nombre +'</td>' +
+                        '<td>'+ response.descripcion +'</td>' +
+                        '<td>'+ response.vigencia +'</td>' +
+                        '<td>' +
+                        '<a id="btn_changer_cat" class="btn btn-secondary btn-sm" data-uuid="' + response.uuid + '" href="#"><i class="material-icons btn__icon--left">'+ imgView +'</i>' + txtView + '</a> ' +
+                        '<a id="btn_edit_cat" class="btn btn-primary btn-sm" data-uuid="' + response.uuid + '"  href="#"><i class="material-icons btn__icon--left">edit</i>Editar</a> ' +
+                        '</td>');
+                }
+            }
+        },
         error: function (error) {
             let resp = JSON.parse(error.responseText);
             loading.close();

@@ -12,10 +12,10 @@ use Illuminate\Database\Eloquent\Model;
  * @property int|mixed tr_cat_usuario_creacion
  * @property int|null tr_cat_usuario_modificacion
  * @property false|mixed|timestamp tr_cat_fecha_creacion
- * @property int|mixed tr_cat_estado
- * @property int|mixed tr_cat_vigencia
  * @property char tr_uuid
  * @property timestamps|null tr_cat_fecha_modificacion
+ * @property int|mixed tr_cat_est_fk
+ * @property int|mixed tr_cat_vig_fk
  */
 class categorias extends Model
 {
