@@ -16,6 +16,7 @@ class CreateCursosTable extends Migration
         Schema::create('cursos', function (Blueprint $table) {
             $table->bigIncrements('tr_cur_id');
             $table->Char('tr_uuid');
+            $table->bigInteger('tr_cur_cat_fk')->unsigned();
             $table->bigInteger('tr_cur_est_fk')->unsigned();
             $table->bigInteger('tr_cur_vig_fk')->unsigned();
             $table->string('tr_cur_nombre');
@@ -24,6 +25,7 @@ class CreateCursosTable extends Migration
             $table->bigInteger('tr_cur_usuario_modificacion')->nullable();
             $table->timestamp('tr_cur_fecha_creacion')->nullable();
             $table->timestamp('tr_cur_fecha_modificaion')->nullable();
+            $table->foreign('tr_cur_cat_fk')->references('tr_cat_id')->on('categorias');
             $table->foreign('tr_cur_est_fk')->references('tr_est_id')->on('estados');
             $table->foreign('tr_cur_vig_fk')->references('tr_vig_id')->on('vigencias');
         });

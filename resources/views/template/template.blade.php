@@ -23,6 +23,7 @@
     <!-- App CSS -->
     <link type="text/css" href="{{ asset('sitio/assets/css/app.css') }}" rel="stylesheet">
     <!-- Page Specials Styles -->
+    <link href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css" rel="stylesheet">
     @stack('styles')
 </head>
 
@@ -76,6 +77,7 @@
 <script src="{{ asset('sitio/assets/js/app-settings.js') }}"></script>
 <!-- Page Specials Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 @stack('scripts')
 
 </body>

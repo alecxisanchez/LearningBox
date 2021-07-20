@@ -6,57 +6,53 @@
         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Inicio</a></li>
         <li class="breadcrumb-item">GRUD Componentes</li>
         <li class="breadcrumb-item">Mantenedor</li>
-        <li class="breadcrumb-item active">Categorias</li>
+        <li class="breadcrumb-item active">Cursos</li>
     </ol>
 
-    <h1 class="h2">Categorias</h1>
+    <h1 class="h2">Cursos</h1>
 
     <div class="card">
         <div class="card-body">
             <div class="row">
                 <div class="col-lg-3">
-                    <h4 class="card-title">Agregar Categorias</h4>
-                    <p>Al hacer Click en el boton "<strong>Agregar</strong>", Se deplegara una modal en el cual podras adicionar una categoria.</p>
+                    <h4 class="card-title">Agregar Cursos</h4>
+                    <p>Al hacer Click en el boton "<strong>Agregar</strong>", Se deplegara una modal en el cual podras adicionar un Curso.</p>
                     <button type="button" class="btn btn-warning" id="btn_agregar_cat">
                         Agregar
                     </button>
                 </div>
                 <div class="col-lg-9">
-
-                    <div class="table-responsive border-bottom"
-                         data-toggle="lists"
-                         data-lists-values='["js-lists-values-employee-name"]'>
-
-                        <div class="search-form search-form--light mb-3">
-                            <input type="text" class="form-control search" placeholder="Search">
-                            <button class="btn" type="button" role="button"><i class="material-icons">search</i></button>
+                    <div class="form-group row">
+                        <label for="vigencia_categoria" class="col-sm-3 col-form-label form-label">Categoria :</label>
+                        <div class="col-sm-6 col-md-4">
+                            <select id="campo_fil_cat" class="custom-control custom-select form-control">
+                                <option value="-99" selected>--Seleccione--</option>
+                                @foreach($lstCategorias as $item)
+                                    <option value="{{ $item->tr_cat_id }}">{{ $item->tr_cat_id }} - {{ $item->tr_cat_nombre }}</option>
+                                @endforeach
+                            </select>
                         </div>
-                        <table class="table mb-0">
+                        <div class="d-flex">
+                            <button id="btn_bus_grilla" type="button" class="btn btn-primary ml-2">Buscar</button>
+                            <button id="btn_lim_grilla" type="button" class="btn btn-secondary ml-2">Limpiar</button>
+                        </div>
+                    </div>
+                    <!-- Requests Table -->
+                    <div class="card shadow p-3 mt-2 table-responsive">
+                        <table id="table_bandeja" class="table table-striped table__bg">
                             <thead>
                             <tr>
-                                <th>Id</th>
-                                <th>Nombre</th>
-                                <th>Descripciòn</th>
-                                <th>Vigencia</th>
-                                <th></th>
+                                <th scope="col">#</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Descripciòn</th>
+                                <th scope="col">Categoria</th>
+                                <th scope="col">Vigencia</th>
+                                <th scope="col">Acciónes</th>
                             </tr>
                             </thead>
-                            <tbody class="list" id="search">
-                            @foreach($lstCategorias as $item)
-                                <tr id="tr_{{ $item->tr_uuid }}">
-                                    <td>{{ $item->tr_cat_id }}</td>
-                                    <td><span class="js-lists-values-employee-name">{{ $item->tr_cat_nombre }}</span></td>
-                                    <td>{{ $item->tr_cat_descripcion }}</td>
-                                    <td>{{ $lstVigencias[($item->tr_cat_vig_fk)-1]->tr_vig_nombre }}</td>
-                                    <td>
-                                        <a class="btn btn-secondary btn-sm" data-uuid="{{$item->tr_uuid}}" id="btn_changer_cat" href="#"><i class="material-icons btn__icon--left">{{ ( $item->tr_cat_vig_fk == App\Constantes\Constante::VIGENTE) ? 'lock' : 'no_encryption'}}</i>{{ ( $item->tr_cat_vig_fk == App\Constantes\Constante::VIGENTE)? 'Desactivar' : (( $item->tr_cat_vig_fk == App\Constantes\Constante::NO_VIGENTE)? 'Activar': '')}}</a>
-                                        <a class="btn btn-primary btn-sm" data-uuid="{{$item->tr_uuid}}" id="btn_edit_cat" href="#"><i class="material-icons btn__icon--left">edit</i>Editar</a>
-                                    </td>
-                                </tr>
-                            @endforeach
-                            </tbody>
+                            <tbody></tbody>
                         </table>
-                    </div>
+                    </div><!-- End Requests Table -->
                 </div>
             </div>
         </div>
@@ -129,5 +125,6 @@
     <script src="{{ asset('sitio/assets/js/toggle-check-all.js') }}"></script>
     <script src="{{ asset('sitio/assets/js/check-selected-row.js') }}"></script>
     <!-- Extra -->
-    <script src="{{ asset('assets/js/mantenedor/man-categorias.js') }}"></script>
+    <script src="{{ asset('assets/js/mantenedor/man-cursos.js') }}"></script>
+
 @endpush
