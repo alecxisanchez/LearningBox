@@ -31,16 +31,33 @@ class MantenedorCursosController extends Controller
     }
     //
     public function filter(Request $request){
-        //$sql = "";
-        //$consulta = DB::select($sql);
-        $array[] = array(
-            "numero" => 1,
-            "nombre" => 2,
-            "descripcion" => 3,
-            "categoria" => 4,
-            "vigencia" => 5,
-            "accion" => 6
-        );
+
+        $array = [];
+        $data = $request->input();
+
+        $sql = "SELECT A.tr_cur_nombre
+                        ,A.tr_cur_descripcion
+                        ,B.tr_cat_nombre
+                        ,A.tr_cur_vig_fk
+                FROM cursos A
+                    JOIN categorias B
+                        ON ( A.tr_cur_cat_fk = B.tr_cat_id )
+                WHERE A.tr_cur_cat_fk =" . $data['id'];
+
+        $consulta = DB::select($sql);
+
+        foreach( $consulta as $key => $items ){
+
+            $array[] = array(
+                "numero" => $key + 1,
+                "nombre" => $items->tr_cur_nombre,
+                "descripcion" => $items->tr_cur_descripcion,
+                "categoria" => $items->tr_cat_nombre,
+                "vigencia" => $items->tr_cur_vig_fk,
+                "accion" =>''
+            );
+
+        }
 
         return Response::json($array);
 

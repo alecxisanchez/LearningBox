@@ -14,31 +14,35 @@
     <div class="card">
         <div class="card-body">
             <div class="row">
-                <div class="col-lg-3">
-                    <h4 class="card-title">Agregar Cursos</h4>
-                    <p>Al hacer Click en el boton "<strong>Agregar</strong>", Se deplegara una modal en el cual podras adicionar un Curso.</p>
-                    <button type="button" class="btn btn-warning" id="btn_agregar_cat">
-                        Agregar
-                    </button>
-                </div>
-                <div class="col-lg-9">
-                    <div class="form-group row">
-                        <label for="vigencia_categoria" class="col-sm-3 col-form-label form-label">Categoria :</label>
-                        <div class="col-sm-6 col-md-4">
-                            <select id="campo_fil_cat" class="custom-control custom-select form-control">
-                                <option value="-99" selected>--Seleccione--</option>
-                                @foreach($lstCategorias as $item)
-                                    <option value="{{ $item->tr_cat_id }}">{{ $item->tr_cat_id }} - {{ $item->tr_cat_nombre }}</option>
-                                @endforeach
-                            </select>
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <div class="form-group row">
+                                <label for="categoria" class="col-sm-3 col-form-label form-label">* Categorias :</label>
+                                <div class="col-sm-6 col-md-4">
+                                    <select id="campo_fil_cat" class="custom-control custom-select form-control">
+                                        <option value="-99" selected>--- Seleccione ---</option>
+                                        @foreach($lstCategorias as $item)
+                                            <option value="{{ $item->tr_cat_id }}">{{ $item->tr_cat_id }} - {{ $item->tr_cat_nombre }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
                         </div>
-                        <div class="d-flex">
-                            <button id="btn_bus_grilla" type="button" class="btn btn-primary ml-2">Buscar</button>
-                            <button id="btn_lim_grilla" type="button" class="btn btn-secondary ml-2">Limpiar</button>
+                        <div class="col-lg-3">
+                            <div class="d-flex flex-column ">
+                                <button id="btn_bus_grilla" type="button" class="btn btn-primary mb-2">Buscar</button>
+                                <button id="btn_lim_grilla" type="button" class="btn btn-secondary mb-2">Limpiar</button>
+                            </div>
                         </div>
                     </div>
+                </div>
+                <div class="col-lg-12">
                     <!-- Requests Table -->
                     <div class="card shadow p-3 mt-2 table-responsive">
+                        <div  style="text-align: center;">
+                            <button id="btn_consultar" type="button" class="btn btn-warning">Agregar</button>
+                        </div>
                         <table id="table_bandeja" class="table table-striped table__bg">
                             <thead>
                             <tr>
