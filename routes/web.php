@@ -64,10 +64,12 @@ Route::get('/cursos/filter', 'App\Http\Controllers\Mantenedor\MantenedorCursosCo
  * Modulos
  */
 Route::get('/modulos', 'App\Http\Controllers\Mantenedor\MantenedorModulosController@index')->name('mod_index');
+Route::get('/modulos/filter', 'App\Http\Controllers\Mantenedor\MantenedorModulosController@filter');
 /**
  * Unidades
  */
 Route::get('/unidades', 'App\Http\Controllers\Mantenedor\MantenedorUnidadesController@index')->name('und_index');
+Route::get('/unidades/filter', 'App\Http\Controllers\Mantenedor\MantenedorUnidadesController@filter');
 /**
  * Quiz
  */

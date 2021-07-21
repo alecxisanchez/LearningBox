@@ -34,6 +34,7 @@ class MantenedorCursosController extends Controller
 
         $array = [];
         $data = $request->input();
+        $lstVigencias = vigencias::all();
 
         $sql = "SELECT A.tr_cur_nombre
                         ,A.tr_cur_descripcion
@@ -53,7 +54,7 @@ class MantenedorCursosController extends Controller
                 "nombre" => $items->tr_cur_nombre,
                 "descripcion" => $items->tr_cur_descripcion,
                 "categoria" => $items->tr_cat_nombre,
-                "vigencia" => $items->tr_cur_vig_fk,
+                "vigencia" => $lstVigencias[($items->tr_cur_vig_fk)-1]->tr_vig_nombre,
                 "accion" =>''
             );
 
