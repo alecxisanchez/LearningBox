@@ -34,10 +34,6 @@ Route::get('usuario', function () {
     return view('sitio/user/profile');
 })->name('user');
 
-Route::get('tablas', function () {
-    return view('sitio/user/tables');
-})->name('tables');
-
 /**
  * Categorias
  */

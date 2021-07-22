@@ -14,19 +14,31 @@
                         </a>
                         <ul class="sidebar-submenu sm-indent collapse show" id="account_menu">
                             <li class="sidebar-menu-item active">
-                                <a class="sidebar-menu-button"
-                                   href="student-account-edit.html">
+                            @auth
+                                <a class="sidebar-menu-button" href="{{ route('usuarios.edit', ['usuario' => \Auth::user()->tr_usu_id]) }}">
                                     <span class="sidebar-menu-text">Editar Cuenta</span>
                                 </a>
+                            @endauth
+                            @guest
+                                <a class="sidebar-menu-button" href="#">
+                                    <span class="sidebar-menu-text">Editar Cuenta</span>
+                                </a>
+                            @endguest
                             </li>
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button"
-                                   href="guest-forgot-password.html">
+                            @auth
+                                <a class="sidebar-menu-button" href="{{ route('usuarios.edit', ['usuario' => \Auth::user()->tr_usu_id]) }}">
                                     <span class="sidebar-menu-text">Cambio de Clave</span>
                                 </a>
+                            @endauth
+                            @guest
+                                <a class="sidebar-menu-button" href="#">
+                                    <span class="sidebar-menu-text">Cambio de Clave</span>
+                                </a>
+                            @endguest
                             </li>
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="guest-signup.html">
+                                <a class="sidebar-menu-button" href="{{ route('logout') }}">
                                     <span class="sidebar-menu-text">Cerrar Sesion</span>
                                 </a>
                             </li>

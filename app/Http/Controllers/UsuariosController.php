@@ -119,7 +119,14 @@ class UsuariosController extends Controller
      */
     public function edit($id)
     {
-        //
+        $usuario = usuarios::where('tr_usu_id', $id)->first();
+
+        $data = [
+            'nombre' => $usuario->tr_usu_nombre,
+            'email' => $usuario->tr_usu_mail
+        ];
+
+        return View::make('sitio.usuarios.perfil', $data);
     }
 
     /**
