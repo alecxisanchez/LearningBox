@@ -173,5 +173,18 @@ $('body').on('click', '#btn_lim_grilla', function() {
     $('#campo_fil_cur').val('-99');
 
 });
+//*******************************//
+//**** Agregar una Curso ****//
+//*******************************//
+$('body').on('click', '#btn_agregar_und', function() {
+
+    //Limpio los campos del modal
+    $('#nomb_und').val('');
+    $('#desc_und').val('');
+    $('#banderaAccion').val('Save');
+    $('#btn_save_und').text('Guardar');
+    $('#uuid').val('');
+    $('#Modal_Unidad').modal('show');
+});
 
 

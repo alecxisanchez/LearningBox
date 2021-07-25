@@ -62,14 +62,17 @@
         </div>
     </div>
 @stop
+<!-- Modal -->
 @push('modals')
-    <!-- Modal -->
     <div class="modal fade" id="Modal_Categoria" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="ModalLabel">Categorias</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <div class="modal-header bg-primary">
+                    <h4 class="modal-title text-white">Categorias</h4>
+                    <button type="button"
+                            class="close text-white"
+                            data-dismiss="modal"
+                            aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -92,8 +95,9 @@
                         <label for="estado_categoria" class="col-sm-3 col-form-label form-label">* Estado :</label>
                         <div class="col-sm-6 col-md-4">
                             <select id="edo_cat" class="custom-control custom-select form-control">
+                                <option value="-99" selected>--- Seleccione ---</option>
                                 @foreach($lstEstados as $item)
-                                    <option value="{{ $item->tr_est_id }}">{{ $item->tr_est_id }}-{{ $item->tr_est_nombre }}</option>
+                                    <option value="{{ $item->tr_est_id }}"> {{ $item->tr_est_id }} - {{ $item->tr_est_nombre }} </option>
                                 @endforeach
                             </select>
                         </div>
@@ -102,20 +106,21 @@
                         <label for="vigencia_categoria" class="col-sm-3 col-form-label form-label">* Vigencia :</label>
                         <div class="col-sm-6 col-md-4">
                             <select id="vig_cat" class="custom-control custom-select form-control">
+                                <option value="-99" selected>--- Seleccione ---</option>
                                 @foreach($lstVigencias as $item)
-                                    <option value="{{ $item->tr_vig_id }}">{{ $item->tr_vig_id }}-{{ $item->tr_vig_nombre }}</option>
+                                    <option value="{{ $item->tr_vig_id }}"> {{ $item->tr_vig_id }} - {{ $item->tr_vig_nombre }} </option>
                                 @endforeach
                             </select>
                         </div>
                     </div>
-                    <div class="form-group row" style="padding-left: 20px;">
+                    {{--<div class="form-group row" style="padding-left: 20px;">
                         <p>Nota:</p>
                         <p><br>* Representa los campos que son obligatorios &nbsp; </p>
-                    </div>
+                    </div>--}}
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary" id="btn_save_cat" value=""></button>
+                    <button type="button" class="btn btn-success" id="btn_save_cat" value=""></button>
                 </div>
             </div>
         </div>

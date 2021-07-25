@@ -107,7 +107,7 @@ $('body').on('click', '#btn_bus_grilla', function() {
                             "descripcion": lista.descripcion,
                             "categoria": lista.categoria,
                             "vigencia": lista.vigencia,
-                            "accion": "",
+                            "accion": '<a id="btn_edit_cur" data-uuid="' + lista.uuid + '"  href="#" class="btn btn-primary btn-sm"><i class="material-icons btn__icon--left">edit</i></a>',
                         });
                     }
                     table_bandeja.draw();
@@ -126,6 +126,7 @@ $('body').on('click', '#btn_bus_grilla', function() {
         })
     }
 });
+
 //***********************************//
 //**** boton de limpiar grilla ****//
 //***********************************//
@@ -133,4 +134,221 @@ $('body').on('click', '#btn_lim_grilla', function() {
     $('#campo_fil_cat').val('-99');
 });
 
+//*******************************//
+//**** Agregar una Curso ****//
+//*******************************//
+$('body').on('click', '#btn_agregar_cur', function() {
 
+    //Limpio los campos del modal
+    $('#nomb_cur').val('');
+    $('#desc_cur').val('');
+    $('#banderaAccion').val('Save');
+    $('#btn_save_cur').text('Guardar');
+    $('#uuid').val('');
+    $('#Modal_Curso').modal('show');
+});
+
+//**************************//
+//**** Editar Curso ****//
+//**************************//
+$('body').on('click', '#btn_edit_cur', function() {
+
+    let campoUUID = $(this).attr("data-uuid");
+    $('#banderaAccion').val('Edit');
+    $('#uuid').val(campoUUID);
+    $.ajax({
+        url: "http://127.0.0.1:8000/curso/search",
+        type: "GET",
+        data: { "uuid":campoUUID },
+        cache: false,
+
+        success: function (response) {
+            if( response.respuesta ) {
+                $('#btn_save_cur').text('Editar');
+                $('#cat_cur').val(response.categoria);
+                $('#nomb_cur').val(response.nombre);
+                $('#desc_cur').val(response.descripcion);
+                $('#vig_cur').val(response.vigenciaId);
+                $('#edo_cur').val(response.estadoId);
+                $('#Modal_Curso').modal('show');
+            }
+        },
+        error: function (error) {
+            let resp = JSON.parse(error.responseText);
+            loading.close();
+            loading = Swal.fire({
+                icon: 'error',
+                text: resp.error,
+            });
+        }
+    });
+
+});
+
+//***********************************//
+//**** boton de agregar / Editar ****//
+//***********************************//
+$('body').on('click', '#btn_save_cur', function() {
+
+    let camp_nomb; let camp_desc; let camp_est;
+    let camp_vig; let camp_bandera; let camp_uuid;
+    let camp_cat;
+    camp_cat = $('#cat_cur').val();
+    camp_nomb = $('#nomb_cur').val();
+    camp_desc = $('#desc_cur').val();
+    camp_est = $('#edo_cur').val();
+    camp_vig = $('#vig_cur').val();
+    camp_bandera = $('#banderaAccion').val();
+    camp_uuid = $('#uuid').val();
+    //validamos solo campos obligatorios
+    if( camp_nomb == '-99'){
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            html: '<p>El Campo Categoria No esta seleccionado.</p>'
+        })
+    }
+    //validamos solo campos obligatorios
+    if( camp_nomb == '' && camp_desc == ''){
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            html: '<p>El Campo Nombre Esta Vacio.</p><br><p>El Campo Descripción esta Vacio.</p>'
+        })
+    }
+    //validamos solo campos obligatorios
+    if( camp_nomb == '' ){
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            html: '<p>El Campo Nombre Esta Vacio.</p>'
+        })
+    }
+    //validamos solo campos obligatorios
+    if( camp_desc == ''){
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            html: '<p>El Campo Descripción esta Vacio.</p>'
+        })
+    }
+    //validamos y enviamos a guardar
+    if( camp_nomb != '' && camp_desc != '' ) {
+
+        event.preventDefault();
+        let _token   = $('meta[name="csrf-token"]').attr('content');
+
+        var formData = new FormData();
+        formData.append("_token", _token );
+        formData.append("categoria", camp_cat );
+        formData.append("nombre", camp_nomb );
+        formData.append("descripcion", camp_desc );
+        formData.append("estado", camp_est );
+        formData.append("vigencia", camp_vig );
+        formData.append("banderaAccion", camp_bandera );
+        formData.append("uuid", camp_uuid );
+
+        $.ajax({
+            url: "http://127.0.0.1:8000/curso/save",
+            type: "POST",
+            dataType: "HTML",
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+
+            beforeSend: function () {
+                loading = Swal.fire({
+                    title: "Espere por favor...",
+                    allowEscapeKey: false,
+                    allowOutsideClick: false,
+                    onOpen: () => {
+                        Swal.showLoading();
+                    }
+                });
+            },
+
+            success: function (response) {
+                let resp = JSON.parse(response);
+                loading.close();
+                if( resp.respuesta ) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: resp.msg,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    $('#Modal_Curso').modal('hide');
+                    //** llama a refresh de la grilla **//
+                    refresh_grilla(resp.id,camp_bandera);
+                }else{
+                    Swal.fire({
+                        icon: 'error',
+                        text: resp.error,
+                    })
+                }
+            },
+
+            error: function (error) {
+                let resp = JSON.parse(error.responseText);
+                loading.close();
+                loading = Swal.fire({
+                    icon: 'error',
+                    text: resp.error,
+                });
+            }
+        });
+
+    }
+});
+//************************************//
+//*** Refesh grilla, luego Guardar ***//
+//************************************//
+function refresh_grilla(id,bandera) {
+
+    $.ajax({
+        url: "http://127.0.0.1:8000/curso/refesh",
+        type: "GET",
+        data: {"id":id},
+        cache: false,
+
+        success: function (response) {
+
+            if( response.respuesta ) {
+                //let imgView = (response.vigenciaId == 1)? 'lock':'no_encryption';
+                //let txtView = (response.vigenciaId == 1)? 'Desactivar': ( (response.vigenciaId == 2)? 'Activar':'' );
+                //Guardado
+                if( bandera == 'Save' ){
+                    $("#search").append('<tr id="tr_' + response.uuid + '">' +
+                        '<td>'+ response.id +'</td>' +
+                        '<td>'+ response.nombre +'</td>' +
+                        '<td>'+ response.descripcion +'</td>' +
+                        '<td>'+ response.categoria +'</td>' +
+                        '<td>'+ response.vigencia +'</td>' +
+                        '<td>' +
+                        '<a id="btn_edit_cur" class="btn btn-primary btn-sm" data-uuid="' + response.uuid + '" href="#"><i class="material-icons btn__icon--left">edit</i></a> ' +
+                        '</td></tr>');
+                }
+                //Editar
+                else{
+                    $("#tr_"+response.uuid).html('<td>'+ response.id +'</td>' +
+                        '<td>'+ response.nombre +'</td>' +
+                        '<td>'+ response.descripcion +'</td>' +
+                        '<td>'+ response.categoria +'</td>' +
+                        '<td>'+ response.vigencia +'</td>' +
+                        '<td>' +
+                        '<a id="btn_edit_cur" class="btn btn-primary btn-sm" data-uuid="' + response.uuid + '"  href="#"><i class="material-icons btn__icon--left">edit</i></a> ' +
+                        '</td>');
+                }
+            }
+        },
+        error: function (error) {
+            let resp = JSON.parse(error.responseText);
+            loading.close();
+            loading = Swal.fire({
+                icon: 'error',
+                text: resp.error,
+            });
+        }
+    });
+}
