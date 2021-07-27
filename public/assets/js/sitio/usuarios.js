@@ -11,6 +11,9 @@ Usuarios = function () {
                 let email;
                 let password;
                 let password_confirmation;
+                let url;
+                console.log($(this).data("route"));
+
                 name = $('#name').val();
                 email = $('#email').val();
                 password = $('#password').val();
