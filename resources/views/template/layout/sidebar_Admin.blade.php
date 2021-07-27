@@ -59,19 +59,19 @@
                             id="components_menu">
                             <li class="sidebar-menu-item">
                                 <a class="sidebar-menu-button"
-                                   href="ui-avatars.html">
+                                   href="{{ route('usu_index') }}">
                                     <span class="sidebar-menu-text">Usuarios</span>
                                 </a>
                             </li>
                             <li class="sidebar-menu-item">
                                 <a class="sidebar-menu-button"
-                                   href="ui-forms.html">
+                                   href="{{ route('rol_index') }}">
                                     <span class="sidebar-menu-text">Roles</span>
                                 </a>
                             </li>
                             <li class="sidebar-menu-item">
                                 <a class="sidebar-menu-button"
-                                   href="ui-loaders.html">
+                                   href="{{ route('per_index') }}">
                                     <span class="sidebar-menu-text">Permisos</span>
                                 </a>
                             </li>

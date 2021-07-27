@@ -64,6 +64,7 @@ Route::get('/curso/refesh', 'App\Http\Controllers\Mantenedor\MantenedorCursosCon
  */
 Route::get('/modulos', 'App\Http\Controllers\Mantenedor\MantenedorModulosController@index')->name('mod_index');
 Route::get('/modulos/filter', 'App\Http\Controllers\Mantenedor\MantenedorModulosController@filter');
+Route::get('/modulos/search_categoria','App\Http\Controllers\Mantenedor\MantenedorModulosController@search_categoria');
 /**
  * Unidades
  */
@@ -81,3 +82,13 @@ Route::get('/preguntas', 'App\Http\Controllers\Mantenedor\MantenedorPreguntasCon
  * Usuarios
  */
 Route::resource('usuarios', UsuariosController::class);
+Route::get('/usuarios', 'App\Http\Controllers\Mantenedor\MantenedorUsuariosController@index')->name('usu_index');
+
+/**
+ * Roles
+ */
+Route::get('/roles', 'App\Http\Controllers\Mantenedor\MantenedorRolesController@index')->name('rol_index');
+/**
+ * Permisos
+ */
+Route::get('/permisos', 'App\Http\Controllers\Mantenedor\MantenedorPermisosController@index')->name('per_index');

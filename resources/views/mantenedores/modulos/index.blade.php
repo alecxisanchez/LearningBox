@@ -102,7 +102,7 @@
                     <div class="form-group row">
                         <label for="nombre_curso" class="col-sm-3 col-form-label form-label">* Curso : </label>
                         <div class="col-sm-6 col-md-6">
-                            <select id="cat_cur" class="custom-control custom-select form-control">
+                            <select id="cat_mod" class="custom-control custom-select form-control">
                                 <option value="-99" selected>--- Seleccione ---</option>
                                 @foreach($lstCategorias as $item)
                                     <option value="{{ $item->tr_cat_id }}">{{ $item->tr_cat_id }} - {{ $item->tr_cat_nombre }}</option>

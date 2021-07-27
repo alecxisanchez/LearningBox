@@ -128,7 +128,6 @@ $('body').on('click', '#btn_bus_grilla', function() {
                     complete: function () {
                         $("#btn_bus_grilla").attr("disabled", false);
                     }
-
                 });
 
             }else{
@@ -176,5 +175,20 @@ $('body').on('click', '#btn_agregar_mod', function() {
     $('#uuid').val('');
     $('#Modal_Modulo').modal('show');
 });
+//*******************************//
+//**** Agregar una Curso ****//
+//*******************************//
+$('body').on('change', '#campo_fil_cat', function() {
+    let campo_filtro = $('#campo_fil_cat').val();
+    $.ajax({
+        type: "GET",
+        url: 'http://127.0.0.1:8000/modulo/search_categoria',
+        data: {id: campo_filtro},
+        success: function(data){
+            alert(data);
+        }
+    });
+});
+
 
 

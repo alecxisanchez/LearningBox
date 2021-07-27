@@ -29,7 +29,6 @@ class MantenedorCursosController extends Controller
             ->with('lstEstados',$lstEstados)
             ->with('lstCursos',$lstCursos)
             ->with('lstVigencias',$lstVigencias);
-
     }
     //
     public function filter(Request $request){
