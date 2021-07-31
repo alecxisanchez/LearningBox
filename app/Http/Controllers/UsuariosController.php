@@ -6,6 +6,7 @@ use App\Models\usuarios;
 use App\Models\usuarios_permisos;
 use App\Models\usuarios_roles;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\View;
 use Ramsey\Uuid\Uuid;
@@ -138,7 +139,54 @@ class UsuariosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $rules = [
+                'name' => 'required|string',
+                'password' => 'confirmed|min:6'
+            ];
+
+            $validator = Validator::make($request->all(), $rules);
+
+            if ($validator->fails()) {
+                \Log::debug('UsuariosController.update', ['validator fail' => $validator->errors()->first()]);
+
+                return Response::JSON([
+                        "error" => true,
+                        "msg" => "El campo nombre o email estan vacios o no corresponde la contraseña"],
+                    401);
+            } else {
+                \Log::debug('UsuariosController.update', ['validator success' => $id]);
+                $name = $request->input('name');
+                $password = $request->input('password');
+
+                if (!empty($password)) {
+                    $dataUpdate = [
+                        'tr_usu_nombre' => $name,
+                        'tr_usu_password' => bcrypt($password)
+                    ];
+                } else {
+                    $dataUpdate = [
+                        'tr_usu_nombre' => $name
+                    ];
+                }
+
+                /* Edición de usuario */
+                $userProfile = usuarios::where('tr_usu_id', $id)->firstorFail();
+                $userProfile->update($dataUpdate);
+
+                return Response::JSON([
+                    "respuesta" => true,
+                    "data" => $dataUpdate,
+                    "msg" => "Guardado Exitosamente !!"],
+                    200);
+            }
+        } catch (\Exception $ex) {
+            \Log::error('UsuariosController.update', ['exception' => $ex]);
+            return Response::JSON([
+                "error" => true,
+                "msg" => "Ha ocurrido un error actualizando los datos"],
+                401);
+        }
     }
 
     /**
