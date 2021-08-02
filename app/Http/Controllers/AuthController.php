@@ -92,7 +92,7 @@ class AuthController
             }
         } catch (\Exception $ex) {
             \Log::error('Auth.login', ['Exception' => $ex]);
-            return redirect('/')->with('message_error', _('Error accediendo al sistema'));
+            return redirect()->route('login-view')->with('message_error', _('Error accediendo al sistema'));
         }
     }
 
@@ -104,7 +104,7 @@ class AuthController
     public function logout()
     {
         \Auth::logout();
-        return redirect()->intended('/')
+        return redirect()->route('login-view')
             ->with('message_success', 'Tu sesión ha sido cerrada.');
     }
 

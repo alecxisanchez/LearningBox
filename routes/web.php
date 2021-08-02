@@ -92,3 +92,5 @@ Route::get('/roles', 'App\Http\Controllers\Mantenedor\MantenedorRolesController@
  * Permisos
  */
 Route::get('/permisos', 'App\Http\Controllers\Mantenedor\MantenedorPermisosController@index')->name('per_index');
+
+Route::get('/lista-de-menu', 'App\Utilidades\ConstructorMenu@getMenuPorUsuario')->name('lista_menu');

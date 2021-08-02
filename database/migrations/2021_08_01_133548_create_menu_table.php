@@ -17,9 +17,9 @@ class CreateMenuTable extends Migration
             $table->bigIncrements('tr_men_id');
             $table->Char('tr_uuid');
             $table->string('tr_men_nombre');
-            $table->string('tr_men_descripcion');
-            $table->string('tr_men_ruta');
-            $table->string('tr_men_icono');
+            $table->string('tr_men_descripcion')->nullable();
+            $table->string('tr_men_ruta')->nullable();
+            $table->string('tr_men_icono')->nullable();
             $table->bigInteger('tr_men_orden')->unsigned();
             $table->bigInteger('tr_men_id_padre')->unsigned();
             $table->bigInteger('tr_men_est_fk')->unsigned();
