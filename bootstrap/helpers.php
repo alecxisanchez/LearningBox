@@ -12,7 +12,6 @@ if (!function_exists('active')) {
     function active($route)
     {
         if (!is_null($route)) {
-            \Log::debug('helpers', ['route' => $route, 'Request::url()' => \Request::url()]);
             if ($route == \Request::url()) {
                 return 'active open';
             }

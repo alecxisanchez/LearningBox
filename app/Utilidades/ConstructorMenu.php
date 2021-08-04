@@ -20,7 +20,7 @@ class ConstructorMenu
     public static function itemsMenu($menus)
     {
         $menu = null;
-        \Log::debug('ConstructorMenu', ['menus' => $menus]);
+
         foreach ($menus as $item) {
             //if (Gate::allows('access', $item->permisos)) {
                 $menu .= sprintf(
