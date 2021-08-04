@@ -2,8 +2,6 @@
 
 namespace App\Utilidades;
 
-use App\Models\menu;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
 /**
@@ -14,35 +12,6 @@ use Illuminate\Support\Facades\Gate;
 class ConstructorMenu
 {
     /**
-     * @var ID usuario
-     */
-    private $idUsuario;
-
-    /**
-     * ConstructorMenu constructor.
-     */
-    public function __construct()
-    {
-        if (Auth::check()) {
-            $this->idUsuario = Auth::user()->id;
-        } else {
-            $this->idUsuario = null;
-        }
-    }
-
-    public function getMenuPorUsuario()
-    {
-        $menu = menu::join('menu_permisos', 'menu.tr_men_id', 'menu_permisos.ti_men_per_men_fk')
-            ->join('usuarios_permisos', 'menu_permisos.ti_men_per_per_fk', 'usuarios_permisos.ti_usu_per_per_fk')
-            ->where('usuarios_permisos.ti_usu_per_usu_fk', $this->idUsuario)
-            ->get();
-
-        \Log::debug('ConstructorMenu.getMenuPorUsuario', ['ID' => $this->idUsuario, 'Menu' => $menu]);
-
-        return $menu;
-    }
-
-    /**
      * Items menu
      *
      * @param array $menus Menu items
@@ -51,55 +20,71 @@ class ConstructorMenu
     public static function itemsMenu($menus)
     {
         $menu = null;
+        \Log::debug('ConstructorMenu', ['menus' => $menus]);
         foreach ($menus as $item) {
-            if (Gate::allows('access', $item->permission)) {
+            //if (Gate::allows('access', $item->permisos)) {
                 $menu .= sprintf(
-                    '<li class="nav-item" data-active="%s">',
-                    active($item->route)
+                    '<div class="sidebar-heading">%s</div>',
+                    $item->texto
                 );
-                $menu .= sprintf(
-                    '<a class="nav-link nav-toggle" href="%s">',
-                    !is_null($item->route) ? route($item->route) : '#'
-                );
-                $menu .= sprintf(
-                    '<i class="fa fa-%s"></i> ',
-                    $item->icon
-                );
-                $menu .= sprintf(
-                    '<span class="title">%s</span>',
-                    $item->text
-                );
-                $menu .= '<span class="selected"></span>';
-
                 if (isset($item->subMenu)) {
-                    if (count($item->subMenu) > 0) {
-                        $menu .= '<span class="fa arrow"></span>';
-                    }
-                }
-                $menu .= '</a>';
-
-                if (isset($item->subMenu)) {
-                    if (count($item->subMenu) > 0) {
-                        $menu .= '<ul class="sub-menu">';
-                        $menu .= self::itemsMenu($item->subMenu);
+                    if (count((array)$item->subMenu) > 0) {
+                        $menu .= '<ul class="sidebar-menu">';
+                        foreach ($item->subMenu as $itemSub) {
+                            $menu .= sprintf(
+                                '<li class="sidebar-menu-item open">
+                                    <a class="sidebar-menu-button sidebar-js-collapse" data-toggle="collapse" href="#%s">',
+                                $itemSub->ruta
+                            );
+                            $menu .= sprintf(
+                                '<i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">%s</i>',
+                                $itemSub->icono
+                            );
+                            $menu .= sprintf(
+                                '%s<span class="ml-auto sidebar-menu-toggle-icon"></span>
+                                    </a>',
+                                $itemSub->texto
+                            );
+                            if (isset($itemSub->subMenu)) {
+                                if (count((array)$itemSub->subMenu) > 0) {
+                                    $menu .= sprintf(
+                                        '<ul class="sidebar-submenu sm-indent collapse show" id="%s">',
+                                        $itemSub->ruta
+                                    );
+                                    foreach ($itemSub->subMenu as $itemSubSub) {
+                                        $menu .= sprintf(
+                                            '<li class="sidebar-menu-item %s">
+                                                <a class="sidebar-menu-button" href="%s">
+                                                    <span class="sidebar-menu-text">%s</span>
+                                                </a>
+                                            </li>',
+                                            active($itemSubSub->ruta),
+                                            $itemSubSub->ruta,
+                                            $itemSubSub->texto
+                                        );
+                                    }
+                                    $menu .= '</ul>';
+                                }
+                            }
+                            $menu .= '</li>';
+                        }
                         $menu .= '</ul>';
                     }
                 }
-                $menu .= '</li>';
-            }
+            //}
         }
+
         return $menu;
     }
 
     /**
-     * Build menu admin
+     * Construcción de Menú
      *
      * @return null|string
      */
     public static function buildMenu()
     {
         $menus = menu();
-        $products = null;
 
         return self::itemsMenu($menus);
     }
