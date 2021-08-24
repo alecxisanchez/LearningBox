@@ -30,7 +30,7 @@
                             </div>
                             <div class="form-group row">
                                 <label for="cursos" class="col-sm-3 col-form-label form-label">* Cursos :</label>
-                                <div class="col-sm-6 col-md-4">
+                                <div class="col-sm-6 col-md-6">
                                     <select id="campo_fil_cur" class="custom-control custom-select form-control">
                                         <option value="-99" selected>--- Seleccione ---</option>
                                     </select>

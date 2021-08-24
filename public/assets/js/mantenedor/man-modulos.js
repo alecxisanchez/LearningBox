@@ -180,15 +180,23 @@ $('body').on('click', '#btn_agregar_mod', function() {
 //*******************************//
 $('body').on('change', '#campo_fil_cat', function() {
     let campo_filtro = $('#campo_fil_cat').val();
+    $('#campo_fil_cur').empty();
+    $('#campo_fil_cur').append('<option value="-99"> --- Seleccione --- </option>');
     $.ajax({
         type: "GET",
-        url: 'http://127.0.0.1:8000/modulo/search_categoria',
+        url: 'http://127.0.0.1:8000/modulos/search_categoria',
         data: {id: campo_filtro},
-        success: function(data){
-            alert(data);
+        success: function(response){
+            if(response.respuesta){
+                response.data.forEach((item, index) => {
+                    console.log(item);
+                    $('#campo_fil_cur').append('<option>'+ item.tr_cur_id +' - '+ item.tr_cur_nombre +' </option>');
+                });
+            }
         }
     });
 });
+
 
 
 

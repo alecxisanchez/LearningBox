@@ -59,10 +59,26 @@ class MantenedorModulosController extends Controller
                 "vigencia" => $lstVigencias[($items->tr_cur_vig_fk)-1]->tr_vig_nombre,
                 "accion" =>''
             );
-
         }
-
         return Response::json($array);
+    }
+    //
+    public function search_categoria(Request $request){
 
+        $data = $request->input();
+        $sql = "SELECT tr_cur_id
+		                ,tr_cur_nombre
+		                ,tr_cur_descripcion
+                FROM cursos
+                    WHERE tr_cur_cat_fk =" . $data['id'];
+
+        $consulta = DB::select($sql);
+        if( count($consulta) > 0 ) {
+            return Response::JSON([
+                    "respuesta" => true,
+                    "data" => $consulta,
+                    "msg" => "Consulta Exitosa !!"]
+                , 200);
+        }
     }
 }

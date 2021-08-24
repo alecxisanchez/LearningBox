@@ -10,53 +10,42 @@
     </ol>
 
     <h1 class="h2">Categorias</h1>
-
     <div class="card">
         <div class="card-body">
             <div class="row">
-                <div class="col-lg-3">
-                    <h4 class="card-title">Agregar Categorias</h4>
-                    <p>Al hacer Click en el boton "<strong>Agregar</strong>", Se deplegara una modal en el cual podras adicionar una categoria.</p>
-                    <button type="button" class="btn btn-warning" id="btn_agregar_cat">
-                    Agregar
-                    </button>
-                </div>
-                <div class="col-lg-9">
-
-                    <div class="table-responsive border-bottom"
-                         data-toggle="lists"
-                         data-lists-values='["js-lists-values-employee-name"]'>
-
-                        <div class="search-form search-form--light mb-3">
-                            <input type="text" class="form-control search" placeholder="Search">
-                            <button class="btn" type="button" role="button"><i class="material-icons">search</i></button>
+                <div class="col-lg-12">
+                    <!-- Requests Table -->
+                    <div class="card shadow p-3 mt-2 table-responsive">
+                        <div  style="text-align: center;">
+                            <a id="btn_agregar_cat" class="btn btn-primary btn-sm"><i class="material-icons">add</i></a>
+                            {{--<button id="btn_agregar_cur" type="button" class="btn btn-warning">Agregar</button>--}}
                         </div>
-                        <table class="table mb-0">
+                        <table id="table_bandeja" class="table table-striped table__bg">
                             <thead>
-                                <tr>
-                                    <th>Id</th>
-                                    <th>Nombre</th>
-                                    <th>Descripciòn</th>
-                                    <th>Vigencia</th>
-                                    <th></th>
-                                </tr>
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Descripciòn</th>
+                                <th scope="col">Vigencia</th>
+                                <th scope="col">Opciones</th>
+                            </tr>
                             </thead>
-                            <tbody class="list" id="search">
-                                @foreach($lstCategorias as $item)
-                                    <tr id="tr_{{ $item->tr_uuid }}">
-                                        <td>{{ $item->tr_cat_id }}</td>
-                                        <td><span class="js-lists-values-employee-name">{{ $item->tr_cat_nombre }}</span></td>
-                                        <td>{{ $item->tr_cat_descripcion }}</td>
-                                        <td>{{ $lstVigencias[($item->tr_cat_vig_fk)-1]->tr_vig_nombre }}</td>
-                                        <td>
-                                            <a class="btn btn-secondary btn-sm" data-uuid="{{$item->tr_uuid}}" id="btn_changer_cat" href="#"><i class="material-icons btn__icon--left">{{ ( $item->tr_cat_vig_fk == App\Constantes\Constante::VIGENTE) ? 'lock' : 'no_encryption'}}</i>{{ ( $item->tr_cat_vig_fk == App\Constantes\Constante::VIGENTE)? 'Desactivar' : (( $item->tr_cat_vig_fk == App\Constantes\Constante::NO_VIGENTE)? 'Activar': '')}}</a>
-                                            <a class="btn btn-primary btn-sm" data-uuid="{{$item->tr_uuid}}" id="btn_edit_cat" href="#"><i class="material-icons btn__icon--left">edit</i>Editar</a>
-                                        </td>
-                                    </tr>
-                                @endforeach
+                            <tbody>
+                            @foreach($lstCategorias as $item)
+                                <tr id="tr_{{ $item->tr_uuid }}">
+                                    <td>{{ $item->tr_cat_id }}</td>
+                                    <td>{{ $item->tr_cat_nombre }}</td>
+                                    <td>{{ $item->tr_cat_descripcion }}</td>
+                                    <td>{{ $lstVigencias[($item->tr_cat_vig_fk)-1]->tr_vig_nombre }}</td>
+                                    <td>
+                                        <a class="btn btn-secondary btn-sm" data-uuid="{{$item->tr_uuid}}" id="btn_changer_cat" href="#"><i class="material-icons btn__icon--left">{{ ( $item->tr_cat_vig_fk == App\Constantes\Constante::VIGENTE) ? 'lock' : 'no_encryption'}}</i>{{ ( $item->tr_cat_vig_fk == App\Constantes\Constante::VIGENTE)? 'Desactivar' : (( $item->tr_cat_vig_fk == App\Constantes\Constante::NO_VIGENTE)? 'Activar': '')}}</a>
+                                        <a class="btn btn-primary btn-sm" data-uuid="{{$item->tr_uuid}}" id="btn_edit_cat" href="#"><i class="material-icons btn__icon--left">edit</i>Editar</a>
+                                    </td>
+                                </tr>
+                            @endforeach
                             </tbody>
                         </table>
-                    </div>
+                    </div><!-- End Requests Table -->
                 </div>
             </div>
         </div>
