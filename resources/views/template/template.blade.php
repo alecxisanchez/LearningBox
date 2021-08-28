@@ -10,6 +10,9 @@
     <!-- Prevent the demo from appearing in search engines (REMOVE THIS) -->
     <meta name="robots" content="noindex">
 
+    <!-- favicon -->
+    <link rel="icon" sizes="16x16" href="{{ asset('assets/images/favicon.ico') }}">
+
     <!-- Custom Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Oswald:400,500,700%7CRoboto:400,500%7CRoboto:400,500&display=swap" rel="stylesheet">
     <!-- Perfect Scrollbar -->
