@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\permisos;
 use App\Models\roles;
 use App\Models\usuarios;
+use App\Models\usuarios_permisos;
+use App\Models\usuarios_roles;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
+use Ramsey\Uuid\Uuid;
 
 /**
  * Class AuthController
@@ -19,7 +22,6 @@ class AuthController
      */
     public function __construct()
     {
-
     }
 
     /**
@@ -114,6 +116,96 @@ class AuthController
     public function loginView()
     {
         return View::make('sitio.sesion');
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function loginGoogle(Request $request)
+    {
+        $email = strtolower($request->input('email'));
+        $name = $request->input('name');
+        $password = strtolower($request->input('email'));
+
+        $usuario = usuarios::where('tr_usu_mail', $email)->first();
+
+        if (\Auth::check()) {
+            return redirect()->route('dashboard');
+        } else {
+            if (!empty($usuario)) {
+                if ($usuario->tr_usu_est_fk) {
+                    \Auth::loginUsingId($usuario->tr_usu_id);
+
+                    $permisos = collect();
+                    $roles = roles::with(['permisos'])->whereHas('usuarios', function ($query) {
+                        $query->where('ti_usu_rol_usu_fk', \Auth::user()->tr_usu_id);
+                    })->get();
+
+                    $permisos_adicionales = permisos::join('usuarios_permisos', 'permisos.tr_per_id', '=', 'usuarios_permisos.ti_usu_per_per_fk')
+                        ->where('ti_usu_per_usu_fk', \Auth::user()->tr_usu_id)
+                        ->get();
+
+                    foreach ($roles as $role) {
+                        foreach ($role->permisos as $permiso) {
+                            $permisos->push($permiso->tr_per_id);
+                        }
+                    }
+
+                    foreach ($permisos_adicionales as $permiso) {
+                        $permisos->push($permiso->tr_per_id);
+                    }
+
+                    $permisos_unicos = $permisos->unique()->values()->all();
+
+                    if (in_array(1, $permisos_unicos)) {
+                        \Session::put('access_list', $permisos_unicos);
+                        return redirect()->route('dashboard');
+                    } else {
+                        \Auth::logout();
+                        \Session::flush();
+                        return redirect()->route('login-view')
+                            ->withInput()
+                            ->with('message_error', 'Error al iniciar sesión');
+                    }
+                }
+            } else {
+                $uuid = Uuid::uuid4();
+
+                /* Guardado de usuario */
+                $nuevoUsuario = new usuarios();
+                $nuevoUsuario->tr_uuid = $uuid;
+                $nuevoUsuario->tr_usu_nombre = $name;
+                $nuevoUsuario->tr_usu_mail = strtolower($email);
+                $nuevoUsuario->tr_usu_password = bcrypt($password);
+                $nuevoUsuario->tr_usu_est_fk = 1;
+                $nuevoUsuario->tr_usu_vig_fk = 1;
+                $nuevoUsuario->save();
+
+                /* Guardado de rol */
+                $nuevoRolUsu = new usuarios_roles();
+                $nuevoRolUsu->tr_uuid = $uuid;
+                $nuevoRolUsu->ti_usu_rol_usu_fk = $nuevoUsuario->tr_usu_id;
+                $nuevoRolUsu->ti_usu_rol_rol_fk = 1;
+                $nuevoRolUsu->ti_usu_rol_est_fk = 1;
+                $nuevoRolUsu->ti_usu_rol_vig_fk = 1;
+                $nuevoRolUsu->ti_usu_rol_vigencia = 1;
+                $nuevoRolUsu->save();
+
+                /* Guardado de permiso */
+                $nuevoPermisoUsu = new usuarios_permisos();
+                $nuevoPermisoUsu->tr_uuid = $uuid;
+                $nuevoPermisoUsu->ti_usu_per_usu_fk = $nuevoUsuario->tr_usu_id;
+                $nuevoPermisoUsu->ti_usu_per_per_fk = 1;
+                $nuevoPermisoUsu->ti_usu_per_est_fk = 1;
+                $nuevoPermisoUsu->ti_usu_per_vig_fk = 1;
+                $nuevoPermisoUsu->save();
+
+                \Auth::loginUsingId($nuevoUsuario->tr_usu_id);
+
+                return redirect()->route('dashboard');
+            }
+        }
     }
 
 }

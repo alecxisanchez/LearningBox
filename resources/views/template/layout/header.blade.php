@@ -122,7 +122,7 @@
                             <a class="dropdown-item" href="#">
                                 <i class="material-icons">person</i> Perfil
                             </a>
-                            <a class="dropdown-item" href="{{ route('logout') }}">
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick='signOut()'>
                                 <i class="material-icons">lock</i> Cerrar sesión
                             </a>
                         </div>

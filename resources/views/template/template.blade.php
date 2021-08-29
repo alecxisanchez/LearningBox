@@ -81,6 +81,8 @@
 <!-- Page Specials Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+<!-- Google Sesion -->
+<script src="{{ asset('assets/js/sesion/google-sesion.js') }}"></script>
 @stack('scripts')
 
 </body>

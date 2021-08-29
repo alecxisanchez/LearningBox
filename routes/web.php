@@ -22,6 +22,8 @@ Route::get('/', [AuthController::class, 'loginView'])->name('login-view');
 
 Route::post('login', [AuthController::class, 'login'])->name('login');
 
+Route::post('login-google', [AuthController::class, 'loginGoogle'])->name('login-google');
+
 Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 });

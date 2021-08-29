@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="es" dir="ltr">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -72,10 +72,10 @@
                     Continua con Google
                 </a>
 
-                    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                <div class="g-signin2" data-theme="dark" data-onsuccess="onSignIn" data-width="300" data-longtitle="true" style="text-align: -webkit-center;" data-route-google="{{ route('login-google') }}"></div>
 
-                    <div class="page-separator">
-                    <div class="page-separator__text">o</div>
+                <div class="page-separator">
+                <div class="page-separator__text">o</div>
                 </div>
 
                 <form action="{{ route('login') }}" novalidate method="post">
