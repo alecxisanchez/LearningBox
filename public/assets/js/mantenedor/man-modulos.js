@@ -17,8 +17,6 @@ $(document).ready(function() {
             {"data": "numero"},
             {"data": "nombre"},
             {"data": "descripcion"},
-            {"data": "categoria"},
-            {"data": "curso"},
             {"data": "vigencia"},
             {"data": "accion"},
         ],
@@ -116,10 +114,8 @@ $('body').on('click', '#btn_bus_grilla', function() {
                                     "numero": lista.numero,
                                     "nombre": lista.nombre,
                                     "descripcion": lista.descripcion,
-                                    "categoria": lista.categoria,
-                                    "curso": lista.curso,
                                     "vigencia": lista.vigencia,
-                                    "accion": "",
+                                    "accion": '<a id="btn_edit_mod" data-uuid="' + lista.uuid + '" href="#" class="btn btn-primary btn-sm"><i class="material-icons btn__icon--left">edit</i></a>',
                                 });
                             }
                             table_bandeja.draw();
@@ -175,6 +171,43 @@ $('body').on('click', '#btn_agregar_mod', function() {
     $('#uuid').val('');
     $('#Modal_Modulo').modal('show');
 });
+//**************************//
+//**** Editar Curso ****//
+//**************************//
+$('body').on('click', '#btn_edit_mod', function() {
+
+    let campoUUID = $(this).attr("data-uuid");
+    $('#banderaAccion').val('Edit');
+    $('#uuid').val(campoUUID);
+    $.ajax({
+        url: "http://127.0.0.1:8000/modulo/search",
+        type: "GET",
+        data: { "uuid":campoUUID },
+        cache: false,
+
+        success: function (response) {
+            if( response.respuesta ) {
+                $('#btn_save_mod').text('Editar');
+                $('#cat_mod').val(response.categoria);
+                search_curso(response.categoria);
+                $('#nomb_mod').val(response.nombre);
+                $('#desc_mod').val(response.descripcion);
+                $('#vig_mod').val(response.vigenciaId);
+                $('#edo_mod').val(response.estadoId);
+                $('#Modal_Modulo').modal('show');
+            }
+        },
+        error: function (error) {
+            let resp = JSON.parse(error.responseText);
+            loading.close();
+            loading = Swal.fire({
+                icon: 'error',
+                text: resp.error,
+            });
+        }
+    });
+
+});
 //*******************************//
 //**** Agregar una Curso ****//
 //*******************************//
@@ -196,6 +229,22 @@ $('body').on('change', '#campo_fil_cat', function() {
         }
     });
 });
+function search_curso($cat){
+    let campo_filtro = $cat;
+    $.ajax({
+        type: "GET",
+        url: 'http://127.0.0.1:8000/modulos/search_categoria',
+        data: {id: campo_filtro},
+        success: function(response){
+            if(response.respuesta){
+                response.data.forEach((item, index) => {
+                    console.log(item);
+                    $('#cur_mod').append('<option selected>'+ item.tr_cur_id +' - '+ item.tr_cur_nombre +' </option>');
+                });
+            }
+        }
+    });
+}
 
 
 
