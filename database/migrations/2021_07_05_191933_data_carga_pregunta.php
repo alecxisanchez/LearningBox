@@ -29,7 +29,7 @@ class DataCargaPregunta extends Migration
                 'tr_preg_fecha_modificaion' => null,
                 'tr_preg_est_fk' => 1,
                 'tr_preg_vig_fk' => 1,
-                'tr_preg_quiz_fk'   => 1
+                //'tr_preg_quiz_fk'   => 1
             )
         );
         //
@@ -46,7 +46,7 @@ class DataCargaPregunta extends Migration
                 'tr_preg_fecha_modificaion' => null,
                 'tr_preg_est_fk' => 1,
                 'tr_preg_vig_fk' => 1,
-                'tr_preg_quiz_fk'   => 1
+                //'tr_preg_quiz_fk'   => 1
             )
         );
     }
