@@ -31,7 +31,7 @@
                                 <th scope="col">Acciónes</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="search">
                             @foreach($lstPreguntas as $item)
                                 <tr id="tr_{{ $item->tr_uuid }}">
                                     <td>{{ $item->tr_preg_id }}</td>

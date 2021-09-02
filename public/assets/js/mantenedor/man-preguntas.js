@@ -137,7 +137,6 @@ $('body').on('click', '#btn_save_preg', function() {
 
         var formData = new FormData();
         formData.append("_token", _token );
-        formData.append("categoria", camp_cat );
         formData.append("nombre", camp_nomb );
         formData.append("descripcion", camp_desc );
         formData.append("tipo", camp_tipo );
