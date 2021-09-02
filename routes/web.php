@@ -76,6 +76,18 @@ Route::get('/unidades/filter', 'App\Http\Controllers\Mantenedor\MantenedorUnidad
  */
 Route::get('/quizes', 'App\Http\Controllers\Mantenedor\MantenedorQuizesController@index')->name('qui_index');
 /**
+ * Archivos
+ */
+Route::get('/Archivos', 'App\Http\Controllers\Mantenedor\MantenedorArchivosController@index')->name('arch_index');
+/**
+ * Configuraciones
+ */
+Route::get('/configuraciones', 'App\Http\Controllers\Mantenedor\MantenedorConfiguracionesController@index')->name('conf_index');
+/**
+ * Pagos
+ */
+Route::get('/pagos', 'App\Http\Controllers\Mantenedor\MantenedorPagosController@index')->name('pgo_index');
+/**
  * Preguntas
  */
 Route::get('/preguntas', 'App\Http\Controllers\Mantenedor\MantenedorPreguntasController@index')->name('pre_index');
