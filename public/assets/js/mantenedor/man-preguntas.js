@@ -88,10 +88,11 @@ $('body').on('click', '#btn_save_preg', function() {
 
     let camp_nomb; let camp_desc; let camp_est;
     let camp_vig; let camp_bandera; let camp_uuid;
-    let camp_cat;
+    let camp_cat; let camp_tipo;
     camp_cat = $('#cat_preg').val();
     camp_nomb = $('#nomb_preg').val();
     camp_desc = $('#desc_preg').val();
+    camp_tipo = $('#tipo_preg').val();
     camp_est = $('#edo_preg').val();
     camp_vig = $('#vig_preg').val();
     camp_bandera = $('#banderaAccion').val();
@@ -139,6 +140,7 @@ $('body').on('click', '#btn_save_preg', function() {
         formData.append("categoria", camp_cat );
         formData.append("nombre", camp_nomb );
         formData.append("descripcion", camp_desc );
+        formData.append("tipo", camp_tipo );
         formData.append("estado", camp_est );
         formData.append("vigencia", camp_vig );
         formData.append("banderaAccion", camp_bandera );

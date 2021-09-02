@@ -25,7 +25,7 @@
                             <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Nombre</th>
+                                <th scope="col">Pregunta</th>
                                 <th scope="col">Descripciòn</th>
                                 <th scope="col">Vigencia</th>
                                 <th scope="col">Acciónes</th>
@@ -70,7 +70,7 @@
                     <input id="banderaAccion" type="hidden" value="">
                     <input id="uuid" type="hidden" value="">
                     <div class="form-group row">
-                        <label for="nombre_pregunta" class="col-sm-3 col-form-label form-label">* Nombre : </label>
+                        <label for="nombre_pregunta" class="col-sm-3 col-form-label form-label">* Pregunta : </label>
                         <div class="col-sm-6 col-md-6">
                             <input id="nomb_preg" type="text" class="form-control" value="">
                         </div>
@@ -79,6 +79,17 @@
                         <label for="descripcion_pregunta" class="col-sm-3 col-form-label form-label">* Descripción :</label>
                         <div class="col-sm-6 col-md-6">
                             <textarea id="desc_preg" rows="3" cols="50" class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="tipo_pregunta" class="col-sm-3 col-form-label form-label">* Tipo Pregunta :</label>
+                        <div class="col-sm-6 col-md-4">
+                            <select id="tipo_preg" class="custom-control custom-select form-control">
+                                <option value="-99" selected>--- Seleccione ---</option>
+                                    <option value="1">1 - Simple</option>
+                                    <option value="2">1 - Multiple</option>
+                                    <option value="3">1 - Verdadero y Falso</option>
+                            </select>
                         </div>
                     </div>
                     <div class="form-group row">

@@ -72,7 +72,7 @@
                     Continua con Google
                 </a>
 
-                <div class="g-signin2" data-theme="dark" data-onsuccess="onSignIn" data-width="300" data-longtitle="true" style="text-align: -webkit-center;" data-route-google="{{ route('login-google') }}"></div>
+                <div class="g-signin2" data-theme="dark" data-onsuccess="onSignIn" data-width="300" data-longtitle="true" style="text-align: -webkit-center;" data-route-google=""></div>
 
                 <div class="page-separator">
                 <div class="page-separator__text">o</div>
