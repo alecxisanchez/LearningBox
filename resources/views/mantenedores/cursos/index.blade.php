@@ -55,7 +55,7 @@
                                 <th scope="col">Acciónes</th>
                             </tr>
                             </thead>
-                            <tbody></tbody>
+                            <tbody id="search"></tbody>
                         </table>
                     </div><!-- End Requests Table -->
                 </div>

@@ -6,11 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Models\categorias;
 use App\Models\cursos;
 use App\Models\estados;
+use App\Models\modulos;
 use App\Models\vigencias;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\View;
+use SebastianBergmann\CodeCoverage\Driver\Selector;
 
 class MantenedorModulosController extends Controller
 {
@@ -36,14 +38,14 @@ class MantenedorModulosController extends Controller
         $data = $request->input();
         $lstVigencias = vigencias::all();
 
-        $sql = "SELECT A.tr_cur_nombre
-                        ,A.tr_cur_descripcion
-                        ,B.tr_cat_nombre
-                        ,A.tr_cur_vig_fk
-                FROM cursos A
-                    JOIN categorias B
-                        ON ( A.tr_cur_cat_fk = B.tr_cat_id )
-                WHERE A.tr_cur_cat_fk =" . $data['id'];
+        $sql = "SELECT
+                    A.tr_mod_id
+                    ,A.tr_uuid
+                    ,A.tr_mod_nombre
+                    ,A.tr_mod_descripcion
+                    ,A.tr_mod_vig_fk
+                FROM modulos A
+                WHERE A.tr_mod_cur_fk = 1";
 
         $consulta = DB::select($sql);
 
@@ -51,12 +53,10 @@ class MantenedorModulosController extends Controller
 
             $array[] = array(
                 "numero" => $key + 1,
-                "nombre" => $items->tr_cur_nombre,
-                "descripcion" => $items->tr_cur_descripcion,
-                "categoria" => $items->tr_cat_nombre,
-                "curso" => $items->tr_cur_nombre,
-                "unidad" => $items->tr_und_nombre,
-                "vigencia" => $lstVigencias[($items->tr_cur_vig_fk)-1]->tr_vig_nombre,
+                "uuid" => $items->tr_uuid,
+                "nombre" => $items->tr_mod_nombre,
+                "descripcion" => $items->tr_mod_descripcion,
+                "vigencia" => $lstVigencias[($items->tr_mod_vig_fk)-1]->tr_vig_nombre,
                 "accion" =>''
             );
         }
@@ -77,6 +77,37 @@ class MantenedorModulosController extends Controller
             return Response::JSON([
                     "respuesta" => true,
                     "data" => $consulta,
+                    "msg" => "Consulta Exitosa !!"]
+                , 200);
+        }
+    }
+    //
+    public function search(Request $request){
+
+        $data = $request->input('uuid');
+        $consulta_mod = modulos::where('tr_uuid','=',$data)->get();
+        $sql_categoria = "SELECT A.tr_cat_id
+		                        , A.tr_cat_nombre
+                            FROM categorias A WHERE ( A.tr_cat_id = (
+							                    		SELECT B.tr_cur_cat_fk FROM cursos B WHERE B.tr_cur_cat_fk = (
+										                SELECT C.tr_mod_cur_fk FROM modulos C
+											                WHERE (C.tr_uuid = '". $data ."')
+		                            )
+	                            )
+                            )";
+        $categoria = db::select($sql_categoria);
+        $lstVigencias = vigencias::all();
+        if( count($consulta_mod) > 0 ) {
+            return Response::JSON([
+                    "respuesta" => true,
+                    "id" => $consulta_mod[0]['tr_mod_id'],
+                    "uuid" => $consulta_mod[0]['tr_uuid'],
+                    "categoria" => $categoria[0]->tr_cat_id,
+                    "nombre" => $consulta_mod[0]['tr_mod_nombre'],
+                    "descripcion" => $consulta_mod[0]['tr_mod_descripcion'],
+                    "vigencia" => $lstVigencias[($consulta_mod[0]['tr_mod_vig_fk'])-1]->tr_vig_nombre,
+                    "vigenciaId" => $consulta_mod[0]['tr_mod_vig_fk'],
+                    "estadoId" => $consulta_mod[0]['tr_mod_est_fk'],
                     "msg" => "Consulta Exitosa !!"]
                 , 200);
         }

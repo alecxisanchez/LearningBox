@@ -8,18 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class respuestas extends Model
 {
     use HasFactory;
-    protected $table = 'categorias';
-    protected $primaryKey = 'tr_cat_id';
+    protected $table = 'respuestas';
+    protected $primaryKey = 'tr_res_id';
     protected $fillable = [
         'tr_uuid',
-        'tr_cat_nombre',
-        'tr_cat_descripcion',
-        'tr_cat_usuario_creacion',
-        'tr_cat_usuario_modificacion',
-        'tr_cat_fecha_creacion',
-        'tr_cat_fecha_modificaion',
-        'tr_cat_est_fk',
-        'tr_cat_vig_fk',
+        'tr_res_nombre',
+        'tr_res_descripcion',
+        'tr_res_orden',
+        'tr_res_respuesta_correcta',
+        'tr_res_usuario_creacion',
+        'tr_res_usuario_modificacion',
+        'tr_res_fecha_creaciontr_res_fecha_creacion',
+        'tr_res_fecha_modificaion',
+        'tr_res_preg_fk',
+        'tr_res_est_fk',
+        'tr_res_vig_fk',
     ];
     public $timestamps = false;
 }

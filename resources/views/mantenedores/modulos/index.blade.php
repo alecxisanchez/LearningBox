@@ -57,8 +57,6 @@
                                 <th scope="col">#</th>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Descripciòn</th>
-                                <th scope="col">Categoria</th>
-                                <th scope="col">Curso</th>
                                 <th scope="col">Vigencia</th>
                                 <th scope="col">Acciónes</th>
                             </tr>
@@ -91,7 +89,7 @@
                     <div class="form-group row">
                         <label for="nombre_curso" class="col-sm-3 col-form-label form-label">* Categoria : </label>
                         <div class="col-sm-6 col-md-6">
-                            <select id="cat_cur" class="custom-control custom-select form-control">
+                            <select id="cat_mod" class="custom-control custom-select form-control">
                                 <option value="-99" selected>--- Seleccione ---</option>
                                 @foreach($lstCategorias as $item)
                                     <option value="{{ $item->tr_cat_id }}">{{ $item->tr_cat_id }} - {{ $item->tr_cat_nombre }}</option>
@@ -102,9 +100,9 @@
                     <div class="form-group row">
                         <label for="nombre_curso" class="col-sm-3 col-form-label form-label">* Curso : </label>
                         <div class="col-sm-6 col-md-6">
-                            <select id="cat_mod" class="custom-control custom-select form-control">
+                            <select id="cur_mod" class="custom-control custom-select form-control">
                                 <option value="-99" selected>--- Seleccione ---</option>
-                                @foreach($lstCategorias as $item)
+                                @foreach($lstCursos as $item)
                                     <option value="{{ $item->tr_cat_id }}">{{ $item->tr_cat_id }} - {{ $item->tr_cat_nombre }}</option>
                                 @endforeach
                             </select>
@@ -128,7 +126,7 @@
                             <select id="edo_mod" class="custom-control custom-select form-control">
                                 <option value="-99" selected>--- Seleccione ---</option>
                                 @foreach($lstEstados as $item)
-                                    <option value="{{ $item->tr_est_id }}">{{ $item->tr_est_id }}-{{ $item->tr_est_nombre }}</option>
+                                    <option value="{{ $item->tr_est_id }}">{{ $item->tr_est_id }} - {{ $item->tr_est_nombre }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -139,7 +137,7 @@
                             <select id="vig_mod" class="custom-control custom-select form-control">
                                 <option value="-99" selected>--- Seleccione ---</option>
                                 @foreach($lstVigencias as $item)
-                                    <option value="{{ $item->tr_vig_id }}">{{ $item->tr_vig_id }}-{{ $item->tr_vig_nombre }}</option>
+                                    <option value="{{ $item->tr_vig_id }}">{{ $item->tr_vig_id }} - {{ $item->tr_vig_nombre }}</option>
                                 @endforeach
                             </select>
                         </div>

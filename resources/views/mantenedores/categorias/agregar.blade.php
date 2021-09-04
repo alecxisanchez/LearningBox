@@ -30,7 +30,7 @@
                                 <th scope="col">Opciones</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="search">
                             @foreach($lstCategorias as $item)
                                 <tr id="tr_{{ $item->tr_uuid }}">
                                     <td>{{ $item->tr_cat_id }}</td>
