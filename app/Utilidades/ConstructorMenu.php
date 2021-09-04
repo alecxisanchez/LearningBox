@@ -52,14 +52,20 @@ class ConstructorMenu
                                         $itemSub->ruta
                                     );
                                     foreach ($itemSub->subMenu as $itemSubSub) {
+                                        if ($itemSubSub->texto == 'Cerrar Sesión') {
+                                            $logoutGoogle = " onclick='signOut()'";
+                                        } else {
+                                            $logoutGoogle = "";
+                                        }
                                         $menu .= sprintf(
                                             '<li class="sidebar-menu-item %s">
-                                                <a class="sidebar-menu-button" href="%s">
+                                                <a class="sidebar-menu-button" href="%s"%s>
                                                     <span class="sidebar-menu-text">%s</span>
                                                 </a>
                                             </li>',
                                             active($itemSubSub->ruta),
                                             $itemSubSub->ruta,
+                                            $logoutGoogle,
                                             $itemSubSub->texto
                                         );
                                     }

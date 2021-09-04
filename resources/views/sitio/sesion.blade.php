@@ -135,6 +135,8 @@
 <script src="{{ asset('sitio/assets/js/hljs.js') }}"></script>
 <!-- App Settings (safe to remove) -->
 <script src="{{ asset('sitio/assets/js/app-settings.js') }}"></script>
+<!-- Page Specials Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <!-- Google Sesion -->
 <script src="{{ asset('assets/js/sesion/google-sesion.js') }}"></script>
 

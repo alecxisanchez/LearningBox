@@ -12,9 +12,6 @@
             <li class="nav-item">
                 <a class="nav-link active" href="#first" data-toggle="tab">Perfil</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#second" data-toggle="tab">Pagos realizados</a>
-            </li>
         </ul>
         <div class="tab-content card-body">
             <div class="tab-pane active" id="first">

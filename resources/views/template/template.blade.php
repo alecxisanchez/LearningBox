@@ -10,6 +10,9 @@
     <!-- Prevent the demo from appearing in search engines (REMOVE THIS) -->
     <meta name="robots" content="noindex">
 
+    <!-- Google USer Content -->
+    <meta name="google-signin-client_id" content="745164511534-k038ht9q3p1kvmmq7hhc0eluto9jqcpu.apps.googleusercontent.com">
+
     <!-- favicon -->
     <link rel="icon" sizes="16x16" href="{{ asset('assets/images/favicon.ico') }}">
 
@@ -81,6 +84,8 @@
 <!-- Page Specials Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+<!-- Google Platform -->
+<script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
 <!-- Google Sesion -->
 <script src="{{ asset('assets/js/sesion/google-sesion.js') }}"></script>
 @stack('scripts')

@@ -8,6 +8,7 @@ use App\Models\usuarios;
 use App\Models\usuarios_permisos;
 use App\Models\usuarios_roles;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\View;
 use Ramsey\Uuid\Uuid;
 
@@ -120,7 +121,7 @@ class AuthController
 
     /**
      * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
     public function loginGoogle(Request $request)
     {
@@ -128,22 +129,27 @@ class AuthController
         $name = $request->input('name');
         $password = strtolower($request->input('email'));
 
+        \Log::info('AuthController.loginGoogle', ['email' => $email, 'name' => $name]);
+
         $usuario = usuarios::where('tr_usu_mail', $email)->first();
 
         if (\Auth::check()) {
-            return redirect()->route('dashboard');
+            return Response::JSON([
+                    "respuesta" => true,
+                    "msg" => "Se encuentra logueado",
+                    "ruta" => route('dashboard')]
+                , 200);
         } else {
             if (!empty($usuario)) {
                 if ($usuario->tr_usu_est_fk) {
-                    \Auth::loginUsingId($usuario->tr_usu_id);
 
                     $permisos = collect();
-                    $roles = roles::with(['permisos'])->whereHas('usuarios', function ($query) {
-                        $query->where('ti_usu_rol_usu_fk', \Auth::user()->tr_usu_id);
+                    $roles = roles::with(['permisos'])->whereHas('usuarios', function ($query) use ($usuario) {
+                        $query->where('ti_usu_rol_usu_fk', $usuario->tr_usu_id);
                     })->get();
 
                     $permisos_adicionales = permisos::join('usuarios_permisos', 'permisos.tr_per_id', '=', 'usuarios_permisos.ti_usu_per_per_fk')
-                        ->where('ti_usu_per_usu_fk', \Auth::user()->tr_usu_id)
+                        ->where('ti_usu_per_usu_fk', $usuario->tr_usu_id)
                         ->get();
 
                     foreach ($roles as $role) {
@@ -159,14 +165,22 @@ class AuthController
                     $permisos_unicos = $permisos->unique()->values()->all();
 
                     if (in_array(1, $permisos_unicos)) {
+                        \Auth::loginUsingId($usuario->tr_usu_id);
                         \Session::put('access_list', $permisos_unicos);
-                        return redirect()->route('dashboard');
+                        return Response::JSON([
+                                "respuesta" => true,
+                                "msg" => "Login exitoso",
+                                "ruta" => route('dashboard')]
+                            , 200);
                     } else {
                         \Auth::logout();
                         \Session::flush();
-                        return redirect()->route('login-view')
-                            ->withInput()
-                            ->with('message_error', 'Error al iniciar sesión');
+                        return Response::JSON([
+                                "respuesta" => false,
+                                "msg" => 'Error al iniciar sesión',
+                                "ruta" => route('login-view')
+                                ]
+                            , 200);
                     }
                 }
             } else {
@@ -201,9 +215,47 @@ class AuthController
                 $nuevoPermisoUsu->ti_usu_per_vig_fk = 1;
                 $nuevoPermisoUsu->save();
 
-                \Auth::loginUsingId($nuevoUsuario->tr_usu_id);
+                $permisos = collect();
+                $roles = roles::with(['permisos'])->whereHas('usuarios', function ($query) use ($nuevoUsuario) {
+                    $query->where('ti_usu_rol_usu_fk', $nuevoUsuario->tr_usu_id);
+                })->get();
 
-                return redirect()->route('dashboard');
+                $permisos_adicionales = permisos::join('usuarios_permisos', 'permisos.tr_per_id', '=', 'usuarios_permisos.ti_usu_per_per_fk')
+                    ->where('ti_usu_per_usu_fk', $nuevoUsuario->tr_usu_id)
+                    ->get();
+
+                foreach ($roles as $role) {
+                    foreach ($role->permisos as $permiso) {
+                        $permisos->push($permiso->tr_per_id);
+                    }
+                }
+
+                foreach ($permisos_adicionales as $permiso) {
+                    $permisos->push($permiso->tr_per_id);
+                }
+
+                $permisos_unicos = $permisos->unique()->values()->all();
+
+                if (in_array(1, $permisos_unicos)) {
+                    \Auth::loginUsingId($usuario->tr_usu_id);
+                    \Session::put('access_list', $permisos_unicos);
+
+                    return Response::JSON([
+                            "respuesta" => true,
+                            "msg" => "Registro y Login exitoso",
+                            "ruta" => route('dashboard')]
+                        , 200);
+                } else {
+                    \Auth::logout();
+                    \Session::flush();
+
+                    return Response::JSON([
+                            "respuesta" => false,
+                            "msg" => 'Error al iniciar sesión',
+                            "ruta" => route('login-view')
+                        ]
+                        , 401);
+                }
             }
         }
     }
