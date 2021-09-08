@@ -32,7 +32,7 @@ $(document).ready(function() {
                 '<option value="40">40</option>' +
                 '<option value="50">50</option>' +
                 '<option value="-1">Todos</option>' +
-                '</select> Cursos',
+                '</select> Categorias',
             "sZeroRecords": "No se encontraron resultados",
             "sEmptyTable": "No hay ningún dato disponible en esta tabla",
             "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",

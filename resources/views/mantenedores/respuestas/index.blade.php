@@ -25,13 +25,13 @@
                             <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Nombre</th>
-                                <th scope="col">Descripciòn</th>
+                                <th scope="col">Respuesta</th>
+                                <th scope="col">Descripciòn Respuesta</th>
                                 <th scope="col">Vigencia</th>
                                 <th scope="col">Acciónes</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="search">
                             @foreach($lstRespuestas as $item)
                                 <tr id="tr_{{ $item->tr_uuid }}">
                                     <td>{{ $item->tr_resp_id }}</td>
@@ -70,7 +70,7 @@
                     <input id="banderaAccion" type="hidden" value="">
                     <input id="uuid" type="hidden" value="">
                     <div class="form-group row">
-                        <label for="nombre_respuesta" class="col-sm-3 col-form-label form-label">* Nombre : </label>
+                        <label for="nombre_respuesta" class="col-sm-3 col-form-label form-label">* Respuesta : </label>
                         <div class="col-sm-6 col-md-6">
                             <input id="nomb_resp" type="text" class="form-control" value="">
                         </div>
@@ -106,7 +106,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-success" id="btn_save_mod" value=""></button>
+                    <button type="button" class="btn btn-success" id="btn_save_resp" value=""></button>
                 </div>
             </div>
         </div>

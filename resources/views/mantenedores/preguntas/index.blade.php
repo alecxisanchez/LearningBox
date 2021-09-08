@@ -87,8 +87,8 @@
                             <select id="tipo_preg" class="custom-control custom-select form-control">
                                 <option value="-99" selected>--- Seleccione ---</option>
                                     <option value="1">1 - Simple</option>
-                                    <option value="2">1 - Multiple</option>
-                                    <option value="3">1 - Verdadero y Falso</option>
+                                    <option value="2">2 - Multiple</option>
+                                    <option value="3">3 - Verdadero y Falso</option>
                             </select>
                         </div>
                     </div>

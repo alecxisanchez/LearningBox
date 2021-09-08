@@ -25,7 +25,7 @@ class DataCargaCursos extends Migration
                 'tr_cur_usuario_creacion' => null,
                 'tr_cur_usuario_modificacion' => null,
                 'tr_cur_fecha_creacion' => null,
-                'tr_cur_fecha_modificaion' => null,
+                'tr_cur_fecha_modificacion' => null,
                 'tr_cur_cat_fk' => 1,
                 'tr_cur_est_fk' => 1,
                 'tr_cur_vig_fk' => 1

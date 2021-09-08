@@ -24,7 +24,7 @@ class CreateCursosTable extends Migration
             $table->bigInteger('tr_cur_usuario_creacion')->nullable();
             $table->bigInteger('tr_cur_usuario_modificacion')->nullable();
             $table->timestamp('tr_cur_fecha_creacion')->nullable();
-            $table->timestamp('tr_cur_fecha_modificaion')->nullable();
+            $table->timestamp('tr_cur_fecha_modificacion')->nullable();
             $table->foreign('tr_cur_cat_fk')->references('tr_cat_id')->on('categorias');
             $table->foreign('tr_cur_est_fk')->references('tr_est_id')->on('estados');
             $table->foreign('tr_cur_vig_fk')->references('tr_vig_id')->on('vigencias');

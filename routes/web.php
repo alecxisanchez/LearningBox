@@ -57,7 +57,7 @@ Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
 Route::get('/cursos', 'App\Http\Controllers\Mantenedor\MantenedorCursosController@index')->name('cur_index');
 Route::get('/cursos/filter', 'App\Http\Controllers\Mantenedor\MantenedorCursosController@filter');
 Route::get('/curso/search', 'App\Http\Controllers\Mantenedor\MantenedorCursosController@search');
-Route::post('/curso/save', 'App\Http\Controllers\Mantenedor\MantenedorCursosController@save');
+Route::post('curso/save', 'App\Http\Controllers\Mantenedor\MantenedorCursosController@save');
 Route::get('/curso/refesh', 'App\Http\Controllers\Mantenedor\MantenedorCursosController@refesh');
 /**
  * Modulos

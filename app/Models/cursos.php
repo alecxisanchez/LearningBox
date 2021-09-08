@@ -18,7 +18,7 @@ class cursos extends Model
         'tr_cur_usuario_creacion',
         'tr_cur_usuario_modificacion',
         'tr_cur_fecha_creacion',
-        'tr_cur_fecha_modificaion',
+        'tr_cur_fecha_modificacion',
         'tr_cur_cat_fk',
         'tr_cur_est_fk',
         'tr_cur_vig_fk',
