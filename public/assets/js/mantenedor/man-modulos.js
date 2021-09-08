@@ -33,7 +33,7 @@ $(document).ready(function() {
                 '<option value="40">40</option>' +
                 '<option value="50">50</option>' +
                 '<option value="-1">Todos</option>' +
-                '</select> Cursos',
+                '</select> Modulos',
             "sZeroRecords": "No se encontraron resultados",
             "sEmptyTable": "No hay ningún dato disponible en esta tabla",
             "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
@@ -78,6 +78,8 @@ $('body').on('click', '#btn_bus_grilla', function() {
 
     let campo_filtro1 = $('#campo_fil_cat').val();
     let campo_filtro2 = $('#campo_fil_cur').val();
+    console.log('valor1: '+campo_filtro1);
+    console.log('valor2:'+campo_filtro2);
 
     if( campo_filtro1 != '-99' || campo_filtro2 != '-99'){
 
@@ -88,7 +90,7 @@ $('body').on('click', '#btn_bus_grilla', function() {
                 $.ajax({
                     type: "GET",
                     url: "http://127.0.0.1:8000/modulos/filter",
-                    data: { id_cat:campo_filtro1,id_cur:campo_filtro1 },
+                    data: { id_cat:campo_filtro1,id_cur:campo_filtro2 },
                     contentType: "application/json; charset=utf-8",
                     dataType: "JSON",
                     cache: false,
@@ -222,8 +224,7 @@ $('body').on('change', '#campo_fil_cat', function() {
         success: function(response){
             if(response.respuesta){
                 response.data.forEach((item, index) => {
-                    console.log(item);
-                    $('#campo_fil_cur').append('<option>'+ item.tr_cur_id +' - '+ item.tr_cur_nombre +' </option>');
+                    $('#campo_fil_cur').append('<option value="'+item.tr_cur_id+'">'+ item.tr_cur_id +' - '+ item.tr_cur_nombre +' </option>');
                 });
             }
         }
@@ -238,13 +239,128 @@ function search_curso($cat){
         success: function(response){
             if(response.respuesta){
                 response.data.forEach((item, index) => {
-                    console.log(item);
-                    $('#cur_mod').append('<option selected>'+ item.tr_cur_id +' - '+ item.tr_cur_nombre +' </option>');
+                    $('#cur_mod').append('<option selected value="'+item.tr_cur_id+'">'+ item.tr_cur_id +' - '+ item.tr_cur_nombre +' </option>');
                 });
             }
         }
     });
 }
+//***********************************//
+//**** boton de agregar / Editar ****//
+//***********************************//
+$('body').on('click', '#btn_save_mod', function() {
+
+    let camp_nomb; let camp_desc; let camp_est;
+    let camp_vig; let camp_bandera; let camp_uuid;
+    let camp_cat;
+    camp_cat = $('#cat_cur').val();
+    camp_nomb = $('#nomb_cur').val();
+    camp_desc = $('#desc_cur').val();
+    camp_est = $('#edo_cur').val();
+    camp_vig = $('#vig_cur').val();
+    camp_bandera = $('#banderaAccion').val();
+    camp_uuid = $('#uuid').val();
+    //validamos solo campos obligatorios
+    if( camp_nomb == '-99'){
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            html: '<p>El Campo Categoria No esta seleccionado.</p>'
+        })
+    }
+    //validamos solo campos obligatorios
+    if( camp_nomb == '' && camp_desc == ''){
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            html: '<p>El Campo Nombre Esta Vacio.</p><br><p>El Campo Descripción esta Vacio.</p>'
+        })
+    }
+    //validamos solo campos obligatorios
+    if( camp_nomb == '' ){
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            html: '<p>El Campo Nombre Esta Vacio.</p>'
+        })
+    }
+    //validamos solo campos obligatorios
+    if( camp_desc == ''){
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            html: '<p>El Campo Descripción esta Vacio.</p>'
+        })
+    }
+    //validamos y enviamos a guardar
+    if( camp_nomb != '' && camp_desc != '' ) {
+
+        event.preventDefault();
+        let _token   = $('meta[name="csrf-token"]').attr('content');
+
+        var formData = new FormData();
+        formData.append("_token", _token );
+        formData.append("categoria", camp_cat );
+        formData.append("nombre", camp_nomb );
+        formData.append("descripcion", camp_desc );
+        formData.append("estado", camp_est );
+        formData.append("vigencia", camp_vig );
+        formData.append("banderaAccion", camp_bandera );
+        formData.append("uuid", camp_uuid );
+
+        $.ajax({
+            url: "http://127.0.0.1:8000/curso/save",
+            type: "POST",
+            dataType: "HTML",
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+
+            beforeSend: function () {
+                loading = Swal.fire({
+                    title: "Espere por favor...",
+                    allowEscapeKey: false,
+                    allowOutsideClick: false,
+                    onOpen: () => {
+                        Swal.showLoading();
+                    }
+                });
+            },
+
+            success: function (response) {
+                let resp = JSON.parse(response);
+                loading.close();
+                if( resp.respuesta ) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: resp.msg,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    $('#Modal_Curso').modal('hide');
+                    //** llama a refresh de la grilla **//
+                    refresh_grilla(resp.id,camp_bandera);
+                }else{
+                    Swal.fire({
+                        icon: 'error',
+                        text: resp.error,
+                    })
+                }
+            },
+
+            error: function (error) {
+                let resp = JSON.parse(error.responseText);
+                loading.close();
+                loading = Swal.fire({
+                    icon: 'error',
+                    text: resp.error,
+                });
+            }
+        });
+
+    }
+});
 
 
 

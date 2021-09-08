@@ -66,6 +66,7 @@ Route::get('/modulos', 'App\Http\Controllers\Mantenedor\MantenedorModulosControl
 Route::get('/modulos/filter', 'App\Http\Controllers\Mantenedor\MantenedorModulosController@filter');
 Route::get('/modulos/search_categoria','App\Http\Controllers\Mantenedor\MantenedorModulosController@search_categoria');
 Route::get('/modulo/search', 'App\Http\Controllers\Mantenedor\MantenedorModulosController@search');
+Route::post('modulo/save', 'App\Http\Controllers\Mantenedor\MantenedorModulosController@save');
 /**
  * Unidades
  */

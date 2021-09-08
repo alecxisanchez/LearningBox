@@ -8,10 +8,14 @@ use App\Models\cursos;
 use App\Models\estados;
 use App\Models\modulos;
 use App\Models\vigencias;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\View;
+use Ramsey\Uuid\Uuid;
 use SebastianBergmann\CodeCoverage\Driver\Selector;
 
 class MantenedorModulosController extends Controller
@@ -45,7 +49,7 @@ class MantenedorModulosController extends Controller
                     ,A.tr_mod_descripcion
                     ,A.tr_mod_vig_fk
                 FROM modulos A
-                WHERE A.tr_mod_cur_fk = 1";
+                WHERE A.tr_mod_cur_fk = " . $data['id_cur'];
 
         $consulta = DB::select($sql);
 
@@ -110,6 +114,68 @@ class MantenedorModulosController extends Controller
                     "estadoId" => $consulta_mod[0]['tr_mod_est_fk'],
                     "msg" => "Consulta Exitosa !!"]
                 , 200);
+        }
+    }
+    //
+    public function save(Request $request){
+
+        $lstEstados = estados::all();
+        $lstVigencias = vigencias::all();
+        $rules = [
+            'nombre' => 'required|string|min:3|max:255',
+            'descripcion' => 'required|string|min:3|max:255',
+            'vigencia' => 'required',
+            'estado' => 'required'
+        ];
+        $validator = Validator::make($request->all(),$rules);
+
+        if ($validator->fails()) {
+
+        }else {
+            $data = $request->input();
+            if( $data['banderaAccion'] == 'Save' ) {
+                $uuid = Uuid::uuid4();
+                $registro = new modulos();
+                $registro->tr_uuid = $uuid;
+                $registro->tr_mod_nombre = $data['nombre'];
+                $registro->tr_mod_descripcion = $data['descripcion'];
+                $registro->tr_mod_usuario_creacion = 1;
+                $registro->tr_mod_usuario_modificacion = null;
+                $registro->tr_mod_fecha_creacion = date('Y-m-d H:i:s');
+                $registro->tr_mod_fecha_modificaion = null;
+                $registro->tr_mod_cur_fk = $data[''];
+                $registro->tr_mod_est_fk = $data['estado'];
+                $registro->tr_mod_vig_fk = $data['vigencia'];
+                $result = $registro->save();
+
+                if ($result) {
+                    $cat = modulos::select('tr_uuid')->where('tr_uuid',$uuid)->get();
+                    //Log::info('id_uuid Generado: '.$cat[0]['tr_uuid']);
+                    return Response::JSON([
+                            "respuesta" => true,
+                            "id" => $cat[0]['tr_uuid'],
+                            "msg" => "Guardado Exitosamente !!"]
+                        , 200);
+                } else {
+                    return Response::JSON([
+                            "error" => true]
+                        , 401);
+                }
+            }else  {
+                $cat_upt = modulos::where('tr_uuid','=',$data['uuid'])
+                    ->update(["tr_mod_nombre" => $data['nombre'],
+                        "tr_mod_descripcion" => $data['descripcion'],
+                        "tr_mod_cur_fk" => $data['descripcion'],
+                        "tr_mod_est_fk" => $data['estado'],
+                        "tr_mod_vig_fk" => $data['vigencia']]);
+                if($cat_upt) {
+                    return Response::JSON([
+                            "respuesta" => true,
+                            "id" => $data['uuid'],
+                            "msg" => "Editado Exitosamente !!"]
+                        , 200);
+                }
+            }
         }
     }
 }
