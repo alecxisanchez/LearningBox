@@ -76,6 +76,7 @@ $('body').on('click', '#btn_agregar_usu', function() {
 
     //Limpio los campos del modal
     $('#nomb_usu').val('');
+    $('#email_usu').val('');
     $('#desc_usu').val('');
     $('#banderaAccion').val('Save');
     $('#btn_save_usu').text('Guardar');
