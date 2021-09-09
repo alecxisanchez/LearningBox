@@ -32,7 +32,7 @@ $(document).ready(function() {
                 '<option value="40">40</option>' +
                 '<option value="50">50</option>' +
                 '<option value="-1">Todos</option>' +
-                '</select> Cursos',
+                '</select> Preguntas',
             "sZeroRecords": "No se encontraron resultados",
             "sEmptyTable": "No hay ningún dato disponible en esta tabla",
             "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
@@ -247,3 +247,40 @@ function refresh_grilla(id,bandera) {
         }
     });
 }
+//**************************//
+//**** Editar Curso ****//
+//**************************//
+$('body').on('click', '#btn_edit_preg', function() {
+
+    let campoUUID = $(this).attr("data-uuid");
+    $('#banderaAccion').val('Edit');
+    $('#uuid').val(campoUUID);
+    $.ajax({
+        url: "http://127.0.0.1:8000/pregunta/search",
+        type: "GET",
+        data: { "uuid":campoUUID },
+        cache: false,
+
+        success: function (response) {
+            if( response.respuesta ) {
+                $('#btn_save_mod').text('Editar');
+                $('#cat_mod').val(response.categoria);
+                search_curso(response.categoria);
+                $('#nomb_mod').val(response.nombre);
+                $('#desc_mod').val(response.descripcion);
+                $('#vig_mod').val(response.vigenciaId);
+                $('#edo_mod').val(response.estadoId);
+                $('#Modal_Modulo').modal('show');
+            }
+        },
+        error: function (error) {
+            let resp = JSON.parse(error.responseText);
+            loading.close();
+            loading = Swal.fire({
+                icon: 'error',
+                text: resp.error,
+            });
+        }
+    });
+
+});
