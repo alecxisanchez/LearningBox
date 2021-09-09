@@ -322,7 +322,6 @@ function refresh_grilla(id,bandera) {
                         '<td>'+ response.descripcion +'</td>' +
                         '<td>'+ response.vigencia +'</td>' +
                         '<td>' +
-                        '<a id="btn_changer_cat" class="btn btn-secondary btn-sm" data-uuid="' + response.uuid + '" href="#"><i class="material-icons btn__icon--left">'+ imgView +'</i>' + txtView + '</a> ' +
                         '<a id="btn_edit_cat" class="btn btn-primary btn-sm" data-uuid="' + response.uuid + '" href="#"><i class="material-icons btn__icon--left">edit</i>Editar</a> ' +
                         '</td></tr>');
                 }
@@ -333,7 +332,6 @@ function refresh_grilla(id,bandera) {
                         '<td>'+ response.descripcion +'</td>' +
                         '<td>'+ response.vigencia +'</td>' +
                         '<td>' +
-                        '<a id="btn_changer_cat" class="btn btn-secondary btn-sm" data-uuid="' + response.uuid + '" href="#"><i class="material-icons btn__icon--left">'+ imgView +'</i>' + txtView + '</a> ' +
                         '<a id="btn_edit_cat" class="btn btn-primary btn-sm" data-uuid="' + response.uuid + '"  href="#"><i class="material-icons btn__icon--left">edit</i>Editar</a> ' +
                         '</td>');
                 }
