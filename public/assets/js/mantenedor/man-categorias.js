@@ -322,7 +322,7 @@ function refresh_grilla(id,bandera) {
                         '<td>'+ response.descripcion +'</td>' +
                         '<td>'+ response.vigencia +'</td>' +
                         '<td>' +
-                        '<a id="btn_edit_cat" class="btn btn-primary btn-sm" data-uuid="' + response.uuid + '" href="#"><i class="material-icons btn__icon--left">edit</i>Editar</a> ' +
+                        '<a id="btn_edit_cat" class="btn btn-primary btn-sm" data-uuid="' + response.uuid + '" href="#"><i class="material-icons btn__icon--left">edit</i></a> ' +
                         '</td></tr>');
                 }
                 //Editar
@@ -332,7 +332,7 @@ function refresh_grilla(id,bandera) {
                         '<td>'+ response.descripcion +'</td>' +
                         '<td>'+ response.vigencia +'</td>' +
                         '<td>' +
-                        '<a id="btn_edit_cat" class="btn btn-primary btn-sm" data-uuid="' + response.uuid + '"  href="#"><i class="material-icons btn__icon--left">edit</i>Editar</a> ' +
+                        '<a id="btn_edit_cat" class="btn btn-primary btn-sm" data-uuid="' + response.uuid + '"  href="#"><i class="material-icons btn__icon--left">edit</i></a> ' +
                         '</td>');
                 }
             }
