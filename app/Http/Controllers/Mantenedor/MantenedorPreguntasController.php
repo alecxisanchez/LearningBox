@@ -91,9 +91,8 @@ class MantenedorPreguntasController extends Controller
     public function refesh(Request $request){
 
         $data = $request->input('id');
-        $preg = preguntas::where('tr_uuid',$data)->get();+
+        $preg = preguntas::where('tr_uuid',$data)->get();
         $lstVigencias = vigencias::all();
-        $lstCategorias = categorias::all();
 
         return Response::JSON([
                 "respuesta" => true,

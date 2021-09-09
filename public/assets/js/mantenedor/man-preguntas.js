@@ -88,8 +88,7 @@ $('body').on('click', '#btn_save_preg', function() {
 
     let camp_nomb; let camp_desc; let camp_est;
     let camp_vig; let camp_bandera; let camp_uuid;
-    let camp_cat; let camp_tipo;
-    camp_cat = $('#cat_preg').val();
+    let camp_tipo;
     camp_nomb = $('#nomb_preg').val();
     camp_desc = $('#desc_preg').val();
     camp_tipo = $('#tipo_preg').val();
