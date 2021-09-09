@@ -283,7 +283,7 @@ $('body').on('click', '#btn_edit_cat', function() {
                 $('#nomb_cat').val(response.nombre);
                 $('#desc_cat').val(response.descripcion);
                 $('#vig_cat').val(response.vigenciaId);
-                $('#est_cat').val(response.estadoId);
+                $('#edo_cat').val(response.estadoId);
                 $('#Modal_Categoria').modal('show');
             }
         },
