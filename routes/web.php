@@ -106,6 +106,8 @@ Route::get('/respuesta/refesh', 'App\Http\Controllers\Mantenedor\MantenedorRespu
  */
 Route::resource('usuarios', UsuariosController::class);
 Route::get('/usuarios', 'App\Http\Controllers\Mantenedor\MantenedorUsuariosController@index')->name('usu_index');
+Route::get('usuario/search', 'App\Http\Controllers\Mantenedor\MantenedorUsuariosController@search');
+Route::post('/usuario/save', 'App\Http\Controllers\Mantenedor\MantenedorUsuariosController@save');
 /**
  * Roles
  */

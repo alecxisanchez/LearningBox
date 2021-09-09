@@ -72,15 +72,21 @@
                     <input id="banderaAccion" type="hidden" value="">
                     <input id="uuid" type="hidden" value="">
                     <div class="form-group row">
-                        <label for="nombre_usurio" class="col-sm-3 col-form-label form-label">* Nombre : </label>
+                        <label for="nombre_usurio" class="col-sm-3 col-form-label form-label">* Usuario : </label>
                         <div class="col-sm-8 col-md-8">
                             <input id="nomb_usu" type="text" class="form-control" value="" size="30">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="descripcion_usuario" class="col-sm-3 col-form-label form-label">* Descripción :</label>
+                        <label for="descripcion_usuario" class="col-sm-3 col-form-label form-label">* Email :</label>
                         <div class="col-sm-8 col-md-8">
-                            <textarea id="desc_usu" rows="3" cols="50" class="form-control"></textarea>
+                            <input id="email_usu" type="text" class="form-control" value="" size="30">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="contrasena_usuario" class="col-sm-3 col-form-label form-label">* Contraseña :</label>
+                        <div class="col-sm-6 col-md-6">
+                            <input id="pass_usu" type="password" class="form-control" value="" size="15">
                         </div>
                     </div>
                     <div class="form-group row">
