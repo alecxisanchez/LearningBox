@@ -91,7 +91,7 @@ class MantenedorPreguntasController extends Controller
     public function refesh(Request $request){
 
         $data = $request->input('id');
-        $preg = preguntas::where('tr_uuid',$data)->get();
+        $preg = preguntas::where('tr_uuid',$data)->get();+
         $lstVigencias = vigencias::all();
         $lstCategorias = categorias::all();
 
@@ -105,5 +105,26 @@ class MantenedorPreguntasController extends Controller
                 "vigenciaId" => $preg[0]['tr_preg_vig_fk'],
                 "msg" => "Actualizacion Exitosamente !!"]
             , 200);
+    }
+    //
+    public function search(Request $request){
+
+        $data = $request->input('uuid');
+        $consulta_preg = preguntas::where('tr_uuid','=',$data)->get();
+        $lstVigencias = vigencias::all();
+        if( count($consulta_preg) > 0 ) {
+            return Response::JSON([
+                    "respuesta" => true,
+                    "id" => $consulta_preg[0]['tr_preg_id'],
+                    "uuid" => $consulta_preg[0]['tr_uuid'],
+                    "nombre" => $consulta_preg[0]['tr_preg_nombre'],
+                    "descripcion" => $consulta_preg[0]['tr_preg_descripcion'],
+                    "vigencia" => $lstVigencias[($consulta_preg[0]['tr_preg_vig_fk'])-1]->tr_vig_nombre,
+                    "tipo" => $consulta_preg[0]['tr_preg_tipo_pregunta'],
+                    "vigenciaId" => $consulta_preg[0]['tr_preg_vig_fk'],
+                    "estadoId" => $consulta_preg[0]['tr_preg_est_fk'],
+                    "msg" => "Consulta Exitosa !!"]
+                , 200);
+        }
     }
 }

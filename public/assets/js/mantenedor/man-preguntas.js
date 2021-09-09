@@ -263,14 +263,13 @@ $('body').on('click', '#btn_edit_preg', function() {
 
         success: function (response) {
             if( response.respuesta ) {
-                $('#btn_save_mod').text('Editar');
-                $('#cat_mod').val(response.categoria);
-                search_curso(response.categoria);
-                $('#nomb_mod').val(response.nombre);
-                $('#desc_mod').val(response.descripcion);
-                $('#vig_mod').val(response.vigenciaId);
-                $('#edo_mod').val(response.estadoId);
-                $('#Modal_Modulo').modal('show');
+                $('#btn_save_preg').text('Editar');
+                $('#nomb_preg').val(response.nombre);
+                $('#desc_preg').val(response.descripcion);
+                $('#tipo_preg').val(response.tipo);
+                $('#vig_preg').val(response.vigenciaId);
+                $('#edo_preg').val(response.estadoId);
+                $('#Modal_Pregunta').modal('show');
             }
         },
         error: function (error) {

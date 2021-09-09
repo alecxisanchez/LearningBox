@@ -94,7 +94,7 @@ Route::get('/pagos', 'App\Http\Controllers\Mantenedor\MantenedorPagosController@
 Route::get('/preguntas', 'App\Http\Controllers\Mantenedor\MantenedorPreguntasController@index')->name('pre_index');
 Route::post('/pregunta/save', 'App\Http\Controllers\Mantenedor\MantenedorPreguntasController@save');
 Route::get('/pregunta/refesh', 'App\Http\Controllers\Mantenedor\MantenedorPreguntasController@refesh');
-Route::get('/pregunta/search', 'App\Http\Controllers\Mantenedor\MantenedorPreguntasController@search');
+Route::get('pregunta/search', 'App\Http\Controllers\Mantenedor\MantenedorPreguntasController@search');
 /**
  * Respuestas
  */
