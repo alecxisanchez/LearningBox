@@ -48,7 +48,7 @@ class MantenedorPreguntasController extends Controller
                 $registro->tr_uuid = $uuid;
                 $registro->tr_preg_nombre = $data['nombre'];
                 $registro->tr_preg_descripcion = $data['descripcion'];
-                $registro->tr_preg_tipo_pregunta = $data['tipo'];
+                $registro->tr_preg_tipo_pregunta = 1;
                 $registro->tr_preg_usuario_creacion = 1;
                 $registro->tr_preg_usuario_modificacion = null;
                 $registro->tr_preg_fecha_creacion = date('Y-m-d H:i:s');
@@ -73,7 +73,6 @@ class MantenedorPreguntasController extends Controller
                 $preg_upt = preguntas::where('tr_uuid','=',$data['uuid'])->update([
                                         "tr_preg_nombre" => $data['nombre'],
                                         "tr_preg_descripcion" => $data['descripcion'],
-                                        "tr_preg_tipo_pregunta" => $data['tipo'],
                                         "tr_preg_est_fk" => $data['estado'],
                                         "tr_preg_vig_fk" => $data['vigencia']
                                         ]);

@@ -80,7 +80,7 @@
                             <textarea id="desc_preg" rows="3" cols="50" class="form-control"></textarea>
                         </div>
                     </div>
-                    <div class="form-group row">
+                   {{-- <div class="form-group row">
                         <label for="tipo_pregunta" class="col-sm-3 col-form-label form-label">* Tipo :</label>
                         <div class="col-sm-6 col-md-4">
                             <select id="tipo_preg" class="custom-control custom-select form-control">
@@ -90,7 +90,7 @@
                                     <option value="3">3 - Verdadero y Falso</option>
                             </select>
                         </div>
-                    </div>
+                    </div>--}}
                     <div class="form-group row">
                         <label for="estado_pregunta" class="col-sm-3 col-form-label form-label">* Estado :</label>
                         <div class="col-sm-6 col-md-4">

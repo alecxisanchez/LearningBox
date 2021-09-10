@@ -90,6 +90,10 @@
                         </div>
                     </div>
                     <div class="form-group row">
+                        <label for="contrasena_usuario" class="col-sm-3 col-form-label form-label">* Contraseña :</label>
+                        <select class="multiselect" multiple></select>
+                    </div>
+                    <div class="form-group row">
                         <label for="estado_usuario" class="col-sm-3 col-form-label form-label">* Estado :</label>
                         <div class="col-sm-6 col-md-4">
                             <select id="edo_usu" class="custom-control custom-select form-control">
@@ -129,5 +133,6 @@
     <script src="{{ asset('sitio/assets/js/check-selected-row.js') }}"></script>
     <!-- Extra -->
     <script src="{{ asset('assets/js/mantenedor/man-usuarios.js') }}"></script>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.min.js"></script>
 @endpush

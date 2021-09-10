@@ -28,11 +28,23 @@
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Descripciòn</th>
                                 <th scope="col">Estado</th>
-                                <th scope="col">Vigencia</th>
                                 <th scope="col">Acciónes</th>
                             </tr>
                             </thead>
-                            <tbody></tbody>
+                            <tbody id="search">
+                            @foreach($lstPermisos as $item)
+                                <tr id="tr_{{ $item->tr_uuid }}">
+                                    <td>{{ $item->tr_per_id }}</td>
+                                    <td>{{ $item->tr_per_nombre }}</td>
+                                    <td>{{ $item->tr_per_descripcion }}</td>
+                                    <td>{{ $lstVigencias[($item->tr_per_vig_fk)-1]->tr_vig_nombre }}</td>
+                                    <td>
+                                        {{--<a class="btn btn-secondary btn-sm" data-uuid="{{$item->tr_uuid}}" id="btn_changer_cat" href="#"><i class="material-icons btn__icon--left">{{ ( $item->tr_cat_vig_fk == App\Constantes\Constante::VIGENTE) ? 'lock' : 'no_encryption'}}</i>{{ ( $item->tr_cat_vig_fk == App\Constantes\Constante::VIGENTE)? 'Desactivar' : (( $item->tr_cat_vig_fk == App\Constantes\Constante::NO_VIGENTE)? 'Activar': '')}}</a>--}}
+                                        <a class="btn btn-primary btn-sm" data-uuid="{{$item->tr_uuid}}" id="btn_edit_per" href="#"><i class="material-icons btn__icon--left">edit</i></a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
                         </table>
                     </div><!-- End Requests Table -->
                 </div>
@@ -46,7 +58,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header bg-primary">
-                    <h4 class="modal-title text-white">Curso</h4>
+                    <h4 class="modal-title text-white">Permiso</h4>
                     <button type="button"
                             class="close text-white"
                             data-dismiss="modal"

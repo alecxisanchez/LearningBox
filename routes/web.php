@@ -94,7 +94,7 @@ Route::get('/pagos', 'App\Http\Controllers\Mantenedor\MantenedorPagosController@
 Route::get('/preguntas', 'App\Http\Controllers\Mantenedor\MantenedorPreguntasController@index')->name('pre_index');
 Route::post('/pregunta/save', 'App\Http\Controllers\Mantenedor\MantenedorPreguntasController@save');
 Route::get('/pregunta/refesh', 'App\Http\Controllers\Mantenedor\MantenedorPreguntasController@refesh');
-Route::get('pregunta/search', 'App\Http\Controllers\Mantenedor\MantenedorPreguntasController@search');
+Route::get('/pregunta/search', 'App\Http\Controllers\Mantenedor\MantenedorPreguntasController@search');
 /**
  * Respuestas
  */
@@ -106,7 +106,8 @@ Route::get('/respuesta/refesh', 'App\Http\Controllers\Mantenedor\MantenedorRespu
  */
 Route::resource('usuarios', UsuariosController::class);
 Route::get('/usuarios', 'App\Http\Controllers\Mantenedor\MantenedorUsuariosController@index')->name('usu_index');
-Route::get('usuario/search', 'App\Http\Controllers\Mantenedor\MantenedorUsuariosController@search');
+Route::get('/usuario/search', 'App\Http\Controllers\Mantenedor\MantenedorUsuariosController@search');
+Route::get('/usuario/search', 'App\Http\Controllers\Mantenedor\MantenedorUsuariosController@search');
 Route::post('/usuario/save', 'App\Http\Controllers\Mantenedor\MantenedorUsuariosController@save');
 /**
  * Roles
@@ -116,3 +117,7 @@ Route::get('/roles', 'App\Http\Controllers\Mantenedor\MantenedorRolesController@
  * Permisos
  */
 Route::get('/permisos', 'App\Http\Controllers\Mantenedor\MantenedorPermisosController@index')->name('per_index');
+Route::get('/permiso/search', 'App\Http\Controllers\Mantenedor\MantenedorPermisosController@search');
+Route::get('permisos/all', 'App\Http\Controllers\Mantenedor\MantenedorPermisosController@gettodos');
+Route::post('/permiso/save', 'App\Http\Controllers\Mantenedor\MantenedorPermisosController@save');
+Route::get('/permiso/refesh', 'App\Http\Controllers\Mantenedor\MantenedorPermisosController@refesh');

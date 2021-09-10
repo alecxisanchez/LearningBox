@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
     var table_bandeja = $('#table_bandeja').DataTable({
         "processing": false,
         "responsive": true,
@@ -66,6 +67,39 @@ $(document).ready(function() {
             $("#tableLoading").remove();
             $('#dataTableSelectAllWrapper').removeClass('dataTableParentHidden');
             $('#dataTableWrapper').removeClass('dataTableParentHidden');
+        }
+    });
+    //
+    $.ajax({
+        url: "http://127.0.0.1:8000/permisos/all",
+        type: "GET",
+        data: {},
+        cache: false,
+
+        success: function (response) {
+            if( response.respuesta ) {
+                var name = response.dta;
+                $.map(name, function (x) {
+                    return $('.multiselect').append("<option>" + x + "</option>");
+                });
+
+                $('.multiselect')
+                    .multiselect({
+                        allSelectedText: 'All',
+                        maxHeight: 200,
+                        includeSelectAllOption: true
+                    })
+                    .multiselect('selectAll', false)
+                    .multiselect('updateButtonText');
+            }
+        },
+        error: function (error) {
+            let resp = JSON.parse(error.responseText);
+            loading.close();
+            loading = Swal.fire({
+                icon: 'error',
+                text: resp.error,
+            });
         }
     });
 } );
