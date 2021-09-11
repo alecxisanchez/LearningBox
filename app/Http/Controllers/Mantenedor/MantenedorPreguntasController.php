@@ -73,6 +73,7 @@ class MantenedorPreguntasController extends Controller
                 $preg_upt = preguntas::where('tr_uuid','=',$data['uuid'])->update([
                                         "tr_preg_nombre" => $data['nombre'],
                                         "tr_preg_descripcion" => $data['descripcion'],
+
                                         "tr_preg_est_fk" => $data['estado'],
                                         "tr_preg_vig_fk" => $data['vigencia']
                                         ]);

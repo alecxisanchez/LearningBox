@@ -80,6 +80,7 @@ Route::get('/quizes', 'App\Http\Controllers\Mantenedor\MantenedorQuizesControlle
  * Archivos
  */
 Route::get('/Archivos', 'App\Http\Controllers\Mantenedor\MantenedorArchivosController@index')->name('arch_index');
+Route::post('/archivo/save', 'App\Http\Controllers\Mantenedor\MantenedorArchivosController@save');
 /**
  * Configuraciones
  */
