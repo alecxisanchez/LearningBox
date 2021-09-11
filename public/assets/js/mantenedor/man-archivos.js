@@ -131,11 +131,11 @@ $('body').on('click', '#btn_save_arch', function() {
         formData.append('docs[]', dFiles[i]);
         formData.append('detalleDocs[]',tipoDocs[i])
     }
+    //
     $.ajax({
-        //url: '{{asset("guardar_solicitud")}}',
         url: "http://127.0.0.1:8000/archivo/save",
         type: "POST",
-        dataType: "html",
+        dataType: "HTML",
         data: formData,
         cache: false,
         contentType: false,

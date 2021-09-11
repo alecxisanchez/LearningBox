@@ -361,6 +361,23 @@ $('body').on('click', '#btn_save_mod', function() {
 
     }
 });
+$('body').on('change', '#cat_mod', function() {
+    let campo_filtro = $('#cat_mod').val();
+    $('#cur_mod').empty();
+    $('#cur_mod').append('<option value="-99"> --- Seleccione --- </option>');
+    $.ajax({
+        type: "GET",
+        url: 'http://127.0.0.1:8000/modulos/search_categoria',
+        data: {id: campo_filtro},
+        success: function(response){
+            if(response.respuesta){
+                response.data.forEach((item, index) => {
+                    $('#cur_mod').append('<option value="'+item.tr_cur_id+'">'+ item.tr_cur_id +' - '+ item.tr_cur_nombre +' </option>');
+                });
+            }
+        }
+    });
+});
 
 
 

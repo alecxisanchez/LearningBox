@@ -2,7 +2,6 @@
 
 @section('content')
     <link rel="stylesheet" href="{!! asset('assets/ComponenteArchivos.css') !!}">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 
     <ol class="breadcrumb">
