@@ -39,7 +39,7 @@
                         </div>
                         <div class="col-lg-3">
                             <div class="d-flex flex-column ">
-                                <button id="btn_bus_grilla" type="button" class="btn btn-primary mb-2">Buscar</button>
+                                <button id="btn_bus_grilla" type="button" class="btn btn-primary btn-primary-ac mb-2">Buscar</button>
                                 <button id="btn_lim_grilla" type="button" class="btn btn-secondary mb-2">Limpiar</button>
                             </div>
                         </div>
@@ -49,7 +49,7 @@
                     <!-- Requests Table -->
                     <div class="card shadow p-3 mt-2 table-responsive">
                         <div  style="text-align: center;">
-                            <a id="btn_agregar_mod" class="btn btn-primary btn-sm"><i class="material-icons">add</i></a>
+                            <a id="btn_agregar_mod" class="btn btn-primary btn-primary-ac btn-sm"><i class="material-icons">add</i></a>
                         </div>
                         <table id="table_bandeja" class="table table-striped table__bg">
                             <thead>
@@ -74,7 +74,7 @@
     <div class="modal fade" id="Modal_Modulo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <div class="modal-header bg-primary">
+                <div class="modal-header bg-primary bg-primary-ac">
                     <h4 class="modal-title text-white">Modulo</h4>
                     <button type="button"
                             class="close text-white"
@@ -145,7 +145,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-success" id="btn_save_mod" value=""></button>
+                    <button type="button" class="btn btn-success btn-primary-ac" id="btn_save_mod" value=""></button>
                 </div>
             </div>
         </div>

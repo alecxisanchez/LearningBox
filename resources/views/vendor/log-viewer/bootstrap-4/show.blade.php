@@ -41,7 +41,7 @@
                 <div class="card-header">
                     @lang('Log info') :
                     <div class="group-btns pull-right">
-                        <a href="{{ route('log-viewer::logs.download', [$log->date]) }}" class="btn btn-sm btn-success">
+                        <a href="{{ route('log-viewer::logs.download', [$log->date]) }}" class="btn btn-sm btn-success btn-primary-ac">
                             <i class="fa fa-download"></i> @lang('Download')
                         </a>
                         <a href="#delete-log-modal" class="btn btn-sm btn-danger" data-toggle="modal">
@@ -89,7 +89,7 @@
                                             (@lang(':count results', ['count' => $entries->count()])) <i class="fa fa-fw fa-times"></i>
                                         </a>
                                     @endunless
-                                    <button id="search-btn" class="btn btn-primary">
+                                    <button id="search-btn" class="btn btn-primary btn-primary-ac">
                                         <span class="fa fa-fw fa-search"></span>
                                     </button>
                                 </div>

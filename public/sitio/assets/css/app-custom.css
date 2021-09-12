@@ -1,0 +1,45 @@
+[dir] .preloader {
+    background: #dc3974;
+}
+
+[dir] .btn-primary-ac {
+    background-color: #dc3974;
+    border-color: #dc3974;
+    box-shadow: inset 0 1px 0 hsl(0deg 0% 100% / 15%), 0 1px 1px rgb(0 0 0 / 8%);
+}
+
+[dir] .btn-primary-ac:hover {
+    background-color: #de1e63;
+    border-color:#de1e63;
+}
+
+[dir] .btn-primary-ac:focus {
+    background-color:#dc3974;
+    border-color:#dc3974;
+    box-shadow:inset 0 1px 0 hsla(0,0%,100%,.15),0 1px 1px rgba(0,0,0,.075),0 0 0 .2rem rgba(245, 66, 108, 0.5);
+}
+
+[dir] .btn-primary-ac:not(:disabled):not(.disabled):active, [dir] .show>.btn-primary-ac.dropdown-toggle {
+    background-color:#de1e63;
+    border-color:#de1e63;
+}
+
+[dir] .btn-primary-ac:not(:disabled):not(.disabled).active:focus, [dir] .btn-primary-ac:not(:disabled):not(.disabled):active:focus, [dir] .show>.btn-primary-ac.dropdown-toggle:focus {
+    box-shadow:inset 0 3px 5px rgba(0,0,0,.125),0 0 0 .2rem rgba(245, 66, 108, 0.5);
+}
+
+[dir] .bg-primary-ac {
+    background-color: #dc3974!important;
+}
+
+[dir] .sidebar-submenu .sidebar-menu-text:after {
+    background-color: #dc3974;
+}
+
+a {
+    color: rgba(222,30,99,1);
+}
+
+a:hover {
+    color: rgba(222,30,99,1);
+}

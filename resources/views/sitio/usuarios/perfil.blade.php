@@ -70,7 +70,7 @@
                         <div class="col-sm-8 offset-sm-3">
                             <div class="media align-items-center">
                                 <div class="media-left">
-                                    <button type="button" name="guardar_cambios" id="guardar_cambios" class="btn btn-success" data-route="{{ route('usuarios.update', ['usuario' => \Auth::user()->tr_usu_id]) }}">Guardar cambios</button>
+                                    <button type="button" name="guardar_cambios" id="guardar_cambios" class="btn btn-success btn-primary-ac" data-route="{{ route('usuarios.update', ['usuario' => \Auth::user()->tr_usu_id]) }}">Guardar cambios</button>
                                 </div>
                             </div>
                         </div>

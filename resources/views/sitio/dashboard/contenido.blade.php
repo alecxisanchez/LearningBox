@@ -14,7 +14,7 @@
                 Your subscription ends on <strong>25 February 2015</strong>
             </div>
             <div class="media-right mt-2 mt-xs-plus-0">
-                <a class="btn btn-success" href="#">Upgrade</a>
+                <a class="btn btn-success btn-primary-ac" href="#">Upgrade</a>
             </div>
         </div>
     </div>
@@ -58,7 +58,7 @@
                         <p class="card-subtitle">Your recent courses</p>
                     </div>
                     <div class="media-right">
-                        <a class="btn btn-sm btn-primary" href="student-my-courses.html">My courses</a>
+                        <a class="btn btn-sm btn-primary btn-primary-ac" href="student-my-courses.html">My courses</a>
                     </div>
                 </div>
             </div>
@@ -191,7 +191,7 @@
                         <p class="card-subtitle">Your Performance</p>
                     </div>
                     <div class="media-right">
-                        <a class="btn btn-sm btn-primary"
+                        <a class="btn btn-sm btn-primary btn-primary-ac"
                            href="#">Quiz results</a>
                     </div>
                 </div>
@@ -282,9 +282,9 @@
                 <p class="card-subtitle">Your latest achievements</p>
             </div>
             <div class="card-body text-center">
-                <div class="btn btn-primary btn-circle"><i class="material-icons">thumb_up</i></div>
+                <div class="btn btn-primary btn-primary-ac btn-circle"><i class="material-icons">thumb_up</i></div>
                 <div class="btn btn-danger btn-circle"><i class="material-icons">grade</i></div>
-                <div class="btn btn-success btn-circle"><i class="material-icons">bubble_chart</i></div>
+                <div class="btn btn-success btn-primary-ac btn-circle"><i class="material-icons">bubble_chart</i></div>
                 <div class="btn btn-warning btn-circle"><i class="material-icons">keyboard_voice</i></div>
                 <div class="btn btn-info btn-circle"><i class="material-icons">event_available</i></div>
             </div>
@@ -298,7 +298,7 @@
                         <p class="card-subtitle">Latest forum topics &amp; replies</p>
                     </div>
                     <div class="media-right">
-                        <a class="btn btn-sm btn-primary" href="student-forum.html"> <i class="material-icons">keyboard_arrow_right</i></a>
+                        <a class="btn btn-sm btn-primary btn-primary-ac" href="student-forum.html"> <i class="material-icons">keyboard_arrow_right</i></a>
                     </div>
                 </div>
             </div>

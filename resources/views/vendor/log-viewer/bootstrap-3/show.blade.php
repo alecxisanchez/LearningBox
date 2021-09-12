@@ -45,7 +45,7 @@
                     @lang('Log info') :
 
                     <div class="group-btns pull-right">
-                        <a href="{{ route('log-viewer::logs.download', [$log->date]) }}" class="btn btn-xs btn-success">
+                        <a href="{{ route('log-viewer::logs.download', [$log->date]) }}" class="btn btn-xs btn-success btn-primary-ac">
                             <i class="fa fa-download"></i> @lang('Download')
                         </a>
                         <a href="#delete-log-modal" class="btn btn-xs btn-danger" data-toggle="modal">
@@ -95,7 +95,7 @@
                                             (@lang(':count results', ['count' => $entries->count()])) <span class="glyphicon glyphicon-remove"></span>
                                         </a>
                                     @endunless
-                                    <button id="search-btn" class="btn btn-primary">
+                                    <button id="search-btn" class="btn btn-primary btn-primary-ac">
                                         <span class="glyphicon glyphicon-search"></span>
                                     </button>
                                 </span>

@@ -17,7 +17,7 @@
                     <!-- Requests Table -->
                     <div class="card shadow p-3 mt-2 table-responsive">
                         <div  style="text-align: center;">
-                            <a id="btn_agregar_cat" class="btn btn-primary btn-sm"><i class="material-icons">add</i></a>
+                            <a id="btn_agregar_cat" class="btn btn-primary btn-primary-ac btn-sm"><i class="material-icons">add</i></a>
                             {{--<button id="btn_agregar_cur" type="button" class="btn btn-warning">Agregar</button>--}}
                         </div>
                         <table id="table_bandeja" class="table table-striped table__bg">
@@ -39,7 +39,7 @@
                                     <td>{{ $lstVigencias[($item->tr_cat_vig_fk)-1]->tr_vig_nombre }}</td>
                                     <td>
                                         {{--<a class="btn btn-secondary btn-sm" data-uuid="{{$item->tr_uuid}}" id="btn_changer_cat" href="#"><i class="material-icons btn__icon--left">{{ ( $item->tr_cat_vig_fk == App\Constantes\Constante::VIGENTE) ? 'lock' : 'no_encryption'}}</i>{{ ( $item->tr_cat_vig_fk == App\Constantes\Constante::VIGENTE)? 'Desactivar' : (( $item->tr_cat_vig_fk == App\Constantes\Constante::NO_VIGENTE)? 'Activar': '')}}</a>--}}
-                                        <a class="btn btn-primary btn-sm" data-uuid="{{$item->tr_uuid}}" id="btn_edit_cat" href="#"><i class="material-icons btn__icon--left">edit</i></a>
+                                        <a class="btn btn-primary btn-primary-ac btn-sm" data-uuid="{{$item->tr_uuid}}" id="btn_edit_cat" href="#"><i class="material-icons btn__icon--left">edit</i></a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -56,7 +56,7 @@
     <div class="modal fade" id="Modal_Categoria" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <div class="modal-header bg-primary">
+                <div class="modal-header bg-primary bg-primary-ac">
                     <h4 class="modal-title text-white">Categorias</h4>
                     <button type="button"
                             class="close text-white"
@@ -109,7 +109,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-success" id="btn_save_cat" value=""></button>
+                    <button type="button" class="btn btn-success btn-primary-ac" id="btn_save_cat" value=""></button>
                 </div>
             </div>
         </div>

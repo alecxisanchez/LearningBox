@@ -27,6 +27,8 @@
     <link type="text/css" href="{{ asset('sitio/assets/vendor/spinkit.css') }}" rel="stylesheet">
     <!-- App CSS -->
     <link type="text/css" href="{{ asset('sitio/assets/css/app.css') }}" rel="stylesheet">
+    <!-- App Custom CSS -->
+    <link type="text/css" href="{{ asset('sitio/assets/css/app-custom.css') }}" rel="stylesheet">
 
 </head>
 
@@ -75,7 +77,7 @@
                 <div class="g-signin2" data-theme="dark" data-onsuccess="onSignIn" data-width="300" data-longtitle="true" style="text-align: -webkit-center;" data-route-google=""></div>
 
                 <div class="page-separator">
-                <div class="page-separator__text">o</div>
+                    <div class="page-separator__text">o</div>
                 </div>
 
                 <form action="{{ route('login') }}" novalidate method="post">
@@ -103,8 +105,7 @@
                         </div>
                     </div>
                     <div class="form-group ">
-                        <button type="submit" class="btn btn-primary btn-block">Entrar</button>
-                        <a href="{{ route('dashboard') }}" class="btn btn-warning btn-block">Tablero</a>
+                        <button type="submit" class="btn btn-primary btn-primary-ac btn-block btn-primary-ac">Entrar</button>
                     </div>
                     <div class="text-center">
                         <a href="#" class="text-black-70" style="text-decoration: underline;">¿Olvidaste tu contraseña?</a>

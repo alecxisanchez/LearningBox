@@ -5,8 +5,7 @@
     <div class="mdk-header__content">
 
         <!-- Navbar -->
-        <nav id="default-navbar"
-             class="navbar navbar-expand navbar-dark bg-primary m-0">
+        <nav id="default-navbar" class="navbar navbar-expand navbar-dark bg-primary bg-primary-ac m-0">
             <div class="container-fluid">
                 <!-- Toggle sidebar -->
                 <button class="navbar-toggler d-block" data-toggle="sidebar" type="button">

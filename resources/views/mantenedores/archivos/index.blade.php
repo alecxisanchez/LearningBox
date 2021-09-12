@@ -20,7 +20,7 @@
                     <!-- Requests Table -->
                     <div class="card shadow p-3 mt-2 table-responsive">
                         <div  style="text-align: center;">
-                            <a id="btn_agregar_arch" class="btn btn-primary btn-sm"><i class="material-icons">add</i></a>
+                            <a id="btn_agregar_arch" class="btn btn-primary btn-primary-ac btn-sm"><i class="material-icons">add</i></a>
                         </div>
                         <table id="table_bandeja" class="table table-striped table__bg">
                             <thead>
@@ -45,7 +45,7 @@
     <div class="modal fade" id="Modal_Archivo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-centered ">
             <div class="modal-content">
-                <div class="modal-header bg-primary">
+                <div class="modal-header bg-primary bg-primary-ac">
                     <h4 class="modal-title text-white">Archivo</h4>
                     <button type="button"
                             class="close text-white"
@@ -61,7 +61,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-success" id="btn_save_arch" value=""></button>
+                    <button type="button" class="btn btn-success btn-primary-ac" id="btn_save_arch" value=""></button>
                 </div>
             </div>
         </div>

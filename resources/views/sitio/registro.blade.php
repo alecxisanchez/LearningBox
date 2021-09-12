@@ -21,6 +21,8 @@
     <link type="text/css" href="{{ asset('sitio/assets/vendor/spinkit.css') }}" rel="stylesheet">
     <!-- App CSS -->
     <link type="text/css" href="{{ asset('sitio/assets/css/app.css') }}" rel="stylesheet">
+    <!-- App Custom CSS -->
+    <link type="text/css" href="{{ asset('sitio/assets/css/app-custom.css') }}" rel="stylesheet">
 
 </head>
 
@@ -67,6 +69,8 @@
                     <span class="fab fa-google mr-2"></span>
                     Continuar con Google
                 </a>
+
+                <div class="g-signin2" data-theme="dark" data-onsuccess="onSignIn" data-width="300" data-longtitle="true" style="text-align: -webkit-center;" data-route-google=""></div>
 
                 <div class="page-separator">
                     <div class="page-separator__text">o</div>
@@ -118,7 +122,7 @@
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-block mb-3">Registrarme</button>
+                    <button type="submit" class="btn btn-primary btn-primary-ac btn-block mb-3">Registrarme</button>
                     <div class="form-group text-center mb-0">
                         <div class="custom-control custom-checkbox">
                             <input id="terms" type="checkbox" class="custom-control-input" checked required="">
@@ -142,12 +146,18 @@
 <!-- MDK -->
 <script src="{{ asset('sitio/assets/vendor/dom-factory.js') }}"></script>
 <script src="{{ asset('sitio/assets/vendor/material-design-kit.js') }}"></script>
+<!-- Google Platform -->
+<script src="https://apis.google.com/js/platform.js" async defer></script>
 <!-- App JS -->
 <script src="{{ asset('sitio/assets/js/app.js') }}"></script>
 <!-- Highlight.js -->
 <script src="{{ asset('sitio/assets/js/hljs.js') }}"></script>
 <!-- App Settings (safe to remove) -->
 <script src="{{ asset('sitio/assets/js/app-settings.js') }}"></script>
+<!-- Page Specials Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<!-- Google Sesion -->
+<script src="{{ asset('assets/js/sesion/google-sesion.js') }}"></script>
 
 </body>
 

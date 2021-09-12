@@ -28,6 +28,8 @@
     <link type="text/css" href="{{ asset('sitio/assets/vendor/spinkit.css') }}" rel="stylesheet">
     <!-- App CSS -->
     <link type="text/css" href="{{ asset('sitio/assets/css/app.css') }}" rel="stylesheet">
+    <!-- App Custom CSS -->
+    <link type="text/css" href="{{ asset('sitio/assets/css/app-custom.css') }}" rel="stylesheet">
     <!-- Page Specials Styles -->
     <link href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css" rel="stylesheet">
     @stack('styles')

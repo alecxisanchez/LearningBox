@@ -28,14 +28,15 @@ Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 });
 
+Route::get('registrarme', function () {
+    return view('sitio/registro');
+})->name('register');
+
 Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
 
     /**
      * Ejemplos de vistas
      */
-    Route::get('registrarme', function () {
-        return view('sitio/registro');
-    })->name('register');
 
     Route::get('dashboard', function () {
         return view('sitio/dashboard/dashboard');
