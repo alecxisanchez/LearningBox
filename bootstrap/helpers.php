@@ -150,7 +150,7 @@ if (!function_exists('menu')) {
                                 'subMenu' => [],
                             ],
                             'Archivos' => [
-                                'texto' => 'archivos',
+                                'texto' => 'Archivos',
                                 'ruta' => route('arch_index'),
                                 'icono' => null,
                                 'permisos' => [ConsPermisos::$mod_unidades],
