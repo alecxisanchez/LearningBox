@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Response;
-use Illuminate\Support\Facades\Validator;
+use App\Models\cursos;
 use Illuminate\Support\Facades\View;
 
 /**
@@ -20,9 +18,19 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        $userCourses = cursos::select('*')
+            ->join('usuarios_cursos', 'cursos.tr_cur_id', '=', 'usuarios_cursos.ti_usu_cur_cur_fk')
+            ->where('usuarios_cursos.ti_usu_cur_usu_fk', '=', \Auth::user()->tr_usu_id)
+            ->get();
 
+        $allCourses = cursos::all();
 
-        return View::make('sitio.dashboard.dashboard');
+        $data = [
+            'userCourses' => $userCourses,
+            'allCourses' => $allCourses
+        ];
+
+        return View::make('sitio.dashboard.dashboard', $data);
     }
 
 }
