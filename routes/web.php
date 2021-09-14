@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UsuariosController;
 use Illuminate\Support\Facades\Route;
 
@@ -37,10 +38,7 @@ Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
     /**
      * Ejemplos de vistas
      */
-
-    Route::get('dashboard', function () {
-        return view('sitio/dashboard/dashboard');
-    })->name('dashboard');
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::get('usuario', function () {
         return view('sitio/user/profile');
