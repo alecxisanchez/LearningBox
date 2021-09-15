@@ -36,13 +36,9 @@ Route::get('registrarme', function () {
 Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
 
     /**
-     * Ejemplos de vistas
+     * Dashboard
      */
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
-    Route::get('usuario', function () {
-        return view('sitio/user/profile');
-    })->name('user');
 
     /**
      * Categorias
@@ -61,6 +57,8 @@ Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
     Route::get('/curso/search', 'App\Http\Controllers\Mantenedor\MantenedorCursosController@search');
     Route::post('curso/save', 'App\Http\Controllers\Mantenedor\MantenedorCursosController@save');
     Route::get('/curso/refesh', 'App\Http\Controllers\Mantenedor\MantenedorCursosController@refesh');
+    Route::get('/detalles-curso/{curso}', 'App\Http\Controllers\CursosController@detallesCurso')->name('detalles_curso');
+    Route::post('/rating-curso/{curso}/{estrellas}', 'App\Http\Controllers\CursosController@guardarRating')->name('rating_curso');
 
     /**
      * Modulos

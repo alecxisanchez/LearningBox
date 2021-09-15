@@ -23,18 +23,18 @@
                     <div class="card-header">
                         <div class="media">
                             <div class="media-left">
-                                <a href="#">
+                                <a href="{{ route('detalles_curso', [$userCourse->tr_cur_id]) }}">
                                     <img src="{{ asset('sitio/assets/images/vuejs.png') }}" alt="Card image cap" width="100" class="rounded">
                                 </a>
                             </div>
                             <div class="media-body">
-                                <h4 class="card-title m-0"><a href="#">{{ $userCourse->tr_cur_nombre }}</a></h4>
+                                <h4 class="card-title m-0"><a href="{{ route('detalles_curso', [$userCourse->tr_cur_id]) }}">{{ $userCourse->tr_cur_nombre }}</a></h4>
                                 <small class="text-muted">{{ $userCourse->tr_cur_descripcion }}</small>
                             </div>
                         </div>
                     </div>
                     <div class="progress rounded-0">
-                        <div class="progress-bar progress-bar-striped bg-primary" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar progress-bar-striped bg-primary bg-primary-ac" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                     <div class="card-footer bg-white">
                         <a href="#" class="btn btn-primary btn-sm">Continuar <i class="material-icons btn__icon--right">play_circle_outline</i></a>
@@ -64,18 +64,18 @@
                     <div class="card-header">
                         <div class="media">
                             <div class="media-left">
-                                <a href="#">
+                                <a href="{{ route('detalles_curso', [$allCourse->tr_cur_id]) }}">
                                     <img src="{{ asset('sitio/assets/images/vuejs.png') }}" alt="Card image cap" width="100" class="rounded">
                                 </a>
                             </div>
                             <div class="media-body">
-                                <h4 class="card-title m-0"><a href="#">{{ $allCourse->tr_cur_nombre }}</a></h4>
+                                <h4 class="card-title m-0"><a href="{{ route('detalles_curso', [$allCourse->tr_cur_id]) }}">{{ $allCourse->tr_cur_nombre }}</a></h4>
                                 <small class="text-muted">{{ $allCourse->tr_cur_descripcion }}</small>
                             </div>
                         </div>
                     </div>
                     <div class="progress rounded-0">
-                        <div class="progress-bar progress-bar-striped bg-primary" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar progress-bar-striped bg-primary bg-primary-ac" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                     <div class="card-footer bg-white">
                         <a href="#" class="btn btn-primary btn-sm">Continuar <i class="material-icons btn__icon--right">play_circle_outline</i></a>

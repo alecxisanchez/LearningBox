@@ -148,14 +148,11 @@ class UsuariosController extends Controller
             $validator = Validator::make($request->all(), $rules);
 
             if ($validator->fails()) {
-                \Log::debug('UsuariosController.update', ['validator fail' => $validator->errors()->first()]);
-
                 return Response::JSON([
                         "error" => true,
                         "msg" => "El campo nombre o email estan vacios o no corresponde la contraseña"],
                     401);
             } else {
-                \Log::debug('UsuariosController.update', ['validator success' => $id]);
                 $name = $request->input('name');
                 $password = $request->input('password');
 
