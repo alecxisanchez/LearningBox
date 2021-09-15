@@ -9,9 +9,9 @@
     <!-- Prevent the demo from appearing in search engines (REMOVE THIS) -->
     <meta name="robots" content="noindex">
 
-    <!-- Google USer Content -->
+    <!-- Google USer Content
     <meta name="google-signin-client_id" content="745164511534-k038ht9q3p1kvmmq7hhc0eluto9jqcpu.apps.googleusercontent.com">
-
+    -->
     <!-- favicon -->
     <link rel="icon" sizes="16x16" href="{{ asset('assets/images/favicon.ico') }}">
 
@@ -128,8 +128,9 @@
 <!-- MDK -->
 <script src="{{ asset('sitio/assets/vendor/dom-factory.js') }}"></script>
 <script src="{{ asset('sitio/assets/vendor/material-design-kit.js') }}"></script>
-<!-- Google Platform -->
+<!-- Google Platform
 <script src="https://apis.google.com/js/platform.js" async defer></script>
+-->
 <!-- App JS -->
 <script src="{{ asset('sitio/assets/js/app.js') }}"></script>
 <!-- Highlight.js -->
