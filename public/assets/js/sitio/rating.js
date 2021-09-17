@@ -26,7 +26,7 @@ Rating = function () {
                     success: function (response) {
                         let resp = JSON.parse(response);
                         if( resp.respuesta ) {
-                            console.log(resp.msg);
+                            location.reload();
                         }
                     }
 

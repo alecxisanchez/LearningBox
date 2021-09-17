@@ -21,9 +21,11 @@ class CursosController extends Controller
     public function detallesCurso($idCurso)
     {
         $cursoDetalle = cursos::where('tr_cur_id', $idCurso)->first();
+        $cursoRating = rating::where('tr_rat_cur_fk', $idCurso)->avg('tr_rat_estrellas');
 
         $data = [
-            'cursoDetalle' => $cursoDetalle
+            'cursoDetalle' => $cursoDetalle,
+            'cursoRating' => round($cursoRating, 0)
         ];
 
         return View::make('sitio.curso.detalle-curso', $data);
@@ -36,11 +38,6 @@ class CursosController extends Controller
      */
     public function guardarRating($curso, $estrellas)
     {
-        //$curso = $request->input('curso');
-        //$estrellas = $request->input('estrellas');
-
-        \Log::info('CursosController.guardarRating', [$curso, $estrellas]);
-
         $buscarRating = rating::where('tr_rat_cur_fk', $curso)
             ->where('tr_rat_usu_fk', \Auth::user()->tr_usu_id)
             ->first();

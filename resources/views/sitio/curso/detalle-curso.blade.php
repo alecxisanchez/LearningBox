@@ -167,11 +167,11 @@
                 <div class="card-body">
                     <div class="rating">
                         @csrf
-                        <a href="" data-route="{{ route('rating_curso', [$cursoDetalle->tr_cur_id, 1]) }}" class="guardar_rating"><i class="material-icons">star</i></a>
-                        <a href="" data-route="{{ route('rating_curso', [$cursoDetalle->tr_cur_id, 2]) }}" class="guardar_rating"><i class="material-icons">star</i></a>
-                        <a href="" data-route="{{ route('rating_curso', [$cursoDetalle->tr_cur_id, 3]) }}" class="guardar_rating"><i class="material-icons">star</i></a>
-                        <a href="" data-route="{{ route('rating_curso', [$cursoDetalle->tr_cur_id, 4]) }}" class="guardar_rating"><i class="material-icons">star</i></a>
-                        <a href="" data-route="{{ route('rating_curso', [$cursoDetalle->tr_cur_id, 5]) }}" class="guardar_rating"><i class="material-icons">star_border</i></a>
+                        <a href="#" data-route="{{ route('rating_curso', [$cursoDetalle->tr_cur_id, 1]) }}" class="guardar_rating"><i class="material-icons">{{ $cursoRating >= 1  ? 'star' : 'star_border' }}</i></a>
+                        <a href="#" data-route="{{ route('rating_curso', [$cursoDetalle->tr_cur_id, 2]) }}" class="guardar_rating"><i class="material-icons">{{ $cursoRating >= 2  ? 'star' : 'star_border' }}</i></a>
+                        <a href="#" data-route="{{ route('rating_curso', [$cursoDetalle->tr_cur_id, 3]) }}" class="guardar_rating"><i class="material-icons">{{ $cursoRating >= 3  ? 'star' : 'star_border' }}</i></a>
+                        <a href="#" data-route="{{ route('rating_curso', [$cursoDetalle->tr_cur_id, 4]) }}" class="guardar_rating"><i class="material-icons">{{ $cursoRating >= 4  ? 'star' : 'star_border' }}</i></a>
+                        <a href="#" data-route="{{ route('rating_curso', [$cursoDetalle->tr_cur_id, 5]) }}" class="guardar_rating"><i class="material-icons">{{ $cursoRating >= 5  ? 'star' : 'star_border' }}</i></a>
                     </div>
                     <small class="text-muted">20 ratings</small>
                 </div>

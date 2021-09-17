@@ -116,7 +116,11 @@ class AuthController
      */
     public function loginView()
     {
-        return View::make('sitio.sesion');
+        if (\Auth::check()) {
+            return redirect()->route('dashboard');
+        } else {
+            return View::make('sitio.sesion');
+        }
     }
 
     /**
