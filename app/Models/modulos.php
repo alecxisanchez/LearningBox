@@ -5,11 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class modulos
+ * @package App\Models
+ */
 class modulos extends Model
 {
     use HasFactory;
+
     protected $table = 'modulos';
+
     protected $primaryKey = 'tr_mod_id';
+
     protected $fillable = [
         'tr_uuid',
         'tr_mod_nombre',
@@ -22,5 +29,12 @@ class modulos extends Model
         'tr_mod_est_fk',
         'tr_mod_vig_fk'
     ];
+
     public $timestamps = false;
+
+    public function unidades()
+    {
+        return $this->hasMany(unidades::class, 'tr_uni_mod_fk', 'tr_mod_id');
+    }
+
 }

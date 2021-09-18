@@ -20,84 +20,38 @@
             </div>
 
             <!-- Lessons -->
-            <ul class="card list-group list-group-fit">
-                <li class="list-group-item">
-                    <div class="media">
-                        <div class="media-left">
-                            <div class="text-muted">1.</div>
+            @if (!empty($modulosUnidades))
+                <ul class="card list-group list-group-fit">
+                @foreach($modulosUnidades as $moduloUnidad)
+                    <li class="list-group-item">
+                        <div class="media">
+                            <div class="media-left">
+                                <div class="text-muted">{{ $loop->index + 1 }}.</div>
+                            </div>
+                            <div class="media-body">
+                                <a href="#">{{ $moduloUnidad->tr_mod_nombre }}</a>
+                            </div>
                         </div>
-                        <div class="media-body">
-                            <a href="#">Installation</a>
-                        </div>
-                        <div class="media-right">
-                            <small class="text-muted-light">2:03</small>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item active">
-                    <div class="media">
-                        <div class="media-left">2.</div>
-                        <div class="media-body">
-                            <a class="text-white" href="#">The MVC architectural pattern</a>
-                        </div>
-                        <div class="media-right">
-                            <small>25:01</small>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="media">
-                        <div class="media-left">
-                            <div class="text-muted">3.</div>
-                        </div>
-                        <div class="media-body">
-                            <a href="#">Database Models</a>
-                        </div>
-                        <div class="media-right">
-                            <small class="text-muted-light">12:10</small>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="media">
-                        <div class="media-left">
-                            <div class="text-muted">4.</div>
-                        </div>
-                        <div class="media-body">
-                            <div class="text-muted-light">Database Access</div>
-                        </div>
-                        <div class="media-right">
-                            <small class="badge badge-primary ">PRO</small>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="media">
-                        <div class="media-left">
-                            <div class="text-muted">5.</div>
-                        </div>
-                        <div class="media-body">
-                            <div class="text-muted-light">Eloquent Basics</div>
-                        </div>
-                        <div class="media-right">
-                            <small class="badge badge-primary ">PRO</small>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="media">
-                        <div class="media-left">
-                            <div class="text-muted">6.</div>
-                        </div>
-                        <div class="media-body">
-                            <div class="text-muted-light">Take Quiz</div>
-                        </div>
-                        <div class="media-right">
-                            <small class="badge badge-primary ">PRO</small>
-                        </div>
-                    </div>
-                </li>
-            </ul>
+                        @if (!empty($moduloUnidad->unidades))
+                            <ul class="card list-group list-group-fit">
+                                @foreach($moduloUnidad->unidades as $unidad)
+                                    <li class="list-group-item">
+                                        <div class="media">
+                                            <div class="media-left">
+                                                <div class="text-muted">{{ $loop->index + 1 }}.</div>
+                                            </div>
+                                            <div class="media-body">
+                                                <a href="{{ route('detalles_unidad', [$unidad->tr_uni_id]) }}">{{ $unidad->tr_uni_nombre }}</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        @endif
+                    </li>
+                @endforeach
+                </ul>
+            @endif
         </div>
         <div class="col-md-4">
             <div class="card">
@@ -173,7 +127,7 @@
                         <a href="#" data-route="{{ route('rating_curso', [$cursoDetalle->tr_cur_id, 4]) }}" class="guardar_rating"><i class="material-icons">{{ $cursoRating >= 4  ? 'star' : 'star_border' }}</i></a>
                         <a href="#" data-route="{{ route('rating_curso', [$cursoDetalle->tr_cur_id, 5]) }}" class="guardar_rating"><i class="material-icons">{{ $cursoRating >= 5  ? 'star' : 'star_border' }}</i></a>
                     </div>
-                    <small class="text-muted">20 ratings</small>
+                    <small class="text-muted">{{ $cursoRatingCant }} ratings</small>
                 </div>
             </div>
         </div>

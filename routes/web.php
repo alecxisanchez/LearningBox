@@ -59,6 +59,7 @@ Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
     Route::get('/curso/refesh', 'App\Http\Controllers\Mantenedor\MantenedorCursosController@refesh');
     Route::get('/detalles-curso/{curso}', 'App\Http\Controllers\CursosController@detallesCurso')->name('detalles_curso');
     Route::post('/rating-curso/{curso}/{estrellas}', 'App\Http\Controllers\CursosController@guardarRating')->name('rating_curso');
+    Route::get('/curso/detalles-unidad/{unidad}', 'App\Http\Controllers\CursosController@detallesUnidad')->name('detalles_unidad');
 
     /**
      * Modulos
